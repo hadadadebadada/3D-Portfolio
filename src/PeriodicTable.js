@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, createRef } from "react";
 import * as THREE from "three";
-
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { TrackballControls } from "three/examples/jsm/controls/TrackballControls";
 import {
@@ -11,6 +11,7 @@ import {
 import "./main.css";
 import JavaIcon from "./java.svg";
 
+import Artur from "./artur.png";
 const table = [ 
   
   { icon: JavaIcon }, "Spring Boot", "1.00794", 1, 1, 
@@ -112,14 +113,29 @@ export const Table = () => {
 
       const textElement = document.createElement("div");
 textElement.className = "textbox";
-textElement.innerHTML = "Hello, world!";
+textElement.innerHTML = "Willkommen zu meinem Portfolio. Ich bin Artur, 28 und meine Leidenschaft ist das Programmieren. Meine favorisierten Technologien zur Zeit sind: React, Selenium, SpringBoot und Scrapy. Ich liebe es mit Code neue Dinge zu schaffen und die Entwicklung meiner Kreationen voran zutreiben.";
 const textObject = new CSS3DObject(textElement);
-textObject.position.set(0, 0, -1000);
+textObject.position.set(1000, 1000, 1000);
 scene.add(textObject);
-objects.push(textObject);
+//objects.push(textObject);
 
 
-      scene.add(new THREE.AmbientLight(0x505050));
+const imageElement = document.createElement("img");
+imageElement.src = "https://images.unsplash.com/photo-1677032448705-92557fb54c43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3ODY0NzI0MQ&ixlib=rb-4.0.3&q=80&w=1080";
+const containerElement = document.createElement("div");
+containerElement.style.position = "absolute"; // set position to absolute
+containerElement.style.width = "300px"; // set width to 300px
+containerElement.style.height = "300px"; // set height to 300px
+containerElement.style.top = "50px"; // set top position to 50px
+containerElement.style.left = "50px"; // set left position to 50px
+containerElement.appendChild(imageElement);
+
+const imageObject = new CSS3DObject(containerElement);
+imageObject.position.set(0, 0, -10000);
+scene.add(imageObject);
+objects.push(imageObject);
+
+  scene.add(new THREE.AmbientLight(0x505050));
 
       // create table
 
@@ -171,7 +187,13 @@ objects.push(textObject);
       elementRefs.current.forEach(({ symbol, object }) => {
         object.element.addEventListener("click", () => {
           console.log(symbol.textContent + " was clicked!");
-        });
+          
+          new TWEEN.Tween(scene.position)
+            .to({ x: -1000, y: -1000, z: -1000 }, 1000)
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .onUpdate(render)
+            .start();
+                  });
       });
     
 /* 
@@ -287,8 +309,8 @@ containerRef.current.appendChild(renderer.domElement);
 
 const textboxStyle = `
   position: absolute;
-  width: 200px;
-  height: 100px;
+  width: 800px;
+  height: 400px;
   background-color: rgba(0, 127, 127, 0.5);
   color: white;
   font-size: 24px;
@@ -303,13 +325,32 @@ const textboxElement = document.createElement("style");
 textboxElement.innerHTML = `.textbox { ${textboxStyle} }`;
 document.head.appendChild(textboxElement);
 
-      // controls
 
-/*       controls = new TrackballControls(camera, renderer.domElement);
-      controls.minDistance = 500;
-      controls.maxDistance = 6000;
-      controls.addEventListener("change", render);
- */
+
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+controls.minDistance = 500;
+controls.maxDistance = 6000;
+
+
+
+
+      elementRefs.current.forEach(({ symbol, object }) => {
+        object.element.addEventListener("click", () => {
+          console.log(symbol.textContent + " was clicked!");
+          controls.enabled = true;
+        });
+      
+        object.element.addEventListener("mouseenter", () => {
+          controls.enabled = false;
+        });
+
+        object.element.addEventListener("mouseleave", () => {
+          controls.enabled = true;
+        });
+      });
+
+
       const buttonTable = document.getElementById("table");
       buttonTable.addEventListener("click", () => {
         transform(targets.table, 2000);
