@@ -10,19 +10,70 @@ import {
 
 import "./main.css";
 import JavaIcon from "./java.svg";
+import AndroidIcon from "./icons/android.png"
+import SeleniumIcon from "./icons/selenium.svg";
+import EPKBPMNIcon from "./icons/EPKBPMN.png";
+import git2 from "./icons/git2.png";
+import language from "./icons/language.png";
+import linux from "./icons/linux.png";
+import office2 from "./icons/office2.png";
+import python from "./icons/python.png";
+import R from "./icons/R.png";
+import ReactIcon from "./icons/React-icon.svg";
+import sap from "./icons/sap.png";
+import scrapy from "./icons2/scrappy.png";
+import sql from "./icons/SQL.png"; 
+import unity from "./icons/unity.png";
 
-import Artur from "./artur.png";
-const table = [ 
-  
-  { icon: JavaIcon }, "Spring Boot", "1.00794", 1, 1, 
+import aws from "./icons2/aws.png";
+import d3 from "./icons2/d3.png";
+import docker from "./icons2/docker.png";
+import firebase from "./icons2/firebase2.png";
+import ganache from "./icons2/ganache.svg";
+import hobbys from "./icons2/hobbys.svg";
+import javaee from "./icons2/javaee.png";
+import js from "./icons2/js.png";
+import metamask from "./icons2/metamask.png";
+import mui from "./icons2/mui.svg";
+import nginx from "./icons2/nginx.png";
+import wildfly from "./icons2/wildfly.svg";
+import apiplatform from "./icons2/apiplatform.svg";
+import pandas from "./icons2/pandas2.png";
+import pm from "./icons2/pm.png";
+import quarkus from "./icons2/quarkus.png";
+import reactnative from "./icons/React-icon.svg";
+import remix from "./icons2/remix.png";
+import solidity from "./icons2/solidity.png";
+import spring from "./icons2/spring.png";
+import symfony from "./icons2/symfony.png";
+import tailwind from "./icons2/tailwind.png";
+import Three from "./icons2/Three.png";
+import truffle from "./icons2/truffle.svg";
+import typescript from "./icons2/typescript.png";
 
-"He", "Helium", "4.002602", 18, 1, 
-"Li", "Lithium", "6.941", 1, 2, 
-"Se", "Selenium", "78.96", 16, 4,
-      'Be', 'Beryllium', '9.012182', 2, 2,
-    'B', 'Boron', '10.811', 13, 2,
-    'C', 'Carbon', '12.0107', 14, 2,
 
+
+
+
+const table = [
+  { icon: JavaIcon }, "Spring Boot", "7/10", 1, 1, 
+  { icon: AndroidIcon }, "Android", "5/10", 1, 1,
+  { icon: SeleniumIcon }, "Selenium", "8/10", 0, 1,
+  { icon: EPKBPMNIcon }, "EPKBPMN", "9/10", 0, 1,
+  { icon: git2 }, "Git", "8/10", 0, 1,
+  { icon: language }, "Language", "10/10", 0, 0,
+  { icon: linux }, "Linux", "7/10", 0, 1,
+  { icon: office2 }, "Office", "8/10", 0, 0,
+  { icon: python }, "Python", "9/10", 1, 1,
+  { icon: R }, "R", "7/10", 1, 1,
+  { icon: ReactIcon }, "React", "8/10", 1, 1,
+  { icon: sap }, "SAP", "6/10", 0, 0,
+  { icon: scrapy }, "Scrapy", "8/10", 1, 1,
+  { icon: sql }, "SQL", "9/10", 1, 1,
+  { icon: unity }, "Unity", "6/10", 1, 0,
+  { icon: apiplatform }, "API Platform", "8/10", 2, 2,
+  { icon: quarkus }, "Quarkus", "9/10", 3, 3,
+  { icon: aws }, "AWS", "5/10", 1, 1,  { icon: d3 }, "D3.js", "7/10", 1, 1,  { icon: docker }, "Docker", "6/10", 1, 1,  { icon: firebase }, "Firebase", "7/10", 1, 1,  { icon: ganache }, "Ganache", "6/10", 1, 1,  { icon: hobbys }, "Hobbies", "10/10", 5, 5,  { icon: javaee }, "Java EE", "7/10", 2, 2,  { icon: js }, "JavaScript", "9/10", 5, 5,  { icon: metamask }, "MetaMask", "6/10", 1, 1,  { icon: mui }, "Material UI", "8/10", 2, 2,  { icon: nginx }, "NGINX", "6/10", 1, 1,  { icon: wildfly }, "WildFly", "7/10", 1, 1,  { icon: pandas }, "Pandas", "6/10", 1, 1,  { icon: pm }, "PhpMyAdmin", "6/10", 1, 1,  { icon: reactnative }, "React Native", "8/10", 2, 2,  { icon: remix }, "Remix", "6/10", 1, 1,  { icon: solidity }, "Solidity", "6/10", 1, 1,  { icon: spring }, "Spring", "8/10", 2, 2,  { icon: symfony }, "Symfony", "7/10", 1, 1,  { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1,  { icon: Three }, "Three.js", "7/10", 1, 1,  { icon: truffle }, "Truffle", "6/10", 1, 1,  { icon: typescript }, "TypeScript", "8/10", 2, 2
 ];
 
 
@@ -120,6 +171,14 @@ scene.add(textObject);
 //objects.push(textObject);
 
 
+
+const backButton = document.createElement("button");
+backButton.className = "backButton";
+backButton.innerHTML = " Zurück";
+const backObject = new CSS3DObject(backButton);
+backObject.position.set(700, 1300, 1000);
+scene.add(backObject);
+
 const imageElement = document.createElement("img");
 imageElement.src = "https://images.unsplash.com/photo-1677032448705-92557fb54c43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3ODY0NzI0MQ&ixlib=rb-4.0.3&q=80&w=1080";
 const containerElement = document.createElement("div");
@@ -133,7 +192,8 @@ containerElement.appendChild(imageElement);
 const imageObject = new CSS3DObject(containerElement);
 imageObject.position.set(0, 0, -10000);
 scene.add(imageObject);
-objects.push(imageObject);
+
+//objects.push(imageObject);
 
   scene.add(new THREE.AmbientLight(0x505050));
 
@@ -156,6 +216,8 @@ objects.push(imageObject);
         if (table[i].icon) {
           const img = document.createElement("img");
           img.src = table[i].icon;
+          img.style.width = "100px";
+          img.style.height = "100px";
           symbol.appendChild(img);
         
           
