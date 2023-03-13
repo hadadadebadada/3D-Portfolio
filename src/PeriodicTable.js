@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, createRef } from "react";
+import React, { useRef, useEffect, useState, createRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
@@ -7,7 +7,7 @@ import {
   CSS3DRenderer,
   CSS3DObject,
 } from "three/examples/jsm/renderers/CSS3DRenderer.js";
-
+import { useIntl } from 'react-intl';
 import "./main.css";
 import JavaIcon from "./java.svg";
 import AndroidIcon from "./icons/android.png"
@@ -39,7 +39,7 @@ import nginx from "./icons2/nginx.png";
 import wildfly from "./icons2/wildfly.svg";
 import apiplatform from "./icons2/apiplatform.svg";
 import pandas from "./icons2/pandas2.png";
-import pm from "./icons2/pm.png";
+import pm from "./icons2/pm.png"; //--> price2
 import quarkus from "./icons2/quarkus.png";
 import reactnative from "./icons/React-icon.svg";
 import remix from "./icons2/remix.png";
@@ -50,13 +50,43 @@ import tailwind from "./icons2/tailwind.png";
 import Three from "./icons2/Three.png";
 import truffle from "./icons2/truffle.svg";
 import typescript from "./icons2/typescript.png";
+import cleancode from "./icons2/clean-code.png";
+import styled from "styled-components";
 
 
+//google analytics
+// paypal sdk - stripe 
+/// law --> dsgvo, ozg, urhg, 
 
+
+import { FormattedMessage } from "react-intl";
+
+ const LangButton = styled.button`
+ --button-size: calc(var(--nav-size) * 0.5);
+  width: var(--button-size);
+  height: var(--button-size);
+  background-color: #484a4d;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+  &:hover {
+    transition: all 0.3s ease-out;
+    background: #fff;
+    background-color: ${({ primary }) => (primary ? '#0467FB' : '#4B59F7')};
+  }
+  @media screen and (max-width: 960px) {
+    width: 100%;
+  }
+`;
 
 
 const table = [
   { icon: JavaIcon }, "Spring Boot", "7/10", 1, 1, 
+  { icon: cleancode }, "Clean Code", "9/10", 1, 1,
   { icon: AndroidIcon }, "Android", "5/10", 1, 1,
   { icon: SeleniumIcon }, "Selenium", "8/10", 0, 1,
   { icon: EPKBPMNIcon }, "EPKBPMN", "9/10", 0, 1,
@@ -77,12 +107,13 @@ const table = [
 ];
 
 
-export const Table = () => {
+export const Table = ({locale, selectLang}) => {
   const containerRef = useRef(null);
-
+  const intl = useIntl();
   const elementRef = useRef(null);
 
   const elementRefs = useRef([]);
+
 
 
   const handleClick = (e) => {
@@ -141,6 +172,14 @@ export const Table = () => {
   };
 
   useEffect(() => {
+
+
+
+
+
+    const textElement = document.createElement("div");
+    textElement.className = "textbox";
+
     const init = () => {
       camera = new THREE.PerspectiveCamera(
         40,
@@ -161,10 +200,10 @@ export const Table = () => {
         Math.random() * 4000 - 2000
       );
 
-
-      const textElement = document.createElement("div");
+ const textElement = document.createElement("div");
 textElement.className = "textbox";
-textElement.innerHTML = "Willkommen zu meinem Portfolio. Ich bin Artur, 28 und meine Leidenschaft ist das Programmieren. Meine favorisierten Technologien zur Zeit sind: React, Selenium, SpringBoot und Scrapy. Ich liebe es mit Code neue Dinge zu schaffen und die Entwicklung meiner Kreationen voran zutreiben.";
+const newMessageText = intl.formatMessage({ id: 'app.welcome' });
+textElement.innerHTML = newMessageText;
 const textObject = new CSS3DObject(textElement);
 textObject.position.set(1000, 1000, 1000);
 scene.add(textObject);
@@ -465,33 +504,19 @@ controls.maxDistance = 6000;
 
     init();
     animate();
-  }, []);
+ 
+
+  }, [locale]);
 
   
 
-/* 
 
-  useEffect(() => {
-    const elements = containerRef.current.querySelectorAll(".element");
-    elementRefs.current = Array.from({ length: elements.length }).map(
-      (_, i) => elementRefs.current[i] || createRef()
-    );
-    elements.forEach((element, i) => {
-      element.addEventListener("click", handleClick);
-      elementRefs.current[i].current = element;
-    });
-  
-    return () => {
-      elements.forEach((element, i) => {
-        element.removeEventListener("click", handleClick);
-        elementRefs.current[i].current = null;
-      });
-    };
-  }, []); */
 
   return (
     <div ref={containerRef}>
-      <div className="buttons">
+      <div style={{ backgroundColor: "black", display: "flex", justifyContent: "space-between" }} className="buttons">
+
+        <div style={{ backgroundColor: "black", display: "flex", justifyContent: "flex-start" }}>
         <button id="table" onClick={() => transform(targets.table, 2000)}>
           Table
         </button>
@@ -504,8 +529,24 @@ controls.maxDistance = 6000;
         <button id="grid" onClick={() => transform(targets.grid, 2000)}>
           Grid
         </button>
+        </div>
+        <div style={{ backgroundColor: "black", display: "flex", justifyContent: "flex-end" }}>
+        <button value={locale = "en-US"} onClick={selectLang}>
+          🇺🇸
+        </button>
+        <button value={locale = "de-DE"} onClick={selectLang}>
+          🇩🇪
+        </button>
+        <button value={locale = "es-MX"} onClick={selectLang}>
+          🇪🇸
+        </button>
+        <button value={locale = "ru-RU"} onClick={selectLang}>
+          🇷🇺
+        </button>
+        </div>
       </div>
     </div>
+  
   );
 };
 
