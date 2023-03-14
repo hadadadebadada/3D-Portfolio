@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const LangButton = styled.button`
+/* export const LangButton = styled.button`
  --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
@@ -23,8 +23,8 @@ export const LangButton = styled.button`
   }
 `;
 
-
-export const Container = styled.div`
+ */
+/* export const Container = styled.div`
   z-index: 1;
   width: 100%;
   max-width: 1300px;
@@ -37,8 +37,8 @@ export const Container = styled.div`
     padding-left: 30px;
   }
 `;
-
-
+ */
+/* 
 export const Nav = styled.nav`
 background-color: ${props => props.theme.pageBackground};
   height: 80px;
@@ -46,7 +46,6 @@ background-color: ${props => props.theme.pageBackground};
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-/*   position: sticky; */
   top: 0;
   z-index: 999;
 `;
@@ -68,9 +67,6 @@ justify-self: flex-start;
   align-items: center;
 `;
 
-/* export const IconPlay = styled(tableIcon)`
-  margin-right: 0.5rem;
-`; */
 
 export const MobileIcon = styled.div`
   display: none;
@@ -160,4 +156,4 @@ export const NavBtnLink = styled(Link)`
   width: 100%;
   border: none;
   outline: none;
-`;
+`; */

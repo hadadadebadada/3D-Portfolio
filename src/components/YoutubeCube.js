@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+/* import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer';
@@ -93,3 +93,4 @@ function YoutubeCube() {
 }
 
 export default YoutubeCube;
+ */

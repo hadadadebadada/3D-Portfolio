@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+/* import React, { useState, useEffect, useContext } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import styled from 'styled-components';
@@ -93,14 +93,7 @@ function Navbar() {
      
 
                             </NavItem>
-                            <button onClick={() => selectLang("en-US")}>Set locale to English</button>
-
-{/* 
-                            <LangButton value={locale = "de-DE"} onClick={selectLang}>🇩🇪</LangButton>
-                            <LangButton value={locale = "en-US"} onClick={selectLang}>🇺🇸</LangButton>
-                            <LangButton value={locale = "es-MX"} onClick={selectLang}>🇪🇸</LangButton>
-                            <LangButton value={locale = "ru-RU"} onClick={selectLang}>🇷🇺</LangButton>
- */}
+                      
 
 
 
@@ -109,7 +102,7 @@ function Navbar() {
 
 
 
-                        </NavMenu>{/*  */}
+                        </NavMenu>
                     </NavbarContainer>
                 </Nav>
             </IconContext.Provider>
@@ -121,3 +114,4 @@ function Navbar() {
 
 export default Navbar;
 
+ */

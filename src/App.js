@@ -4,12 +4,13 @@ import English from './languages/en-US.json';
 import Deutsch from './languages/de-DE.json';
 import Spanish from './languages/es-MX.json';
 import Russisch from './languages/ru-RU.json';
-import Navbar from './components/navbar/Navbar';
+
 
 
 
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Table from './PeriodicTable';
+/* import YoutubeCube from './components/YoutubeCube'; */
 
 const local = navigator.language;
 
@@ -60,21 +61,7 @@ function selectLang(e) {
   return (
     <Context.Provider value={{ locale, selectLang }}>
               <IntlProvider messages={messages} locale={locale}>
-{/*       <Router>
-        <Navbar></Navbar>
-        </Router> */}
-        <Table locale={locale} selectLang={selectLang}></Table>
-        {/* <div>
-          <h1>
-            <FormattedMessage id="app.header" defaultMessage="Hello!" />
-          </h1>
-          <select value={locale} onChange={selectLang}>
-            <option value="en-US">English</option>
-            <option value="de-DE">Deutsch</option>
-            <option value="es-MX">Español</option>
-            <option value="ru-RU">Русский</option>
-          </select>
-        </div> */}
+        <Table style={{maxWidth:"100vw", maxHeight:"100vh", overflow:"hidden"}} locale={locale} selectLang={selectLang}></Table>
       </IntlProvider>
     </Context.Provider>
   );
