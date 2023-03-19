@@ -105,31 +105,18 @@ export const Table = ({ locale, selectLang }) => {
   const elementRef = useRef(null);
   const elementRefs = useRef([]);
 
-  /*   const handleClick = (e) => {
-
-    console.log(e.target.outerHTML); //--> <img src="/static/media/java.3c5854fce4aa30ad19d569c45d5ce874.svg">
-    const imageSrc = e.target.src; // get image source
-    const fileName = imageSrc.split('/').pop(); // get the file name
-    const imageName = fileName.split('.')[0]; // get the first part of the file name
-    console.log(imageName); // "java"
-
-    window.open(`https://www.google.com/search?q=${imageName}`, "_blank");
-    
-  }; */
-
-  let camera, scene, renderer;
-
-
   const objects = [];
+    
+
   const targets = { table: [], sphere: [], helix: [], grid: [], pyramid: [], fractalTree: [], circle: [], };
 
-
-
-
-
+    let camera, scene, renderer, cssRenderer;
   const render = () => {
-    renderer.render(scene, camera);
+   /*  renderer.render(scene, camera);
+    cssRenderer.render(scene, camera); */
   };
+
+
 
   const transform = (targets, duration) => {
     TWEEN.removeAll();
@@ -159,16 +146,54 @@ export const Table = ({ locale, selectLang }) => {
 
 
 
-    const init = () => { camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+
+
+    const init = () => { 
+      
+      
+      camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
 
       camera.position.z = 3000;
       scene = new THREE.Scene();
 
-      renderer = initRenderer(renderer);
-      containerRef.current.appendChild(renderer.domElement);
+/*       renderer = initRenderer(renderer);
+      containerRef.current.appendChild(renderer.domElement); */
 
 
-      const controls = new OrbitControls(camera, renderer.domElement);
+
+
+      cssRenderer = new CSS3DRenderer();
+      cssRenderer.setSize(window.innerWidth, window.innerHeight);
+      cssRenderer.domElement.style.position = "absolute";
+  /*     cssRenderer.domElement.style.backgroundColor = "black"; */
+      cssRenderer.domElement.style.top = 0;
+      document.querySelector("#css3d").appendChild(cssRenderer.domElement); // Change this line
+    
+      // WebGLRenderer setup
+
+      renderer = new THREE.WebGLRenderer({ alpha: true }); // Add the alpha: true option
+      renderer.setClearColor(0x000000, 0); // Add this line to make the background transparent
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.domElement.style.position = "absolute";
+      document.querySelector("#webgl").appendChild(renderer.domElement);
+    
+      // 
+
+
+            
+      const geometry = new THREE.BoxGeometry( 100, 100, 100 );
+const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+const cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
+
+cube.position.x = 0;
+cube.position.y = 0;
+cube.position.z = 0;
+
+
+
+      const controls = new OrbitControls(camera, cssRenderer.domElement);
       controls.minDistance = 200;
       controls.maxDistance = 6000;
       controls.enableZoom = false;
@@ -188,8 +213,13 @@ for (let i = 1; i < 10; i++) {
 
 }
       createImage(scene);
-      initTable(elementRef, scene, objects, targets, elementRefs);
+   /*    createNavbarButtonsTest(scene); */
+     initTable(elementRef, scene, objects, targets, elementRefs);
       elementClickListener(elementRefs, scene, render);
+
+
+
+
 
       const vector = new THREE.Vector3();
 
@@ -203,31 +233,70 @@ for (let i = 1; i < 10; i++) {
 
       // renderer
       diableControllsOnElementHover(elementRefs, controls);
-      createNavbarButtons(transform, targets);
+/*       createNavbarButtons(transform, targets); */
 
       /* Init Formtransition */
-      transform(targets.pyramid, 5000);
+     transform(targets.pyramid, 5000);
 
       window.addEventListener("resize", onWindowResize);
     };
 
-    const onWindowResize = () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); render(); };
+
+    const onWindowResize = () => { 
+      
+      camera.aspect = window.innerWidth / window.innerHeight; 
+      
+      camera.updateProjectionMatrix();
+      
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      cssRenderer.setSize(window.innerWidth, window.innerHeight);
+      
+    //  render(); 
+    
+    };
 
     const animate = () => {
       requestAnimationFrame(animate);
       TWEEN.update();
 
-      render();
+     render();
     };
 
-    const render = () => { renderer.render(scene, camera); };
+    const render = () => { 
+      
+      renderer.render(scene, camera); 
+      cssRenderer.render(scene, camera);
+    
+    
+    };
+
+
     init();
     animate();
+
+    
+    return () => {
+      window.removeEventListener("resize", onWindowResize);
+      renderer.dispose();
+
+      // Remove child elements from the DOM
+      const webglContainer = document.querySelector("#webgl");
+      if (webglContainer) {
+        webglContainer.removeChild(renderer.domElement);
+      }
+
+      const css3dContainer = document.querySelector("#css3d");
+      if (css3dContainer) {
+        css3dContainer.removeChild(cssRenderer.domElement);
+      }
+    };
   }, [locale]);
 
   return (
-    <div ref={containerRef} >
-      <div style={{  display: "flex", justifyContent: "space-between", backgroundColor:"black"}} className="buttons" >
+    <div>
+
+
+<div style={{  display: "flex", justifyContent: "space-between", backgroundColor:"black"}} className="buttons" >
         <div style={{ display: "flex", justifyContent: "flex-start"}} >
           <button id="table" onClick={() => transform(targets.pyramid, 2000)}>
             Table
@@ -260,6 +329,14 @@ for (let i = 1; i < 10; i++) {
           </button>
         </div>
       </div>
+
+
+      <div ref={containerRef}>
+      <div id="black-background" style={{position:"absolute", top:0, left:0, width:"100%", height:"100%", backgroundColor:"black"}}></div>
+      <div id="webgl"></div>
+      <div id="css3d"></div> {/* Add this line to create a new div for CSS3DRenderer */}
+    </div>
+
     </div>
   );
 };
@@ -371,23 +448,35 @@ function createCircle(objects, targets) {
 
 function createHelix(objects, vector, targets) {
   const helix = [];
+
+  let spacingFactor = 1 ;
+
   for (let i = 0, l = objects.length; i < l; i++) {
-    const theta = i * 0.175 + Math.PI;
-    const y = -(i * 8) + 450;
+    const theta1 = i * 0.175 * spacingFactor + Math.PI;
+    const y1 = -(i *150) + 450;
+    const theta2 = i * 0.175 * spacingFactor;
+    const y2 = (i * 150) - 10;
 
-    const object = new THREE.Object3D();
+    const object1 = new THREE.Object3D();
+    object1.position.setFromCylindricalCoords(700, theta1, y1);
+    vector.x = object1.position.x * 1;
+    vector.y = object1.position.y;
+    vector.z = object1.position.z * 55.5;
+    object1.lookAt(vector);
 
-    object.position.setFromCylindricalCoords(900, theta, y);
+    const object2 = new THREE.Object3D();
+    object2.position.setFromCylindricalCoords(700, theta2, y2);
+    vector.x = object2.position.x * 1;
+    vector.y = object2.position.y;
+    vector.z = object2.position.z * 55.5;
+    object2.lookAt(vector);
 
-    vector.x = object.position.x * 2;
-    vector.y = object.position.y;
-    vector.z = object.position.z * 2;
-
-    object.lookAt(vector);
-
-    helix.push(object);
-    targets.helix.push(object);
+    helix.push(object1, object2);
+    targets.helix.push(object1, object2);
   }
+
+
+
 }
 
 function initTable(elementRef, scene, objects, targets, elementRefs) {
@@ -539,6 +628,33 @@ function createImage(scene) {
   scene.add(imageObject);
 }
 
+
+function createNavbarButtonsTest(scene){
+  const container = document.createElement("div");
+  container.style.position = "absolute";
+  container.style.top = "0";
+  container.style.left = "0";
+  container.style.width = "100%";
+  container.style.display = "flex";
+  container.style.justifyContent = "center";
+  container.style.alignItems = "center";
+  
+  const buttonTest = document.createElement("button");
+  buttonTest.textContent = "Test"; 
+
+  const buttonTest2 = document.createElement("button");
+  buttonTest2.textContent = "Test2";
+
+  const buttonObject = new CSS3DObject(buttonTest);
+  buttonObject.position.set(-4500, 2500, -5000);
+  container.appendChild(buttonObject.element);
+   
+  const buttonObject2 = new CSS3DObject(buttonTest2);
+  buttonObject2.position.set(-4500, 2500, -5000);
+  container.appendChild(buttonObject2.element);
+  
+  scene.add(container);
+}
 
 
 function goBackToMain(intl, scene, x,y,z, render ) {
