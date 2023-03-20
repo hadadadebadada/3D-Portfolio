@@ -99,6 +99,10 @@ top: 50%;
 
 const table = [ { icon: JavaIcon }, "Spring Boot", "7/10", 1, 1, { icon: cleancode }, "Clean Code", "9/10", 1, 1, { icon: AndroidIcon }, "Android", "5/10", 1, 1, { icon: SeleniumIcon }, "Selenium", "8/10", 0, 1, { icon: EPKBPMNIcon }, "EPKBPMN", "9/10", 0, 1, { icon: git2 }, "Git", "8/10", 0, 1, { icon: language }, "Language", "10/10", 0, 0, { icon: linux }, "Linux", "7/10", 0, 1, { icon: office2 }, "Office", "8/10", 0, 0, { icon: python }, "Python", "9/10", 1, 1, { icon: R }, "R", "7/10", 1, 1, { icon: ReactIcon }, "React", "8/10", 1, 1, { icon: sap }, "SAP", "6/10", 0, 0, { icon: scrapy }, "Scrapy", "8/10", 1, 1, { icon: sql }, "SQL", "9/10", 1, 1, { icon: unity }, "Unity", "6/10", 1, 0, { icon: apiplatform }, "API Platform", "8/10", 2, 2, { icon: quarkus }, "Quarkus", "9/10", 3, 3, { icon: aws }, "AWS", "5/10", 1, 1, { icon: d3 }, "D3.js", "7/10", 1, 1, { icon: docker }, "Docker", "6/10", 1, 1, { icon: firebase }, "Firebase", "7/10", 1, 1, { icon: ganache }, "Ganache", "6/10", 1, 1, { icon: hobbys }, "Hobbies", "10/10", 5, 5, { icon: javaee }, "Java EE", "7/10", 2, 2, { icon: js }, "JavaScript", "9/10", 5, 5, { icon: metamask }, "MetaMask", "6/10", 1, 1, { icon: mui }, "Material UI", "8/10", 2, 2, { icon: nginx }, "NGINX", "6/10", 1, 1, { icon: wildfly }, "WildFly", "7/10", 1, 1, { icon: pandas }, "Pandas", "6/10", 1, 1, { icon: pm }, "PhpMyAdmin", "6/10", 1, 1, { icon: reactnative }, "React Native", "8/10", 2, 2, { icon: remix }, "Remix", "6/10", 1, 1, { icon: solidity }, "Solidity", "6/10", 1, 1, { icon: spring }, "Spring", "8/10", 2, 2, { icon: symfony }, "Symfony", "7/10", 1, 1, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, { icon: Three }, "Three.js", "7/10", 1, 1, { icon: truffle }, "Truffle", "6/10", 1, 1, { icon: typescript }, "TypeScript", "8/10", 2, 2, ];
 
+
+/* 
+https://sbcode.net/react-three-fiber/stats/ */
+
 export const Table = ({ locale, selectLang }) => {
   const containerRef = useRef(null);
   const intl = useIntl();
@@ -108,12 +112,12 @@ export const Table = ({ locale, selectLang }) => {
   const objects = [];
     
 
-  const targets = { table: [], sphere: [], helix: [], grid: [], pyramid: [], fractalTree: [], circle: [], };
+  const targets = { table: [], sphere: [], helix: [], grid: [], pyramid: [], fractalTree: [], circle: [], doubleHelix: [], test: [] };
 
     let camera, scene, renderer, cssRenderer;
   const render = () => {
-   /*  renderer.render(scene, camera);
-    cssRenderer.render(scene, camera); */
+    renderer.render(scene, camera);
+    cssRenderer.render(scene, camera);
   };
 
 
@@ -156,47 +160,22 @@ export const Table = ({ locale, selectLang }) => {
       camera.position.z = 3000;
       scene = new THREE.Scene();
 
-/*       renderer = initRenderer(renderer);
-      containerRef.current.appendChild(renderer.domElement); */
-
-
-
-
-      cssRenderer = new CSS3DRenderer();
-      cssRenderer.setSize(window.innerWidth, window.innerHeight);
-      cssRenderer.domElement.style.position = "absolute";
-  /*     cssRenderer.domElement.style.backgroundColor = "black"; */
-      cssRenderer.domElement.style.top = 0;
-      document.querySelector("#css3d").appendChild(cssRenderer.domElement); // Change this line
+      cssRenderer = initCSS3DRenderer(cssRenderer); 
+      renderer = initWebGlRenderer(renderer);
     
-      // WebGLRenderer setup
-
-      renderer = new THREE.WebGLRenderer({ alpha: true }); // Add the alpha: true option
-      renderer.setClearColor(0x000000, 0); // Add this line to make the background transparent
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.domElement.style.position = "absolute";
-      document.querySelector("#webgl").appendChild(renderer.domElement);
-    
-      // 
-
-
             
       const geometry = new THREE.BoxGeometry( 100, 100, 100 );
-const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+      const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+      const cube = new THREE.Mesh( geometry, material );
+      scene.add( cube );
 
-cube.position.x = 0;
-cube.position.y = 0;
-cube.position.z = 0;
+      cube.position.x = 0;
+      cube.position.y = 0;
+      cube.position.z = 0;
 
 
 
-      const controls = new OrbitControls(camera, cssRenderer.domElement);
-      controls.minDistance = 200;
-      controls.maxDistance = 6000;
-      controls.enableZoom = false;
+      const controls = initControls(camera, cssRenderer);
 
       createWelcomeText(intl, scene);
 
@@ -213,7 +192,6 @@ for (let i = 1; i < 10; i++) {
 
 }
       createImage(scene);
-   /*    createNavbarButtonsTest(scene); */
      initTable(elementRef, scene, objects, targets, elementRefs);
       elementClickListener(elementRefs, scene, render);
 
@@ -225,11 +203,15 @@ for (let i = 1; i < 10; i++) {
 
 
       /* Different Forms */
+      createFractalTree(objects, vector, targets);
+        
+      createDoubleHelix(objects, vector, targets)
       createSphere(objects, vector, targets);
       createHelix(objects, vector, targets);
       createCircle(objects, targets);
       createGrid(objects, targets);
       createTable(objects, vector, targets);
+      createTest(objects, vector, targets)
 
       // renderer
       diableControllsOnElementHover(elementRefs, controls);
@@ -251,7 +233,7 @@ for (let i = 1; i < 10; i++) {
       renderer.setSize(window.innerWidth, window.innerHeight);
       cssRenderer.setSize(window.innerWidth, window.innerHeight);
       
-    //  render(); 
+     render(); 
     
     };
 
@@ -297,9 +279,12 @@ for (let i = 1; i < 10; i++) {
 
 
 <div style={{  display: "flex", justifyContent: "space-between", backgroundColor:"black"}} className="buttons" >
-        <div style={{ display: "flex", justifyContent: "flex-start"}} >
+        <div style={{ display: "flex", justifyContent: "flex-start", zIndex:1}} >
           <button id="table" onClick={() => transform(targets.pyramid, 2000)}>
             Table
+          </button>
+          <button id="DoubleHelix" onClick={() => transform(targets.doubleHelix, 2000)}>
+            DoubleHelix
           </button>
           <button id="sphere" onClick={() => transform(targets.sphere, 2000)}>
             Sphere
@@ -313,8 +298,15 @@ for (let i = 1; i < 10; i++) {
           <button id="circle" onClick={() => transform(targets.circle, 2000)}>
             Circle
           </button>
+              <button id="tree" onClick={() => transform(targets.fractalTree, 2000)}>
+            Tree
+          </button>
+
+          <button id="test" onClick={()=>transform(targets.test, 2000)}>TEST
+          </button>
+        
         </div>
-        <div style={{ display: "flex", justifyContent: "flex-end" }} >
+        <div style={{ display: "flex", justifyContent: "flex-end", zIndex:1 }} >
           <button value={(locale = "en-US")} onClick={selectLang}>
             🇺🇸
           </button>
@@ -333,8 +325,8 @@ for (let i = 1; i < 10; i++) {
 
       <div ref={containerRef}>
       <div id="black-background" style={{position:"absolute", top:0, left:0, width:"100%", height:"100%", backgroundColor:"black"}}></div>
-      <div id="webgl"></div>
-      <div id="css3d"></div> {/* Add this line to create a new div for CSS3DRenderer */}
+      <div id="webgl"  style={{position:"absolute", top:0, left:0, width:"100%", height:"100%"}}></div>
+      <div id="css3d"  style={{position:"absolute", top:0, left:0, width:"100%", height:"100%"}}></div> 
     </div>
 
     </div>
@@ -343,15 +335,144 @@ for (let i = 1; i < 10; i++) {
 
 export default Table;
 
+function createTest(objects, vector, targets) {
+  const width = 1000; // Width of the Mandelbrot set
+  const height = 1000; // Height of the Mandelbrot set
+  const resolution = 500; // Resolution of the Mandelbrot set
 
-function initRenderer(renderer) {
-  renderer = new CSS3DRenderer();
+  const mandelbrotObjects = [];
+
+  for (let x = 0; x < width; x++) {
+    for (let y = 0; y < height; y++) {
+      let a = (x / width) * 3.5 - 2.5;
+      let b = (y / height) * 2 - 1;
+
+      let ca = a;
+      let cb = b;
+
+      let n = 0;
+      const maxIter = 100;
+
+      while (n < maxIter) {
+        let aa = a * a - b * b;
+        let bb = 2 * a * b;
+
+        a = aa + ca;
+        b = bb + cb;
+
+        if (a * a + b * b > 16) {
+          break;
+        }
+
+        n++;
+      }
+
+      if (n === maxIter) {
+        const index = Math.floor(Math.random() * objects.length);
+        const object = objects[index].clone();
+
+        object.position.set(x * resolution, y * resolution, 0);
+
+        mandelbrotObjects.push(object);
+        targets.test.push(object);
+      }
+    }
+  }
+}
+
+
+/* function createTest(objects, vector, targets) {
+  const maxDepth = 10;
+  const spacingFactorX = 10;
+  const spacingFactorY = 5.5;
+  const stack = [{
+    startX: 0,
+    startY: 0,
+    len: 150,
+    angle: 10,
+    branchWidth: 10,
+    depth: 2
+  }];
+
+  while (stack.length > 0) {
+    const { startX, startY, len, angle, branchWidth, depth } = stack.pop();
+
+    if (depth >= maxDepth) continue;
+
+    const branchMaterial = new THREE.MeshBasicMaterial({ color: 0x228B22 });
+    const branchGeometry = new THREE.CylinderGeometry(branchWidth, branchWidth, len, 16);
+    const branch = new THREE.Mesh(branchGeometry, branchMaterial);
+
+    const object = new THREE.Object3D();
+    object.add(branch);
+    object.position.set(startX, startY, 0);
+    object.rotation.z = angle;
+
+    branch.position.y = -len / 2;
+
+    vector.x = object.position.x * 2;
+    vector.y = object.position.y;
+    vector.z = object.position.z * 2;
+
+    object.lookAt(vector);
+
+    targets.test.push(object);
+
+    const newStartX = startX + Math.cos(angle) * len * spacingFactorX;
+    const newStartY = startY - Math.sin(angle) * len * spacingFactorY;
+    const newLen = len * 0.8;
+    const newBranchWidth = branchWidth * 0.8;
+
+    const branchAngle = 20 * Math.PI / 180;
+    
+    stack.push({
+      startX: newStartX,
+      startY: newStartY,
+      len: newLen,
+      angle: angle - branchAngle,
+      branchWidth: newBranchWidth,
+      depth: depth + 1
+    });
+
+    stack.push({
+      startX: newStartX,
+      startY: newStartY,
+      len: newLen,
+      angle: angle + branchAngle,
+      branchWidth: newBranchWidth,
+      depth: depth + 1
+    });
+  }
+} */
+
+
+function initControls(camera, cssRenderer) {
+  const controls = new OrbitControls(camera, cssRenderer.domElement);
+  controls.minDistance = 200;
+  controls.maxDistance = 16000;
+  controls.enableZoom = true;
+  return controls;
+}
+
+function initCSS3DRenderer(cssRenderer) {
+  cssRenderer = new CSS3DRenderer();
+  cssRenderer.setSize(window.innerWidth, window.innerHeight);
+  cssRenderer.domElement.style.position = "absolute";
+  document.querySelector("#css3d").appendChild(cssRenderer.domElement);
+  return cssRenderer;
+}
+
+function initWebGlRenderer(renderer) {
+  renderer = new THREE.WebGLRenderer({ alpha: true }); // Add the alpha: true option
+  renderer.setClearColor(0x000000, 0); // Add this line to make the background transparent
+  renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.domElement.style.position = "absolute";
-  renderer.domElement.style.backgroundColor = "black";
-  renderer.domElement.style.overflow = "hidden";
+  document.querySelector("#webgl").appendChild(renderer.domElement);
   return renderer;
 }
+
+
 
 function diableControllsOnElementHover(elementRefs, controls) {
   elementRefs.current.forEach(({ symbol, object }) => {
@@ -369,31 +490,7 @@ function diableControllsOnElementHover(elementRefs, controls) {
   });
 }
 
-function createNavbarButtons(transform, targets) {
-  const buttonTable = document.getElementById("table");
-  buttonTable.addEventListener("click", () => {
-    transform(targets.table, 2000);
-  });
 
-  const buttonSphere = document.getElementById("sphere");
-  buttonSphere.addEventListener("click", () => {
-    transform(targets.sphere, 2000);
-  });
-
-  const buttonHelix = document.getElementById("helix");
-  buttonHelix.addEventListener("click", () => {
-    transform(targets.helix, 2000);
-  });
-
-  const buttonGrid = document.getElementById("grid");
-  buttonGrid.addEventListener("click", () => {
-    transform(targets.grid, 2000);
-  });
-
-
-
-
-}
 
 function createTable(objects, vector, targets) {
   for (let i = 0, l = objects.length; i < l; i++) {
@@ -446,38 +543,85 @@ function createCircle(objects, targets) {
   }
 }
 
-function createHelix(objects, vector, targets) {
-  const helix = [];
+/* function createFractalTree(objects, vector, targets, depth = 8, length = 300, angle = Math.PI / 4, parentId = null) {
+  if (depth === 0) return;
 
-  let spacingFactor = 1 ;
+  const object = new THREE.Mesh(
+    new THREE.CylinderGeometry(5, 5, length, 16),
+    new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+  );
 
-  for (let i = 0, l = objects.length; i < l; i++) {
-    const theta1 = i * 0.175 * spacingFactor + Math.PI;
-    const y1 = -(i *150) + 450;
-    const theta2 = i * 0.175 * spacingFactor;
-    const y2 = (i * 150) - 10;
+  object.position.copy(vector);
 
-    const object1 = new THREE.Object3D();
-    object1.position.setFromCylindricalCoords(700, theta1, y1);
-    vector.x = object1.position.x * 1;
-    vector.y = object1.position.y;
-    vector.z = object1.position.z * 55.5;
-    object1.lookAt(vector);
-
-    const object2 = new THREE.Object3D();
-    object2.position.setFromCylindricalCoords(700, theta2, y2);
-    vector.x = object2.position.x * 1;
-    vector.y = object2.position.y;
-    vector.z = object2.position.z * 55.5;
-    object2.lookAt(vector);
-
-    helix.push(object1, object2);
-    targets.helix.push(object1, object2);
+  if (parentId !== null) {
+    object.position.sub(objects[parentId].position);
+    objects[parentId].add(object);
   }
 
+  object.position.y += length / 2;
+  object.rotation.z = angle * (parentId === null ? 0 : parentId % 2 === 0 ? 1 : -1);
 
+  objects.push(object);
+  targets.fractalTree.push(object);
 
+  const newLength = length * 0.7;
+  const newVector = vector.clone();
+  newVector.y += length;
+
+  createFractalTree(objects, newVector, targets, depth - 1, newLength, angle, objects.length - 1);
 }
+ */
+
+
+
+/* its more like rearange obejcts */
+/* function createFractalTree(objects, vector, targets) {
+  function createBranch(depth, length, angle, parentId) {
+    if (depth === 0) return;
+
+    const object = new THREE.Mesh(
+      new THREE.CylinderGeometry(5, 5, length, 16),
+      new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+    );
+
+    if (parentId !== null) {
+      object.position.copy(objects[parentId].position);
+      object.position.y += length / 2;
+      object.rotation.z = angle * (parentId % 2 === 0 ? 1 : -1);
+      objects[parentId].add(object);
+    }
+
+    objects.push(object);
+    targets.fractalTree.push(object);
+
+    const newLength = length * 0.7;
+    const newVector = object.position.clone();
+    newVector.y += length / 2;
+
+    createBranch(depth - 1, newLength, angle, objects.length - 1);
+  }
+
+  const depth = 8;
+  const length = 300;
+  const angle = Math.PI / 4;
+
+  createBranch(depth, length, angle, null);
+} */
+
+
+
+
+/* 
+ */
+
+
+
+
+
+  
+
+
+
 
 function initTable(elementRef, scene, objects, targets, elementRefs) {
   for (let i = 0; i < table.length; i += 5) {
@@ -592,8 +736,8 @@ function createWelcomeText(intl, scene) {
   const textElement = document.createElement("div");
   textElement.className = "textbox";
 
-  const wrapper = document.createElement("div"); // create wrapper div
-  wrapper.style.position = "relative"; // set position to relative
+  const wrapper = document.createElement("div"); // create wrfcrper div
+  wrapper.style.position = "relative"; // set position to relfcrive
 
 
   const newMessageText = intl.formatMessage({ id: "app.welcome" });
@@ -629,32 +773,6 @@ function createImage(scene) {
 }
 
 
-function createNavbarButtonsTest(scene){
-  const container = document.createElement("div");
-  container.style.position = "absolute";
-  container.style.top = "0";
-  container.style.left = "0";
-  container.style.width = "100%";
-  container.style.display = "flex";
-  container.style.justifyContent = "center";
-  container.style.alignItems = "center";
-  
-  const buttonTest = document.createElement("button");
-  buttonTest.textContent = "Test"; 
-
-  const buttonTest2 = document.createElement("button");
-  buttonTest2.textContent = "Test2";
-
-  const buttonObject = new CSS3DObject(buttonTest);
-  buttonObject.position.set(-4500, 2500, -5000);
-  container.appendChild(buttonObject.element);
-   
-  const buttonObject2 = new CSS3DObject(buttonTest2);
-  buttonObject2.position.set(-4500, 2500, -5000);
-  container.appendChild(buttonObject2.element);
-  
-  scene.add(container);
-}
 
 
 function goBackToMain(intl, scene, x,y,z, render ) {
@@ -810,3 +928,191 @@ for (let i = 0; i < objects.length; i++) {
       
         targets.pyramid.push(object);
       } */
+
+/* 
+      function createSpiral(objects, vector, targets) {
+        const spiral = [];
+        const numTurns = 2;
+        const heightPerTurn = 400;
+        const radius = 250;
+      
+        for (let i = 0, l = objects.length; i < l; i++) {
+          let object = new THREE.Object3D();
+      
+          const angle = (i / l) * Math.PI * 2 * numTurns;
+          const height = (i / l) * numTurns * heightPerTurn - (numTurns * heightPerTurn) / 2;
+      
+          object.position.x = radius * Math.cos(angle);
+          object.position.y = height;
+          object.position.z = radius * Math.sin(angle);
+      
+          vector.x = object.position.x * 2;
+          vector.y = object.position.y;
+          vector.z = object.position.z * 2;
+      
+          object.lookAt(vector);
+      
+          targets.spiral.push(object);
+        }
+      } */
+
+      
+
+function createFractalTree(objects, vector, targets) {
+  // Create tree trunk
+  const fibonacci = [];
+  const angle = Math.PI * (3 - Math.sqrt(5));
+  const scaleFactor = 120;
+
+  for (let i = 0, l = objects.length; i < l; i++) {
+    let object = new THREE.Object3D();
+
+    const radius = Math.sqrt(i) * scaleFactor;
+    const theta = i * angle;
+
+    object.position.x = radius * Math.cos(theta);
+    object.position.y = -(i * 60) + 650;
+    object.position.z = radius * Math.sin(theta);
+
+    vector.x = object.position.x * 2;
+    vector.y = object.position.y;
+    vector.z = object.position.z * 2;
+
+    object.lookAt(vector);
+
+    targets.fractalTree.push(object);
+  }
+}
+
+
+
+
+function createDoubleHelix(objects, vector, targets) {
+  const doubleHelix = [];
+
+
+  const radius = 250; 
+  const distanceBetweenHelices = 100; 
+
+  for (let i = 0, l = objects.length; i < l; i++) {
+    let phi = i * 0.375 + Math.PI;
+
+    // Create first helix
+    let object1 = new THREE.Object3D();
+    object1.position.x = radius * Math.sin(phi) - distanceBetweenHelices / 2;
+    object1.position.y = -(i * 120) + 1450;
+    object1.position.z = radius * Math.cos(phi);
+
+    vector.x = object1.position.x * 2;
+    vector.y = object1.position.y;
+    vector.z = object1.position.z * 2;
+
+    object1.lookAt(vector);
+
+    targets.doubleHelix.push(object1);
+
+    // Create second helix
+    let object2 = new THREE.Object3D();
+    object2.position.x = radius * Math.sin(phi + Math.PI) + distanceBetweenHelices / 2;
+    object2.position.y = -(i * 120) + 1450;
+    object2.position.z = radius * Math.cos(phi + Math.PI);
+
+    vector.x = object2.position.x * 2;
+    vector.y = object2.position.y;
+    vector.z = object2.position.z * 2;
+
+    object2.lookAt(vector);
+
+    targets.doubleHelix.push(object2);
+  }
+}
+
+function createHelix(objects, vector, targets) {
+  const helix = [];
+
+  // Modify this value to adjust the helix radius.
+  const radius = 450; // Smaller value will result in a smaller helix radius.
+
+  for (let i = 0, l = objects.length; i < l; i++) {
+    let phi = i * 0.175 + Math.PI;
+
+    let object = new THREE.Object3D();
+
+    object.position.x = radius * Math.sin(phi);
+    object.position.y = -(i * 60) + 650;
+    object.position.z = radius * Math.cos(phi);
+
+    vector.x = object.position.x * 2;
+    vector.y = object.position.y;
+    vector.z = object.position.z * 2;
+
+    object.lookAt(vector);
+
+    targets.helix.push(object);
+  }
+}
+
+
+
+/* function createTest(objects, vector, targets) {
+  const maxDepth = 8;
+  const spacingFactorX = 5.5;
+   const spacingFactorY = 10.5;
+   const stack = [{
+    startX: 0,
+    startY: 0,
+    len: 150,
+    angle: 11,
+    branchWidth: 10,
+    depth: 2
+  }];
+
+  while (stack.length > 0) {
+    const { startX, startY, len, angle, branchWidth, depth } = stack.pop();
+
+    if (depth >= maxDepth) continue;
+
+    const branchMaterial = new THREE.MeshBasicMaterial({ color: 0x228B22 });
+    const branchGeometry = new THREE.CylinderGeometry(branchWidth, branchWidth, len, 16);
+    const branch = new THREE.Mesh(branchGeometry, branchMaterial);
+
+    const object = new THREE.Object3D();
+    object.add(branch);
+    object.position.set(startX, startY, 0);
+    object.rotation.z = angle;
+
+    branch.position.y = -len / 2;
+
+    vector.x = object.position.x * 2;
+    vector.y = object.position.y;
+    vector.z = object.position.z * 2;
+
+    object.lookAt(vector);
+
+    targets.test.push(object);
+
+    const newStartX = startX + Math.cos(angle) * len * spacingFactorX;
+    const newStartY = startY - Math.sin(angle) * len * spacingFactorY;
+    const newLen = len * 0.8;
+    const newBranchWidth = branchWidth * 0.8;
+
+    stack.push({
+      startX: newStartX,
+      startY: newStartY,
+      len: newLen,
+      angle: angle - (15 * Math.PI / 180),
+      branchWidth: newBranchWidth,
+      depth: depth + 1
+    });
+
+    stack.push({
+      startX: newStartX,
+      startY: newStartY,
+      len: newLen,
+      angle: angle + (15 * Math.PI / 180),
+      branchWidth: newBranchWidth,
+      depth: depth + 1
+    });
+  }
+}
+       */
