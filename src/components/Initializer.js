@@ -10,7 +10,7 @@ import * as THREE from "three";
 export const initControls = (camera, cssRenderer) => {
     const controls = new OrbitControls(camera, cssRenderer.domElement);
     controls.minDistance = 0;
-    controls.maxDistance = 3500;
+    controls.maxDistance = 20000;
     
     controls.enableDamping = false;
     controls.enableRotate = true;

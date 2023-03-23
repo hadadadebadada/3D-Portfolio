@@ -125,13 +125,13 @@ top: 50%;
 `; */
 
 const table = [ { icon: JavaIcon }, "Java", "8/10", 1, 1, { icon: spring }, "Spring", "7/10", 2, 2, { icon: AndroidIcon }, "Android", "6/10", 1, 1, { icon: SeleniumIcon }, "Selenium", "8/10", 0, 1, { icon: javaee }, "Java EE", "6/10", 2, 2, { icon: quarkus }, "Quarkus", "3/10", 3, 3, { icon: js }, "JavaScript", "8/10", 5, 5, { icon: ReactIcon }, "React", "9/10", 1, 1, { icon: Three }, "Three.js", "7/10", 1, 1, { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, { icon: d3 }, "D3.js", "3/10", 1, 1, { icon: typescript }, "TypeScript", "4/10", 2, 2, { icon: reactnative }, "React Native", "3/10", 2, 2, { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, { icon: pandas }, "Pandas", "5/10", 1, 1, { icon: R }, "R", "6/10", 1, 1,  { icon: php }, "PHP", "6/10", 1, 1,{ icon: symfony }, "Symfony", "6/10", 1, 1, { icon: pm }, "PhpMyAdmin", "6/10", 1, 1, { icon: apiplatform }, "API Platform", "6/10", 2, 2, { icon: remix }, "Remix", "5/10", 1, 1, { icon: solidity }, "Solidity", "6/10", 1, 1,  { icon: truffle }, "Truffle", "7/10", 1, 1,  { icon: ganache }, "Ganache", "8/10", 1, 1, { icon: metamask }, "MetaMask", "10/10", 1, 1, { icon: EPKBPMNIcon }, "EPKBPMN", "9/10", 0, 1, { icon: git2 }, "Git", "8/10", 0, 1, { icon: language }, "Language", "10/10", 0, 0, { icon: linux }, "Linux", "7/10", 0, 1, { icon: office2 }, "Office", "9/10", 0, 0, { icon: sap }, "SAP", "3/10", 0, 0, { icon: sql }, "SQL/ PLSQL", "9/10", 1, 1, { icon: unity }, "Unity/ C#", "3/10", 1, 0,  { icon: aws }, "AWS", "7/10", 1, 1,  { icon: docker }, "Docker", "4/10", 1, 1, { icon: firebase }, "Firebase", "7/10", 1, 1,  { icon: hobbys }, "Hobbies", "10/10", 5, 5, { icon: nginx }, "NGINX", "7/10", 1, 1, { icon: wildfly }, "WildFly", "6/10", 1, 1,  { icon: cleancode }, "Clean Code", "9/10", 1, 1,
-{ icon: jira }, "Jira", "7/10", 2, 2,
-{ icon: confluence }, "Confluence", "8/10", 1, 1,
-{ icon: jenkins }, "Jenkins", "6/10", 2, 2,
-{ icon: ga }, "Google Analytics", "7/10", 1, 1,
-{ icon: matomo }, "Matomo", "7/10", 2, 2,
-{ icon: paypal }, "PayPal", "8/10", 1, 1,
-{ icon: stripe }, "Stripe", "7/10", 2, 2,
+{ icon: jira }, "Jira", "9/10", 2, 2,
+{ icon: confluence }, "Confluence", "9/10", 1, 1,
+{ icon: jenkins }, "Jenkins", "3/10", 2, 2,
+{ icon: ga }, "Google Analytics", "5/10", 1, 1,
+{ icon: matomo }, "Matomo", "5/10", 2, 2,
+{ icon: paypal }, "PayPal", "5/10", 1, 1,
+{ icon: stripe }, "Stripe", "5/10", 2, 2,
 { icon: law }, "Law", "6/10", 1, 1
 
 ];
@@ -253,23 +253,18 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
 
    
 
-      createArrow(scene, "up", -1000, 1000, intl, "app.toTopArrow", () => handleArrowClick("up"));
-      createArrow(scene, "left", -1900, 500, intl, "app.toLeftArrow", () => handleArrowClick("left"));
-      createArrow(scene, "right", -100, 500, intl, "app.toRightArrow", () => handleArrowClick("right"));
-      createArrow(scene, "down", -1000, 0, intl, "app.toButtomArrow", () => handleArrowClick("down"));
+      createArrow(scene, "up", -1000, 1000, intl, "app.toTopArrow", () => handleArrowClick("up"), controls);
+      createArrow(scene, "left", -1900, 500, intl, "app.toLeftArrow", () => handleArrowClick("left"),controls);
+      createArrow(scene, "right", -100, 500, intl, "app.toRightArrow", () => handleArrowClick("right"),controls);
+      createArrow(scene, "down", -1000, 0, intl, "app.toButtomArrow", () => handleArrowClick("down"),controls);
       
 
- /*      function handleArrowClick() {
-       
-        new TWEEN.Tween(scene.position)
-        .to({ x: 0, y: -3000, z: -3000 }, 1000)
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .onUpdate(render)
-        .start();
-      }
-     */
+
 
       function handleArrowClick(direction) {
+
+
+
         let x = 0, y = 0, z = -3000;
       
         switch (direction) {
@@ -766,6 +761,24 @@ function elementClickListener(elementRefs, scene, render, intl, rotateObj7) {
                                     break;
                                     case "45":
                                     goToCard(scene, render, 0, 51000, -51000);
+                                    break;
+                                    case "46":
+                                    goToCard(scene, render, 0, 54000, -54000);
+                                    break;
+                                    case "47":
+                                    goToCard(scene, render, 0, 57000, -57000);
+                                    break;
+                                    case "48":
+                                    goToCard(scene, render, 0, 60000, -60000);
+                                    break;
+                                    case "49":
+                                    goToCard(scene, render, 0, 63000, -63000);
+                                    break;
+                                    case "50":
+                                    goToCard(scene, render, 0, 66000, -66000);
+                                    break;
+                                    case "51":
+                                    goToCard(scene, render, 0, 69000, -69000);
                                     break;
 
 

@@ -240,7 +240,7 @@ const textWrapperStyle = `
   transform: translate(-50%, -50%);
 `;
 
-export function createArrow(scene, direction, x, y, intl, messageId, onClickCallback) {
+export function createArrow(scene, direction, x, y, intl, messageId, onClickCallback, controls) {
   const textElement = document.createElement("div");
   textElement.className = `arrow arrow-${direction}`;
   textElement.id = `arrow-${direction}`;
@@ -260,4 +260,26 @@ export function createArrow(scene, direction, x, y, intl, messageId, onClickCall
   scene.add(textObject);
 
   textElement.addEventListener("click", onClickCallback);
+  
+
+       /*    textElement.className = `arrow arrow-${direction}`;
+        textElement.id = `arrow-${direction}`; */
+
+
+
+        textElement.addEventListener("click", () => {
+          controls.enabled = false;
+        });
+      
+        // Add event listeners to the DOM element, not the 3D object
+        textElement.addEventListener("mouseenter", () => {
+          controls.enabled = false;
+        });
+      
+        textElement.addEventListener("mouseleave", () => {
+          controls.enabled = true;
+        });
+
+
+
 }
