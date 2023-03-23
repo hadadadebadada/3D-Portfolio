@@ -151,10 +151,11 @@ let rotateObj7;
    //python
    rotateObj3 = new THREE.Mesh();
 
-   GLTFloader.load(pythonObj, function (glb) {
+   //pythonObj
+   GLTFloader.load(react, function (glb) {
 
        rotateObj3 = glb.scene;
-       glb.scene.scale.set(3, 3, 3)
+       glb.scene.scale.set(20, 20, 20)
        glb.scene.position.z = -500
 
        glb.scene.position.x = 0;
@@ -169,9 +170,9 @@ let rotateObj7;
    // react
    rotateObj4 = new THREE.Mesh();
 
-   GLTFloader.load(react, function (glb) {
+/*    GLTFloader.load(react, function (glb) {
 
-/*        rotateObj4 = glb.scene;
+       rotateObj4 = glb.scene;
        glb.scene.scale.set(20, 20, 20)
        glb.scene.position.z = +500
        glb.scene.position.x = 0;
@@ -180,8 +181,8 @@ let rotateObj7;
        scene.add(glb.scene);
        var orbitingObjPivot5 = new THREE.Object3D();
        mesh.add(orbitingObjPivot5);
-       orbitingObjPivot5.add(glb.scene); */
-   });
+       orbitingObjPivot5.add(glb.scene);
+   }); */
 
 
    function setPosition(obj, x, y, z) {

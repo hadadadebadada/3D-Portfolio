@@ -78,51 +78,14 @@ import earthSpec from './earth/earthspec1k.jpg'
 import cloudMapTrans from './earth/earthcloudmaptrans.jpg'
 
 
-// office-->VBA 
-// jira/ conlfunece
-//jenkins
-//google analytics / matomo
-// paypal sdk - stripe
-/// law --> dsgvo, ozg, urhg, 
 
-import { FormattedMessage } from "react-intl";
+/* CrytoMinig, MuayThai, Zocken, Yoga, Fußball */
 
-/* const LangButton = styled.button`
-  --button-size: calc(var(--nav-size) * 0.5);
-  width: var(--button-size);
-  height: var(--button-size);
-  background-color: #484a4d;
-  border-radius: 50%;
-  padding: 5px;
-  margin: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: filter 300ms;
-  &:hover {
-    transition: all 0.3s ease-out;
-    background: #fff;
-    background-color: ${({ primary }) => (primary ? "#0467FB" : "#4B59F7")};
-  }
-  @media screen and (max-width: 960px) {
-    width: 100%;
-  }
-`; */
+/* Projects!!!! */
+/* Social Media!! */
 
-/* const textboxStyle = `
-position: absolute;
-width: 800px;
-height: 400px;
-background-color: rgba(0, 127, 127, 0.5);
-color: white;
-font-size: 24px;
-text-align: center;
-padding: 10px;
-border-radius: 10px;
-transform: translate(-50%, -50%);
-left: 50%;
-top: 50%;
-`; */
+/* About me ? --> Cards */
+
 
 const table = [ { icon: JavaIcon }, "Java", "8/10", 1, 1, { icon: spring }, "Spring", "7/10", 2, 2, { icon: AndroidIcon }, "Android", "6/10", 1, 1, { icon: SeleniumIcon }, "Selenium", "8/10", 0, 1, { icon: javaee }, "Java EE", "6/10", 2, 2, { icon: quarkus }, "Quarkus", "3/10", 3, 3, { icon: js }, "JavaScript", "8/10", 5, 5, { icon: ReactIcon }, "React", "9/10", 1, 1, { icon: Three }, "Three.js", "7/10", 1, 1, { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, { icon: d3 }, "D3.js", "3/10", 1, 1, { icon: typescript }, "TypeScript", "4/10", 2, 2, { icon: reactnative }, "React Native", "3/10", 2, 2, { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, { icon: pandas }, "Pandas", "5/10", 1, 1, { icon: R }, "R", "6/10", 1, 1,  { icon: php }, "PHP", "6/10", 1, 1,{ icon: symfony }, "Symfony", "6/10", 1, 1, { icon: pm }, "PhpMyAdmin", "6/10", 1, 1, { icon: apiplatform }, "API Platform", "6/10", 2, 2, { icon: remix }, "Remix", "5/10", 1, 1, { icon: solidity }, "Solidity", "6/10", 1, 1,  { icon: truffle }, "Truffle", "7/10", 1, 1,  { icon: ganache }, "Ganache", "8/10", 1, 1, { icon: metamask }, "MetaMask", "10/10", 1, 1, { icon: EPKBPMNIcon }, "EPKBPMN", "9/10", 0, 1, { icon: git2 }, "Git", "8/10", 0, 1, { icon: language }, "Language", "10/10", 0, 0, { icon: linux }, "Linux", "7/10", 0, 1, { icon: office2 }, "Office", "9/10", 0, 0, { icon: sap }, "SAP", "3/10", 0, 0, { icon: sql }, "SQL/ PLSQL", "9/10", 1, 1, { icon: unity }, "Unity/ C#", "3/10", 1, 0,  { icon: aws }, "AWS", "7/10", 1, 1,  { icon: docker }, "Docker", "4/10", 1, 1, { icon: firebase }, "Firebase", "7/10", 1, 1,  { icon: hobbys }, "Hobbies", "10/10", 5, 5, { icon: nginx }, "NGINX", "7/10", 1, 1, { icon: wildfly }, "WildFly", "6/10", 1, 1,  { icon: cleancode }, "Clean Code", "9/10", 1, 1,
 { icon: jira }, "Jira", "9/10", 2, 2,
@@ -206,8 +169,6 @@ export const Table = ({ locale, selectLang }) => {
     const init = () => {
 
 
-  
-
 
       camera = new THREE.PerspectiveCamera(
         40,
@@ -223,9 +184,6 @@ export const Table = ({ locale, selectLang }) => {
       renderer = initWebGlRenderer(renderer);
 
       const controls = initControls(camera, cssRenderer);
-
-
-
 
 
       renderer.render(scene, camera);
@@ -312,10 +270,11 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       const techToolsFrameworksJava = ["app.java", "app.springboot", "app.android", "app.javaee", "app.quarkus"];
       const techToolsFrameworksAJAX = [ 'app.javascript', 'app.react', 'app.threejs', 'app.materialui', 'app.tailwind', 'app.d3', 'app.typescript', 'app.reactnative'];
       const techToolFrameworksOtherProgramming = [   'app.python', 'app.scrapy', 'app.django', 'app.pandas', 'app.R', 'app.php', 'app.symfony', 'app.phpmyadmin', 'app.apiplatform', 'app.solidity', 'app.remix', 'app.truffle', 'app.ganache', 'app.metamask'];
-      const techToolFrameworksDevOpsAndMore = ['app.EPKBPMN', 'app.git', 'app.languages', 'app.linux', 'app.office', 'app.SAP', 'app.SQL', 'app.aws', 'app.Docker', 'app.firebase', 'app.hobbies', 'app.nginx', 'app.wildfly', 'app.cleancode', 'app.jenkins', 'app.jira', 'app.confluence','app.jenkins', 'app.googleanalytics', 'app.matomo', "app.paypalsdk", "app.stripe", "app.law"];
+      const techToolFrameworksDevOpsAndMore = ['app.EPKBPMN', 'app.git', 'app.languages', 'app.linux', 'app.office', 'app.SAP', 'app.SQL', 'app.unity','app.aws', 'app.Docker', 'app.firebase', 'app.hobbies', 'app.nginx', 'app.wildfly', 'app.cleancode', 'app.jira' ,  'app.confluence','app.jenkins', 'app.googleanalytics', 'app.matomo', "app.paypalsdk", "app.stripe", "app.law"];
       
       
-      const aboutMeCards = ['app.cleancode', 'app.languages','app.hobbies', 'app.hobbies' ];
+      /* Projekts??? */
+/*       const aboutMeCards = ['app.cleancode', 'app.languages','app.hobbies', 'app.hobbies' ]; */
 
 
       for (let i = 0; i < techToolsFrameworksJava.length; i++) {
@@ -358,7 +317,7 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
 
       createImage(scene);
       initTable(elementRef, scene, objects, targets, elementRefs);
-      elementClickListener(elementRefs, scene, render, rotateObj7);
+      elementClickListener(elementRefs, scene, render, intl, controls);
 
 
  
@@ -523,11 +482,12 @@ function goBackToMain(intl, scene, x, y, z, render, controls) {
   scene.add(object);
 
   object.element.addEventListener("click", () => {
-    controls.enabled = false;
+    setTimeout(() => {
+      controls.enabled = true;
+    }, 1000);
     goBackToMainMenu(render, scene);
   });
 
-  // Add event listeners to the DOM element, not the 3D object
   object.element.addEventListener("mouseenter", () => {
     controls.enabled = false;
   });
@@ -535,13 +495,17 @@ function goBackToMain(intl, scene, x, y, z, render, controls) {
   object.element.addEventListener("mouseleave", () => {
     controls.enabled = true;
   });
+
+/*   object.element.addEventListener("touchstart", () => {
+    controls.enabled = false;
+  });
+  object.element.addEventListener("touchend", () => {
+    controls.enabled = true;
+  }); */
 }
 
 function diableControllsOnElementHover(elementRefs, controls) {
   elementRefs.current.forEach(({ symbol, object }) => {
-    object.element.addEventListener("click", () => {
-      controls.enabled = true;
-    });
 
     object.element.addEventListener("mouseenter", () => {
       controls.enabled = false;
@@ -579,7 +543,7 @@ function initTable(elementRef, scene, objects, targets, elementRefs) {
     } else {
       symbol.textContent = table[i];
     }
-    symbol.ref = elementRef; // assign ref to symbol element
+    symbol.ref = elementRef; 
     element.appendChild(symbol);
 
     const details = document.createElement("div");
@@ -601,184 +565,177 @@ function initTable(elementRef, scene, objects, targets, elementRefs) {
 }
 
 
-function elementClickListener(elementRefs, scene, render, intl, rotateObj7) {
+function elementClickListener(elementRefs, scene, render, intl, controls) {
   elementRefs.current.forEach(({ symbol, object }) => {
     object.element.addEventListener("click", () => {
       //this displays a number
       console.log(symbol.previousElementSibling.textContent + " was clicked!");
 
       let id = symbol.previousElementSibling.textContent;
-
-
-      /* Switch for all cards */
-
       switch (id) {
 
         /* SECTION 1 */
+ 
         case "1":
-  
-      
-          goToCard(scene, render, -3000, 0, -3000, rotateObj7);
+          goToCard(scene, render, -3000, 0, -3000, controls);
           render();
-
           break;
         case "2":
-          goToCard(scene, render, -6000, 0, -6000);
+          goToCard(scene, render, -6000, 0, -6000, controls);
           break;
-          case "3":
-          goToCard(scene, render, -9000, 0, -9000);
+        case "3":
+          goToCard(scene, render, -9000, 0, -9000, controls);
           break;
-          case "4":
-            goToCard(scene, render, -12000, 0, 12000);
+        case "4":
+          goToCard(scene, render, -12000, 0, 12000, controls);
+          break;
+        case "5":
+          goToCard(scene, render, -15000, 0, -15000, controls);
+          break;
+        case "6":
+          goToCard(scene, render, -18000, 0, -18000, controls);
+          break;
+
+        /* SECTION 2 */
+        case "7":
+          goToCard(scene, render, 0, -3000, -3000, controls);
+          break;
+        case "8":
+          goToCard(scene, render, 0, -6000, -6000, controls);
+          break;
+        case "9":
+          goToCard(scene, render, 0, -9000, -9000, controls);
+          break;
+        case "10":
+          goToCard(scene, render, 0, -12000, -12000, controls);
+          break;
+        case "11":
+          goToCard(scene, render, 0, -15000, -15000, controls);
+          break;
+        case "12":
+          goToCard(scene, render, 0, -18000, -18000, controls);
+          break;
+        case "13":
+          goToCard(scene, render, 0, -21000, -21000, controls);
+          break;
+        case "14":
+          goToCard(scene, render, 0, -24000, -24000, controls);
+          break;
+        case "15":
+
+        /* SECTION 3 */
+
+        goToCard(scene, render, 3000, 0, -3000, controls);
+        break;
+        case "16":
+          goToCard(scene, render, 6000, 0, -6000, controls);
+          break;
+        case "17":
+          goToCard(scene, render, 9000, 0, -9000, controls);
+          break;
+        case "18":
+          goToCard(scene, render, 12000, 0, -12000, controls);
+          break;
+        case "19":
+          goToCard(scene, render, 15000, 0, -15000, controls);
+          break;
+        case "20":
+          goToCard(scene, render, 18000, 0, -18000, controls);
+          break;
+        case "21":
+          goToCard(scene, render, 21000, 0, -21000, controls);
+          break;
+        case "22":
+          goToCard(scene, render, 24000, 0, -24000, controls);
+          break;
+          case "23":
+            goToCard(scene, render, 27000, 0, -27000, controls);
             break;
-            case "5":
-              goToCard(scene, render, -15000, 0, -15000);
-              break;
-              case "6":
-                goToCard(scene, render, -18000, 0, -18000);
-                break;
-
-                /* SECTION 2 */
-                case "7":
-                  goToCard(scene, render, 0, -3000, -3000);
-                  break;
-                  case "8":
-                    goToCard(scene, render, 0, -6000, -6000);
-                    break;
-                    case "9":
-                      goToCard(scene, render, 0, -9000, -9000);
-                      break;
-                      case "10":
-                        goToCard(scene, render, 0, -12000, -12000);
-                        break;
-                        case "11":
-                          goToCard(scene, render, 0, -15000, -15000);
-                          break;
-                          case "12":
-                            goToCard(scene, render, 0, -18000, -18000);
-                            break;
-                            case "13":
-                              goToCard(scene, render, 0, -21000, -21000);
-                              break;
-                              case "14":
-                                goToCard(scene, render, 0, -24000, -24000);
-                                break;
-                                  case "15":
-
-
-                                  /* SECTION 3 */
-                                  
-          goToCard(scene, render, 3000, 0, -3000);
-                                break;
-                                case "16":
-                                  goToCard(scene, render, 6000, 0, -6000);
-                                  break;
-                                case "17":
-                                  goToCard(scene, render, 9000, 0, -9000);
-                                  break;
-                                case "18":
-                                  goToCard(scene, render, 12000, 0, -12000);
-                                  break;
-                                case "19":
-                                  goToCard(scene, render, 15000, 0, -15000);
-                                  break;
-                                case "20":
-                                  goToCard(scene, render, 18000, 0, -18000);
-                                  break;
-                                case "21":
-                                  goToCard(scene, render, 21000, 0, -21000);
-                                  break;
-                                case "22":
-                                  goToCard(scene, render, 24000, 0, -24000);
-                                  break;
-                                case "23":
-                                  goToCard(scene, render, 27000, 0, -27000);
-                                  break;
-                                case "24":
-                                  goToCard(scene, render, 30000, 0, -30000);
-                                  break;
-                                case "25":
-                                  goToCard(scene, render, 33000, 0, -33000);
-                                  break;
-                                case "26":
-                                  goToCard(scene, render, 36000, 0, -36000);
-                                  break;
-                                case "27":
-                                  goToCard(scene, render, 39000, 0, -39000);
-                                  break;
-                                case "28":
-                                  goToCard(scene, render, 42000, 0, -42000);
-                                  break;
-
-                                  /* SECTION  */
-                                  case "29":
-                                    goToCard(scene, render, 0, 3000, -3000);
-                                    break;
-                                    case "30":
-                                    goToCard(scene, render, 0, 6000, -6000);
-                                    break;
-                                    case "31":
-                                    goToCard(scene, render, 0, 9000, -9000);
-                                    break;
-                                    case "32":
-                                    goToCard(scene, render, 0, 12000, -12000);
-                                    break;
-                                    case "33":
-                                    goToCard(scene, render, 0, 15000, -15000);
-                                    break;
-                                    case "34":
-                                    goToCard(scene, render, 0, 18000, -18000);
-                                    break;
-                                    case "35":
-                                    goToCard(scene, render, 0, 21000, -21000);
-                                    break;
-                                    case "36":
-                                    goToCard(scene, render, 0, 24000, -24000);
-                                    break;
-                                    case "37":
-                                    goToCard(scene, render, 0, 27000, -27000);
-                                    break;
-                                    case "38":
-                                    goToCard(scene, render, 0, 30000, -30000);
-                                    break;
-                                    case "39":
-                                    goToCard(scene, render, 0, 33000, -33000);
-                                    break;
-                                    case "40":
-                                    goToCard(scene, render, 0, 36000, -36000);
-                                    break;
-                                    case "41":
-                                    goToCard(scene, render, 0, 39000, -39000);
-                                    break;
-                                    case "42":
-                                    goToCard(scene, render, 0, 42000, -42000);
-                                    break;
-                                    case "43":
-                                    goToCard(scene, render, 0, 45000, -45000);
-                                    break;
-                                    case "44":
-                                    goToCard(scene, render, 0, 48000, -48000);
-                                    break;
-                                    case "45":
-                                    goToCard(scene, render, 0, 51000, -51000);
-                                    break;
-                                    case "46":
-                                    goToCard(scene, render, 0, 54000, -54000);
-                                    break;
-                                    case "47":
-                                    goToCard(scene, render, 0, 57000, -57000);
-                                    break;
-                                    case "48":
-                                    goToCard(scene, render, 0, 60000, -60000);
-                                    break;
-                                    case "49":
-                                    goToCard(scene, render, 0, 63000, -63000);
-                                    break;
-                                    case "50":
-                                    goToCard(scene, render, 0, 66000, -66000);
+          case "24":
+            goToCard(scene, render, 30000, 0, -30000, controls);
+            break;
+          case "25":
+            goToCard(scene, render, 33000, 0, -33000, controls);
+            break;
+          case "26":
+            goToCard(scene, render, 36000, 0, -36000, controls);
+            break;
+          case "27":
+            goToCard(scene, render, 39000, 0, -39000, controls);
+            break;
+          case "28":
+            goToCard(scene, render, 42000, 0, -42000, controls);
+            break;
+          
+          /* SECTION 4 */
+          
+          case "29":
+            goToCard(scene, render, 0, 3000, -3000, controls);
+            break;
+          case "30":
+            goToCard(scene, render, 0, 6000, -6000, controls);
+            break;
+          case "31":
+            goToCard(scene, render, 0, 9000, -9000, controls);
+            break;
+          case "32":
+            goToCard(scene, render, 0, 12000, -12000, controls);
+            break;
+          case "33":
+            goToCard(scene, render, 0, 15000, -15000, controls);
+            break;
+          case "34":
+            goToCard(scene, render, 0, 18000, -18000, controls);
+            break;
+          case "35":
+            goToCard(scene, render, 0, 21000, -21000, controls);
+            break;
+          case "36":
+            goToCard(scene, render, 0, 24000, -24000, controls);
+            break;
+          case "37":
+            goToCard(scene, render, 0, 27000, -27000, controls);
+            break;
+          case "38":
+            goToCard(scene, render, 0, 30000, -30000, controls);
+            break;
+          case "39":
+            goToCard(scene, render, 0, 33000, -33000, controls);
+            break;
+          case "40":
+            goToCard(scene, render, 0, 36000, -36000, controls);
+            break;
+          case "41":
+            goToCard(scene, render, 0, 39000, -39000, controls);
+            break;
+          case "42":
+            goToCard(scene, render, 0, 42000, -42000, controls);
+            break;
+          case "43":
+            goToCard(scene, render, 0, 45000, -45000, controls);
+            break;
+          case "44":
+            goToCard(scene, render, 0, 48000, -48000, controls);
+            break;
+          case "45":
+            goToCard(scene, render, 0, 51000, -51000, controls);
+            break;
+          case "46":
+            goToCard(scene, render, 0, 54000, -54000, controls);
+            break;
+          case "47":
+            goToCard(scene, render, 0, 57000, -57000, controls);
+            break;
+          case "48":
+            goToCard(scene, render, 0, 60000, -60000, controls);
+            break;
+          case "49":
+            goToCard(scene, render, 0, 63000, -63000, controls);
+            break;                                case "50":
+                                    goToCard(scene, render, 0, 66000, -66000,controls);
                                     break;
                                     case "51":
-                                    goToCard(scene, render, 0, 69000, -69000);
+                                    goToCard(scene, render, 0, 69000, -69000,controls);
                                     break;
 
 
@@ -795,28 +752,31 @@ function elementClickListener(elementRefs, scene, render, intl, rotateObj7) {
   });
 }
 
-/* 
-case "16":
-  goToCard(scene, render, 0, 3000, -3000);
-                      // Add code to handle Card 2 click
-                      break; */
 
-function goToCard(scene, render, x, y, z,rotateObj7 ) {
+
+function goToCard(scene, render, x, y, z, controls ) {
+
+
+  /* necessary for chrome in mobile */
+  setTimeout(() => {
+    controls.enabled = true;
+  }, 1000);
+
   new TWEEN.Tween(scene.position)
     .to({ x: x, y: y, z: z }, 1000)
     .easing(TWEEN.Easing.Quadratic.InOut)
     .onUpdate(render)
     .start();
 
-    new TWEEN.Tween(rotateObj7.position)
+/*     new TWEEN.Tween(rotateObj7.position)
     .to({ x: x, y: y, z: z }, 1000)
     .easing(TWEEN.Easing.Quadratic.InOut)
-    .onUpdate(render)
+    .onUpdate(render) */
 
-    rotateObj7.position.x(x)
+/*     rotateObj7.position.x(x)
     rotateObj7.position.y(x)
     rotateObj7.position.z(z)
-
+ */
 }
 
 
@@ -840,8 +800,11 @@ function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls, di
   scene.add(object);
 
   object.element.addEventListener("click", () => {
-    controls.enabled = false;
+  
     goPrevOrNext(render, scene, prevOrNext, direction);
+            setTimeout(() => {
+            controls.enabled = true;
+          }, 1000);
   });
 
 
@@ -858,7 +821,7 @@ function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls, di
 
 function goBackToMainMenu(render, scene) {
   new TWEEN.Tween(scene.position)
-    .to({ x: 0, y: 0, z: 0 }, 1000)
+    .to({ x: 0, y: -150, z: -500 }, 1000)
     .easing(TWEEN.Easing.Quadratic.InOut)
     .onUpdate(render)
     .start();

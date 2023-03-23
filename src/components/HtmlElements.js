@@ -269,9 +269,11 @@ export function createArrow(scene, direction, x, y, intl, messageId, onClickCall
 
         textElement.addEventListener("click", () => {
           controls.enabled = false;
+          setTimeout(() => {
+            controls.enabled = true;
+          }, 1000);
         });
       
-        // Add event listeners to the DOM element, not the 3D object
         textElement.addEventListener("mouseenter", () => {
           controls.enabled = false;
         });
