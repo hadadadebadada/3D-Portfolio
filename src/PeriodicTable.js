@@ -3,7 +3,6 @@ import * as THREE from "three";
 import { initControls, initCSS3DRenderer, initWebGlRenderer, } from "./components/Initializer";
 import { createTable, createGrid, createSphere, createHelix, createDoubleHelix, createCircle, createTest, createFractalTree, } from "./components/FormCreator";
 import { createArrow, createWelcomeText, createText, createImage, } from "./components/HtmlElements";
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { createPlanet } from "./components/LandingPageEarthAnimation";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
@@ -53,7 +52,6 @@ import truffle from "./icons2/truffle.svg";
 import typescript from "./icons2/typescript.png";
 import cleancode from "./icons2/clean-code.png";
 import django from "./icons2/django.png";
-import styled from "styled-components";
 
 import jira from "./icons2/jira.png"
 import confluence from "./icons2/jira2.png"
@@ -109,7 +107,8 @@ export const Table = ({ locale, selectLang }) => {
   const elementRef = useRef(null);
   const elementRefs = useRef([]);
 
-  const arrowRef = useRef();
+/*   const arrowRef = useRef();
+ */
 
   const objects = [];
 
@@ -484,7 +483,7 @@ function goBackToMain(intl, scene, x, y, z, render, controls) {
   object.element.addEventListener("click", () => {
     setTimeout(() => {
       controls.enabled = true;
-    }, 1000);
+    }, 100);
     goBackToMainMenu(render, scene);
   });
 
@@ -496,12 +495,6 @@ function goBackToMain(intl, scene, x, y, z, render, controls) {
     controls.enabled = true;
   });
 
-/*   object.element.addEventListener("touchstart", () => {
-    controls.enabled = false;
-  });
-  object.element.addEventListener("touchend", () => {
-    controls.enabled = true;
-  }); */
 }
 
 function diableControllsOnElementHover(elementRefs, controls) {
@@ -732,16 +725,12 @@ function elementClickListener(elementRefs, scene, render, intl, controls) {
           case "49":
             goToCard(scene, render, 0, 63000, -63000, controls);
             break;                                case "50":
-                                    goToCard(scene, render, 0, 66000, -66000,controls);
-                                    break;
-                                    case "51":
-                                    goToCard(scene, render, 0, 69000, -69000,controls);
-                                    break;
-
-
-
-
-                              
+          goToCard(scene, render, 0, 66000, -66000,controls);
+          break;
+          case "51":
+          goToCard(scene, render, 0, 69000, -69000,controls);
+          break;
+         
         default:
           alert("Hier zu gibt es noch keine Informationen :)");
           goToCard(scene, render, 0, 0, -3000);
@@ -760,7 +749,7 @@ function goToCard(scene, render, x, y, z, controls ) {
   /* necessary for chrome in mobile */
   setTimeout(() => {
     controls.enabled = true;
-  }, 1000);
+  }, 100);
 
   new TWEEN.Tween(scene.position)
     .to({ x: x, y: y, z: z }, 1000)
@@ -768,6 +757,9 @@ function goToCard(scene, render, x, y, z, controls ) {
     .onUpdate(render)
     .start();
 
+
+    /* TEST Moving Obj with Twen */
+    
 /*     new TWEEN.Tween(rotateObj7.position)
     .to({ x: x, y: y, z: z }, 1000)
     .easing(TWEEN.Easing.Quadratic.InOut)
@@ -804,7 +796,7 @@ function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls, di
     goPrevOrNext(render, scene, prevOrNext, direction);
             setTimeout(() => {
             controls.enabled = true;
-          }, 1000);
+          }, 100);
   });
 
 

@@ -27,14 +27,14 @@ export function createWelcomeText (intl, scene){
     const textElement = document.createElement("div");
     textElement.className = "textbox";
   
-    const wrapper = document.createElement("div"); // create wrfcrper div
-    wrapper.style.position = "relative"; // set position to relfcrive
+    const wrapper = document.createElement("div"); 
+    wrapper.style.position = "relative"; 
   
   
     const newMessageText = intl.formatMessage({ id: "app.welcome" });
-    wrapper.innerHTML += newMessageText; // add text to wrapper
+    wrapper.innerHTML += newMessageText; 
   
-    textElement.appendChild(wrapper); // add wrapper to textElement
+    textElement.appendChild(wrapper); 
   
     const textObject = new CSS3DObject(textElement);
     textObject.position.set(-1000, 500, -900);
@@ -56,19 +56,16 @@ export function createText(intl, scene, x, y, z, messageId) {
   const textElement = document.createElement('div');
   textElement.className = 'textbox';
 
-  const wrapper = document.createElement('div'); // create wrapper div
-  wrapper.style.position = 'relative'; // set position to relative
+  const wrapper = document.createElement('div'); 
+  wrapper.style.position = 'relative'; 
 
-  /* ADD BUTTON HERE */
 
   const newMessageText = intl.formatMessage({ id: messageId });
-  wrapper.innerHTML += newMessageText; // add text to wrapper
+  wrapper.innerHTML += newMessageText;
 
-/*   const linkElement = document.createElement('span'); // create a span for the link
-  linkElement.innerHTML = jobPortalLink; // set the link as innerHTML
-  wrapper.appendChild(linkElement); // add linkElement to wrapper */
 
-  textElement.appendChild(wrapper); // add wrapper to textElement
+
+  textElement.appendChild(wrapper); 
 
   const textObject = new CSS3DObject(textElement);
   textObject.position.set(x, y, z);
@@ -85,10 +82,10 @@ export function createText(intl, scene, x, y, z, messageId) {
     imageElement.src = arturpfeifer;
  
       const containerElement = document.createElement("div");
-    containerElement.style.position = "absolute"; // set position to absolute
-    containerElement.style.top = "50px"; // set top position to 50px
-    containerElement.style.left = "50px"; // set left position to 50px
-    imageElement.style.borderRadius = "50%"; // make the image round
+    containerElement.style.position = "absolute";
+    containerElement.style.top = "50px"; 
+    containerElement.style.left = "50px"; 
+    imageElement.style.borderRadius = "50%";
     containerElement.appendChild(imageElement);
   
     const imageObject = new CSS3DObject(containerElement);
@@ -96,82 +93,7 @@ export function createText(intl, scene, x, y, z, messageId) {
     imageObject.scale.set(2, 2, 2);
     scene.add(imageObject);
   }
-/* 
-  const arrowStyle = `
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 60px solid rgba(0, 127, 127, 0.5);
-  color: white;
-  font-size: 24px;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  cursor: pointer;
-`;
 
-const arrowHoverStyle = `
-  .arrow:hover {
-    border-bottom-color: rgba(0, 191, 191, 0.7);
-  }
-`;
-
-const textWrapperStyle = `
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-export function createMainNavigation(scene) {
-  const textElement = document.createElement("div");
-  textElement.className = "arrow";
-
-  const wrapper = document.createElement("div");
-  wrapper.style.cssText = textWrapperStyle;
-  wrapper.innerHTML += "JAVA";
-
-  textElement.appendChild(wrapper);
-
-  const textObject = new CSS3DObject(textElement);
-  textObject.position.set(-1000, 1000, -900);
-  textObject.scale.set(2, 2, 2);
-  scene.add(textObject);
-
-  const arrowElement = document.createElement("style");
-  arrowElement.innerHTML = `.arrow { ${arrowStyle} } ${arrowHoverStyle}`;
-  document.head.appendChild(arrowElement);
-} */
-
-
-
-/*   
-
-THIS WORKING
-const arrowStyle = `
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 60px solid rgba(0, 127, 127, 0.5);
-  color: white;
-  font-size: 24px;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  cursor: pointer;
-`;
-
-const arrowHoverStyle = `
-  .arrow:hover {
-    border-bottom-color: rgba(0, 191, 191, 0.7);
-  }
-`; */
 
 
 const arrowStyles = {
@@ -210,7 +132,7 @@ const arrowStyle = `
   cursor: pointer;
 `;
 
-const arrowHoverStyles = {
+/* const arrowHoverStyles = {
   up: `
     .arrow-up:hover {
       border-bottom-color: rgba(0, 191, 191, 0.7);
@@ -231,7 +153,7 @@ const arrowHoverStyles = {
       border-left-color: rgba(0, 191, 191, 0.7);
     }
   `,
-};
+}; */
 
 const textWrapperStyle = `
   position: absolute;
@@ -262,16 +184,13 @@ export function createArrow(scene, direction, x, y, intl, messageId, onClickCall
   textElement.addEventListener("click", onClickCallback);
   
 
-       /*    textElement.className = `arrow arrow-${direction}`;
-        textElement.id = `arrow-${direction}`; */
-
 
 
         textElement.addEventListener("click", () => {
           controls.enabled = false;
           setTimeout(() => {
             controls.enabled = true;
-          }, 1000);
+          }, 100);
         });
       
         textElement.addEventListener("mouseenter", () => {

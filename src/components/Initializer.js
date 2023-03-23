@@ -32,8 +32,8 @@ export const initControls = (camera, cssRenderer) => {
   }
   
   export const initWebGlRenderer = (renderer) => {
-    renderer = new THREE.WebGLRenderer({ alpha: true,antialias: true }); // Add the alpha: true option
-    renderer.setClearColor(0x000000, 0); // Add this line to make the background transparent
+    renderer = new THREE.WebGLRenderer({ alpha: true,antialias: true }); 
+    renderer.setClearColor(0x000000, 0); 
     renderer.setPixelRatio(window.devicePixelRatio);
 /*     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap; */
