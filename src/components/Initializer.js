@@ -3,15 +3,21 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { CSS3DRenderer } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 import * as THREE from "three";
 
+
+
+
+
 export const initControls = (camera, cssRenderer) => {
     const controls = new OrbitControls(camera, cssRenderer.domElement);
-    controls.minDistance = 200;
-    controls.maxDistance = 4000;
-
+    controls.minDistance = 0;
+    controls.maxDistance = 3500;
+    
     controls.enableDamping = false;
     controls.enableRotate = true;
     controls.enableZoom = true;
+  
 
+    controls.mouseButtons.RIGHT = null;
 
     return controls;
   }

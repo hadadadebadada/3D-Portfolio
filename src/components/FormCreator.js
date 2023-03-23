@@ -221,7 +221,7 @@ export const createFractalTree = (objects, vector, targets) => {
      const spacingFactorY = 5.5;
      const stack = [{
       startX: 0,
-      startY: 0,
+      startY: -1500,
       len: 150,
       angle: 11,
       branchWidth: 10,

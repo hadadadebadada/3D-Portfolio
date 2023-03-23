@@ -2,9 +2,9 @@ import React, { useRef, useEffect, useState, createRef } from "react";
 import * as THREE from "three";
 import { initControls, initCSS3DRenderer, initWebGlRenderer, } from "./components/Initializer";
 import { createTable, createGrid, createSphere, createHelix, createDoubleHelix, createCircle, createTest, createFractalTree, } from "./components/FormCreator";
-import { createWelcomeText, createText, createImage, } from "./components/HtmlElements";
+import { createArrow, createWelcomeText, createText, createImage, } from "./components/HtmlElements";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-
+import { createPlanet } from "./components/LandingPageEarthAnimation";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 import { useIntl } from "react-intl";
@@ -55,7 +55,14 @@ import cleancode from "./icons2/clean-code.png";
 import django from "./icons2/django.png";
 import styled from "styled-components";
 
-
+import jira from "./icons2/jira.png"
+import confluence from "./icons2/jira2.png"
+import jenkins from "./icons2/jenkins.png"
+import ga from "./icons2/ga.png"
+import matomo from "./icons2/matomo.png"
+import paypal from "./icons2/paypal.png"
+import stripe from "./icons2/stripe-icon.svg"
+import law from "./icons2/law.png"
 
 
 import androidObj from './landingpage/android.glb' 
@@ -74,9 +81,9 @@ import cloudMapTrans from './earth/earthcloudmaptrans.jpg'
 // office-->VBA 
 // jira/ conlfunece
 //jenkins
-//google analytics
+//google analytics / matomo
 // paypal sdk - stripe
-/// law --> dsgvo, ozg, urhg,
+/// law --> dsgvo, ozg, urhg, 
 
 import { FormattedMessage } from "react-intl";
 
@@ -117,7 +124,17 @@ left: 50%;
 top: 50%;
 `; */
 
-const table = [ { icon: JavaIcon }, "Java", "8/10", 1, 1, { icon: spring }, "Spring", "7/10", 2, 2, { icon: AndroidIcon }, "Android", "6/10", 1, 1, { icon: SeleniumIcon }, "Selenium", "8/10", 0, 1, { icon: javaee }, "Java EE", "6/10", 2, 2, { icon: quarkus }, "Quarkus", "3/10", 3, 3, { icon: js }, "JavaScript", "8/10", 5, 5, { icon: ReactIcon }, "React", "9/10", 1, 1, { icon: Three }, "Three.js", "7/10", 1, 1, { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, { icon: d3 }, "D3.js", "3/10", 1, 1, { icon: typescript }, "TypeScript", "4/10", 2, 2, { icon: reactnative }, "React Native", "3/10", 2, 2, { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, { icon: pandas }, "Pandas", "5/10", 1, 1, { icon: R }, "R", "6/10", 1, 1,  { icon: php }, "PHP", "6/10", 1, 1,{ icon: symfony }, "Symfony", "6/10", 1, 1, { icon: pm }, "PhpMyAdmin", "6/10", 1, 1, { icon: apiplatform }, "API Platform", "6/10", 2, 2, { icon: remix }, "Remix", "5/10", 1, 1, { icon: solidity }, "Solidity", "6/10", 1, 1,  { icon: truffle }, "Truffle", "7/10", 1, 1,  { icon: ganache }, "Ganache", "8/10", 1, 1, { icon: metamask }, "MetaMask", "10/10", 1, 1, { icon: EPKBPMNIcon }, "EPKBPMN", "9/10", 0, 1, { icon: git2 }, "Git", "8/10", 0, 1, { icon: language }, "Language", "10/10", 0, 0, { icon: linux }, "Linux", "7/10", 0, 1, { icon: office2 }, "Office", "9/10", 0, 0, { icon: sap }, "SAP", "3/10", 0, 0, { icon: sql }, "SQL/ PLSQL", "9/10", 1, 1, { icon: unity }, "Unity/ C#", "3/10", 1, 0,  { icon: aws }, "AWS", "7/10", 1, 1,  { icon: docker }, "Docker", "4/10", 1, 1, { icon: firebase }, "Firebase", "7/10", 1, 1,  { icon: hobbys }, "Hobbies", "10/10", 5, 5, { icon: nginx }, "NGINX", "7/10", 1, 1, { icon: wildfly }, "WildFly", "6/10", 1, 1,  { icon: cleancode }, "Clean Code", "9/10", 1, 1,];
+const table = [ { icon: JavaIcon }, "Java", "8/10", 1, 1, { icon: spring }, "Spring", "7/10", 2, 2, { icon: AndroidIcon }, "Android", "6/10", 1, 1, { icon: SeleniumIcon }, "Selenium", "8/10", 0, 1, { icon: javaee }, "Java EE", "6/10", 2, 2, { icon: quarkus }, "Quarkus", "3/10", 3, 3, { icon: js }, "JavaScript", "8/10", 5, 5, { icon: ReactIcon }, "React", "9/10", 1, 1, { icon: Three }, "Three.js", "7/10", 1, 1, { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, { icon: d3 }, "D3.js", "3/10", 1, 1, { icon: typescript }, "TypeScript", "4/10", 2, 2, { icon: reactnative }, "React Native", "3/10", 2, 2, { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, { icon: pandas }, "Pandas", "5/10", 1, 1, { icon: R }, "R", "6/10", 1, 1,  { icon: php }, "PHP", "6/10", 1, 1,{ icon: symfony }, "Symfony", "6/10", 1, 1, { icon: pm }, "PhpMyAdmin", "6/10", 1, 1, { icon: apiplatform }, "API Platform", "6/10", 2, 2, { icon: remix }, "Remix", "5/10", 1, 1, { icon: solidity }, "Solidity", "6/10", 1, 1,  { icon: truffle }, "Truffle", "7/10", 1, 1,  { icon: ganache }, "Ganache", "8/10", 1, 1, { icon: metamask }, "MetaMask", "10/10", 1, 1, { icon: EPKBPMNIcon }, "EPKBPMN", "9/10", 0, 1, { icon: git2 }, "Git", "8/10", 0, 1, { icon: language }, "Language", "10/10", 0, 0, { icon: linux }, "Linux", "7/10", 0, 1, { icon: office2 }, "Office", "9/10", 0, 0, { icon: sap }, "SAP", "3/10", 0, 0, { icon: sql }, "SQL/ PLSQL", "9/10", 1, 1, { icon: unity }, "Unity/ C#", "3/10", 1, 0,  { icon: aws }, "AWS", "7/10", 1, 1,  { icon: docker }, "Docker", "4/10", 1, 1, { icon: firebase }, "Firebase", "7/10", 1, 1,  { icon: hobbys }, "Hobbies", "10/10", 5, 5, { icon: nginx }, "NGINX", "7/10", 1, 1, { icon: wildfly }, "WildFly", "6/10", 1, 1,  { icon: cleancode }, "Clean Code", "9/10", 1, 1,
+{ icon: jira }, "Jira", "7/10", 2, 2,
+{ icon: confluence }, "Confluence", "8/10", 1, 1,
+{ icon: jenkins }, "Jenkins", "6/10", 2, 2,
+{ icon: ga }, "Google Analytics", "7/10", 1, 1,
+{ icon: matomo }, "Matomo", "7/10", 2, 2,
+{ icon: paypal }, "PayPal", "8/10", 1, 1,
+{ icon: stripe }, "Stripe", "7/10", 2, 2,
+{ icon: law }, "Law", "6/10", 1, 1
+
+];
 
 /* 
 https://sbcode.net/react-three-fiber/stats/ */
@@ -129,18 +146,22 @@ export const Table = ({ locale, selectLang }) => {
   const elementRef = useRef(null);
   const elementRefs = useRef([]);
 
+  const arrowRef = useRef();
+
   const objects = [];
 
   const targets = { table: [], sphere: [], helix: [], grid: [], pyramid: [], fractalTree: [], circle: [], doubleHelix: [], test: [], };
 
   let camera, scene, renderer, cssRenderer;
-  let mesh;
-  let cloudy;
-  let test;
-  let rotateObj2;
-  let rotateObj3;
-  let rotateObj4;
-  let rotateObj7;
+
+  const meshState = useRef(null);
+  const cloudyState = useRef(null);
+  const testState = useRef(null);
+  const rotateObj2State = useRef(null);
+  const rotateObj3State = useRef(null);
+  const rotateObj4State = useRef(null);
+  const rotateObj7State = useRef(null);
+  
 
   const render = () => {
     renderer.render(scene, camera);
@@ -178,10 +199,16 @@ export const Table = ({ locale, selectLang }) => {
 
 
 
-  };
+  }
+  
 
   useEffect(() => {
     const init = () => {
+
+
+  
+
+
       camera = new THREE.PerspectiveCamera(
         40,
         window.innerWidth / window.innerHeight,
@@ -189,7 +216,7 @@ export const Table = ({ locale, selectLang }) => {
         10000
       );
 
-      camera.position.z = 3000;
+      camera.position.z = 4000;
       scene = new THREE.Scene();
 
       cssRenderer = initCSS3DRenderer(cssRenderer);
@@ -208,257 +235,139 @@ export const Table = ({ locale, selectLang }) => {
 /* TEST EARTH */
 
 
-
-    //main planet sizes
-
-    let r = 150;
-    let d = 150;
-    let e = 150;
-
-
-
-
-    const loader = new THREE.TextureLoader();
-
-    loader.setCrossOrigin("true");
-
-    //-----------------PLAIN EARTH-------------------------
-
-    const texture = loader.load(earthTexture); //wird geladen von privatem google drive account
-    const earthBumpMap = loader.load(earthBump);
-    const earthSpecMap = loader.load(earthSpec)
-
-    var geometry = new THREE.SphereGeometry(r, d, e);
-    var material = new THREE.MeshPhongMaterial({
-
-        map: texture,
-        bumpMap: earthBumpMap,
-        specularMap: earthSpecMap,
-        bumpScale: 1,
-        shininess: 1
-    })
-
-
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.rotation.x += 0.5;
-    mesh.receiveShadow = true;
-    mesh.castShadow = true;
-    mesh.layers.set(0);
-
-
-
-
-    //------------------------ATMOSPHERE------------------------------------
-
-    //custom shader material 
-    const atmosphericGlow = new THREE.Mesh(
-        new THREE.SphereGeometry(r, d, e),
-        new THREE.ShaderMaterial(
-            {
-                vertexShader: `
-      varying vec3 vertexNormal;
-      void main()
-      {
-          vertexNormal = normalize(normalMatrix * normal);
-          gl_Position = projectionMatrix*modelViewMatrix * vec4(position, 1.0);
-
-      }`,
-                fragmentShader: `
-      varying vec3 vertexNormal;
-      void main()
-      {
-          float intensity = pow(0.7 - dot(vertexNormal, vec3(0,0,1.0)), 2.0);
-
-          gl_FragColor = vec4(0.0, 0.58, 0.86, 1.0) * intensity;
-      }`,
-                blending: THREE.AdditiveBlending,
-                side: THREE.BackSide
-            }
-        )
-
-
-
-        //custom shader material
-
-    )
-
-    atmosphericGlow.scale.set(1.1, 1.1, 1.1)
-
-
-    //----------------------CLOUDS----------------------------------------
-    var cloudGeometry = new THREE.SphereGeometry(1.45, d, e);
-    const texture2 = new THREE.TextureLoader().load(cloudMapTrans);
-
-    //Cloud Geomtry and Material
-    var cloudMaterial = new THREE.MeshBasicMaterial({
-        map: texture2,
-        transparent: true,
-        opacity: 0.3
-
-    });
-
-    cloudy = new THREE.Mesh(cloudGeometry, cloudMaterial);
-    cloudy.rotation.x -= 0.003;
-    cloudGeometry.scale(1.1, 1.1, 1.1);
-
-
-
-    
-   const GLTFloader = new GLTFLoader();
-   let obj = null;
-
-   GLTFloader.setCrossOrigin("true");
-
-
-   
-       test = new THREE.Mesh(cloudGeometry, cloudMaterial);
-
-   GLTFloader.load(androidObj, function (glb) {
-
-       test = glb.scene;
-
-       glb.scene.scale.set(10,10, 10)
-       glb.scene.position.x = -500;
-       glb.scene.rotation.x -= 0.5;
-       scene.add(glb.scene);
-       var orbitingObjPivot2 = new THREE.Object3D();
-       mesh.add(orbitingObjPivot2);
-       orbitingObjPivot2.add(glb.scene);
-   });
-
-   //-------------------------------orbiting pc -----------------------------------------------------
-   //https://drive.google.com/file/d/1niNm5TpcuMHVWnvmTMTUlhZLvw95UCEi/view?usp=sharing
-
-   // GLTFloader.load('https://drive.google.com/uc?export=download&id=1niNm5TpcuMHVWnvmTMTUlhZLvw95UCEi', function(glb) {
-
-   rotateObj2 = new THREE.Mesh();
-   GLTFloader.load(computer, function (glb) {
-
-       rotateObj2 = glb.scene;
-       glb.scene.scale.set(50,50, 50)
-
-       glb.scene.position.x = 500;
-       glb.scene.rotation.x -= 0.5;
-       scene.add(glb.scene);
-       var orbitingObjPivot3 = new THREE.Object3D();
-       mesh.add(orbitingObjPivot3);
-       orbitingObjPivot3.add(glb.scene);
-   });
-
-
-   //python
-   rotateObj3 = new THREE.Mesh();
-
-   GLTFloader.load(pythonObj, function (glb) {
-
-       rotateObj3 = glb.scene;
-       glb.scene.scale.set(3, 3, 3)
-       glb.scene.position.z = -500
-
-       glb.scene.position.x = 0;
-       glb.scene.position.y = 2;
-       glb.scene.rotation.x -= 0.5;
-       scene.add(glb.scene);
-       var orbitingObjPivot4 = new THREE.Object3D();
-       mesh.add(orbitingObjPivot4);
-       orbitingObjPivot4.add(glb.scene);
-   });
-
-   // react
-   rotateObj4 = new THREE.Mesh();
-
-   GLTFloader.load(react, function (glb) {
-
-/*        rotateObj4 = glb.scene;
-       glb.scene.scale.set(20, 20, 20)
-       glb.scene.position.z = +500
-       glb.scene.position.x = 0;
-       glb.scene.position.y = -2;
-       glb.scene.rotation.x -= 0.5;
-       scene.add(glb.scene);
-       var orbitingObjPivot5 = new THREE.Object3D();
-       mesh.add(orbitingObjPivot5);
-       orbitingObjPivot5.add(glb.scene); */
-   });
-
-
-   function setPosition(obj, x, y, z) {
-    obj.position.set(x, y, z);
-  }
-  
-  rotateObj7 = new THREE.Mesh();
-  
-  GLTFloader.load(java, function (glb) {
-    rotateObj7 = glb.scene;
-    glb.scene.scale.set(30, 30, 30);
-    glb.scene.position.z = +500;
-    glb.scene.position.x = 0;
-    glb.scene.position.y = -2;
-    glb.scene.rotation.x -= 0.5;
-    scene.add(glb.scene);
-    var orbitingObjPivot7 = new THREE.Object3D();
-    mesh.add(orbitingObjPivot7);
-    orbitingObjPivot7.add(glb.scene);
-  
-    // Call the setPosition function after the object has been loaded
-   // setPosition(rotateObj7, 3200, 3200, 3500);
-  });
-
-
-
-    let planet = new THREE.Object3D();
-
-    planet.add(mesh);
-    planet.add(atmosphericGlow);
-    planet.add(cloudy);
-
-
-
-    planet.position.z = 0;
-    planet.position.x = 1400;
-    planet.position.y = 800;
-    scene.add(planet);
-
-
-
-
-    var light = new THREE.DirectionalLight(0xffffff, 5);
-    light.position.set(1000, 3000, 3000).normalize();
-    light.castShadow = true;
-
-    light.target = planet
-    scene.add(light);
-
-
-    const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
-scene.add( directionalLight );
-   // camera.lookAt(planet);
-
-/*    controls.target = planet.position; */
-
-
-
+const planetObjects = createPlanet(scene, earthTexture, earthBump, earthSpec, cloudMapTrans, androidObj, computer, pythonObj, react, java);
+
+// Access the returned variables from the planetObjects
+let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = planetObjects;
+
+
+      meshState.current = mesh;
+      cloudyState.current = cloudy;
+      testState.current = test;
+      rotateObj2State.current = rotateObj2;
+      rotateObj3State.current = rotateObj3;
+      rotateObj4State.current = rotateObj4;
+      rotateObj7State.current = rotateObj7;
 
       createWelcomeText(intl, scene);
-      createText(intl, scene, 3000, 3000, 3000, "app.java");
-           createText(intl, scene, 6000, 6000, 6000, "app.springboot");
-               createText(intl, scene, 9000, 9000, 9000, "app.android");
-               createText(intl, scene, 12000, 12000, 12000, "app.selenium");
-               createText(intl, scene, 15000, 15000, 15000, "app.javaee");
-               createText(intl, scene, 18000, 18000, 18000, "app.quarkus");
 
+   
 
+      createArrow(scene, "up", -1000, 1000, intl, "app.toTopArrow", () => handleArrowClick("up"));
+      createArrow(scene, "left", -1900, 500, intl, "app.toLeftArrow", () => handleArrowClick("left"));
+      createArrow(scene, "right", -100, 500, intl, "app.toRightArrow", () => handleArrowClick("right"));
+      createArrow(scene, "down", -1000, 0, intl, "app.toButtomArrow", () => handleArrowClick("down"));
+      
 
-      for (let i = 1; i < 10; i++) {
-        const x = i * 3000;
-        goBackToMain(intl, scene, x, x, x, render, controls);
-        prevOrNextButton(intl, scene, x, x, x, render, "Prev", controls);
-        prevOrNextButton(intl, scene, x, x, x, render, "Next", controls);
+ /*      function handleArrowClick() {
+       
+        new TWEEN.Tween(scene.position)
+        .to({ x: 0, y: -3000, z: -3000 }, 1000)
+        .easing(TWEEN.Easing.Quadratic.InOut)
+        .onUpdate(render)
+        .start();
       }
+     */
+
+      function handleArrowClick(direction) {
+        let x = 0, y = 0, z = -3000;
+      
+        switch (direction) {
+          case "up":
+            y = -3000;
+            break;
+          case "left":
+            x = 3000;
+            break;
+          case "right":
+            x = -3000;
+            break;
+          case "down":
+            y = 3000;
+            break;
+          case "top":
+            z = -3000;
+            break;
+          default:
+            break;
+        }
+      
+        new TWEEN.Tween(scene.position)
+          .to({ x: x, y: y, z: z }, 1000)
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .onUpdate(render)
+          .start();
+      }
+      
+      
+
+
+
+      
+
+/*       const techToolsFrameworks = [ "app.java", "app.springboot", "app.android", "app.javaee", "app.quarkus",
+        'app.javascript', 'app.react', 'app.threejs', 'app.materialui', 'app.tailwind', 'app.d3', 'app.typescript', 'app.reactnative',
+        'app.python', 'app.scrapy', 'app.django', 'app.pandas', 'app.R', 'app.php', 'app.symfony', 'app.phpmyadmin', 'app.apiplatform',
+        'app.solidy', 'app.remix', 'app.truffle', 'app.ganache', 'app.metamask', 'app.EPKBPMN', 'app.git', 'app.languages', 'app.linux',
+        'app.office', 'app.SAP', 'app.SQL', 'app.unity', 'app.aws', 'app.Docker', 'app.firebase', 'app.hobbies', 'app.nginx', 'app.wildfly',
+        'app.jenkins', 'app.cleancode', 'app.jira', 'app.confluence'
+      ];
+ */
+
+      const techToolsFrameworksJava = ["app.java", "app.springboot", "app.android", "app.javaee", "app.quarkus"];
+      const techToolsFrameworksAJAX = [ 'app.javascript', 'app.react', 'app.threejs', 'app.materialui', 'app.tailwind', 'app.d3', 'app.typescript', 'app.reactnative'];
+      const techToolFrameworksOtherProgramming = [   'app.python', 'app.scrapy', 'app.django', 'app.pandas', 'app.R', 'app.php', 'app.symfony', 'app.phpmyadmin', 'app.apiplatform', 'app.solidity', 'app.remix', 'app.truffle', 'app.ganache', 'app.metamask'];
+      const techToolFrameworksDevOpsAndMore = ['app.EPKBPMN', 'app.git', 'app.languages', 'app.linux', 'app.office', 'app.SAP', 'app.SQL', 'app.aws', 'app.Docker', 'app.firebase', 'app.hobbies', 'app.nginx', 'app.wildfly', 'app.cleancode', 'app.jenkins', 'app.jira', 'app.confluence','app.jenkins', 'app.googleanalytics', 'app.matomo', "app.paypalsdk", "app.stripe", "app.law"];
+      
+      
+      const aboutMeCards = ['app.cleancode', 'app.languages','app.hobbies', 'app.hobbies' ];
+
+
+      for (let i = 0; i < techToolsFrameworksJava.length; i++) {
+        const x = (i + 1) * 3000;
+        createText(intl, scene, x, 0, x, techToolsFrameworksJava[i]);
+        goBackToMain(intl, scene, x, 0, x, render, controls);
+        prevOrNextButton(intl, scene, x, 0, x, render, "Prev", controls, "right");
+        prevOrNextButton(intl, scene, x, 0, x, render, "Next", controls, "right");
+      }
+
+      
+      for (let i = 0; i < techToolsFrameworksAJAX.length; i++) {
+        const x = (i + 1) * 3000;
+        createText(intl, scene, 0, x, x, techToolsFrameworksAJAX[i]);
+        goBackToMain(intl, scene, 0, x, x, render, controls);
+        prevOrNextButton(intl, scene, 0, x, x, render, "Prev", controls, "top");
+        prevOrNextButton(intl, scene, 0, x, x, render, "Next", controls, "top");
+      }
+
+
+            
+      for (let i = 0; i < techToolFrameworksDevOpsAndMore.length; i++) {
+        const x = (i + 1) * 3000;
+        createText(intl, scene, 0, -x, x, techToolFrameworksDevOpsAndMore[i]);
+        goBackToMain(intl, scene, 0, -x, x, render, controls);
+        prevOrNextButton(intl, scene, 0, -x, x, render, "Prev", controls, "down");
+        prevOrNextButton(intl, scene, 0, -x, x, render, "Next", controls, "down");
+      }
+
+
+      for (let i = 0; i < techToolFrameworksOtherProgramming.length; i++) {
+        const x = (i + 1) * 3000;
+        createText(intl, scene, -x, 0, x, techToolFrameworksOtherProgramming[i]);
+        goBackToMain(intl, scene, -x, 0, x, render, controls);
+        prevOrNextButton(intl, scene, -x, 0, x, render, "Prev", controls, "left");
+        prevOrNextButton(intl, scene, -x, 0, x, render, "Next", controls, "left");
+      }
+
+
 
       createImage(scene);
       initTable(elementRef, scene, objects, targets, elementRefs);
       elementClickListener(elementRefs, scene, render, rotateObj7);
+
+
+ 
+
 
       const vector = new THREE.Vector3();
 
@@ -491,37 +400,47 @@ scene.add( directionalLight );
 
     };
 
+
+
+  
     const animate = () => {
-
-      
-      test.rotation.y += 0.01;
-      test.rotation.x += 0.01;
-
-      rotateObj2.rotation.y += 0.01;
-      rotateObj2.rotation.x += 0.01;
-
-      rotateObj3.rotation.y += 0.01;
-      rotateObj3.rotation.x += 0.01;
-
-      rotateObj4.rotation.y += 0.01;
-      rotateObj4.rotation.x += 0.01;
-
-      rotateObj7.rotation.y += 0.01;
-      rotateObj7.rotation.x += 0.01;
-
-
-      mesh.rotation.y += 0.005;
-      cloudy.rotation.y -= 0.003;
-      renderer.render(scene, camera);
-      renderer.clearDepth();
-      camera.layers.set(0);
-   
-
-
-
-      requestAnimationFrame(animate);
-      TWEEN.update();
-      render();
+      if (
+        meshState.current &&
+        cloudyState.current &&
+        testState.current &&
+        rotateObj2State.current &&
+        rotateObj3State.current &&
+        rotateObj4State.current &&
+        rotateObj7State.current
+      ) {
+        testState.current.rotation.y += 0.01;
+        testState.current.rotation.x += 0.01;
+    
+        rotateObj2State.current.rotation.y += 0.01;
+        rotateObj2State.current.rotation.x += 0.01;
+    
+        rotateObj3State.current.rotation.y += 0.01;
+        rotateObj3State.current.rotation.x += 0.01;
+    
+        rotateObj4State.current.rotation.y += 0.01;
+        rotateObj4State.current.rotation.x += 0.01;
+    
+        rotateObj7State.current.rotation.y += 0.01;
+        rotateObj7State.current.rotation.x += 0.01;
+    
+        meshState.current.rotation.y += 0.005;
+        cloudyState.current.rotation.y -= 0.003;
+    
+        renderer.render(scene, camera);
+        renderer.clearDepth();
+        camera.layers.set(0);
+    
+        requestAnimationFrame(animate);
+        TWEEN.update();
+        render();
+      } else {
+        requestAnimationFrame(animate);
+      }
     };
 
     const render = () => {
@@ -560,13 +479,14 @@ scene.add( directionalLight );
           <button id="grid" onClick={() => transform(targets.grid, 2000)}> Grid </button>
           <button id="circle" onClick={() => transform(targets.circle, 2000)}> Circle </button>
           <button id="tree" onClick={() => transform(targets.fractalTree, 2000)} > Tree </button>
-          <button id="test" onClick={() => transform(targets.test, 2000)}> TEST </button>
+          <button id="test" onClick={() => transform(targets.test, 2000)}> FractalTree </button>
         </div>
         <div style={{ display: "flex", justifyContent: "flex-end", zIndex: 1 }}>
           <button value={(locale = "en-US")} onClick={selectLang}> 🇺🇸 </button>
           <button value={(locale = "de-DE")} onClick={selectLang}> 🇩🇪 </button>
           <button value={(locale = "es-MX")} onClick={selectLang}> 🇪🇸 </button>
           <button value={(locale = "ru-RU")} onClick={selectLang}> 🇷🇺 </button>
+          <button value={(locale = "zh-CN")} onClick={selectLang}> 🇨🇳 </button>
         </div>
       </div>
 
@@ -580,6 +500,18 @@ scene.add( directionalLight );
 };
 
 export default Table;
+
+
+
+
+ 
+
+
+
+
+
+
+
 
 function goBackToMain(intl, scene, x, y, z, render, controls) {
   const objectContent = document.createElement("button");
@@ -673,6 +605,7 @@ function initTable(elementRef, scene, objects, targets, elementRefs) {
   }
 }
 
+
 function elementClickListener(elementRefs, scene, render, intl, rotateObj7) {
   elementRefs.current.forEach(({ symbol, object }) => {
     object.element.addEventListener("click", () => {
@@ -681,32 +614,179 @@ function elementClickListener(elementRefs, scene, render, intl, rotateObj7) {
 
       let id = symbol.previousElementSibling.textContent;
 
-      console.log("id is: ", id);
+
       /* Switch for all cards */
 
       switch (id) {
+
+        /* SECTION 1 */
         case "1":
-          console.log("Card 1 was clicked!");
+  
       
-          goToCard(scene, render, -3000, -3000, -3000, rotateObj7);
+          goToCard(scene, render, -3000, 0, -3000, rotateObj7);
           render();
-          // Add code to handle Card 1 click
 
           break;
         case "2":
-          goToCard(scene, render, -6000, -6000, -6000);
-          // Add code to handle Card 2 click
+          goToCard(scene, render, -6000, 0, -6000);
           break;
-        // Add additional cases for other cards
+          case "3":
+          goToCard(scene, render, -9000, 0, -9000);
+          break;
+          case "4":
+            goToCard(scene, render, -12000, 0, 12000);
+            break;
+            case "5":
+              goToCard(scene, render, -15000, 0, -15000);
+              break;
+              case "6":
+                goToCard(scene, render, -18000, 0, -18000);
+                break;
+
+                /* SECTION 2 */
+                case "7":
+                  goToCard(scene, render, 0, -3000, -3000);
+                  break;
+                  case "8":
+                    goToCard(scene, render, 0, -6000, -6000);
+                    break;
+                    case "9":
+                      goToCard(scene, render, 0, -9000, -9000);
+                      break;
+                      case "10":
+                        goToCard(scene, render, 0, -12000, -12000);
+                        break;
+                        case "11":
+                          goToCard(scene, render, 0, -15000, -15000);
+                          break;
+                          case "12":
+                            goToCard(scene, render, 0, -18000, -18000);
+                            break;
+                            case "13":
+                              goToCard(scene, render, 0, -21000, -21000);
+                              break;
+                              case "14":
+                                goToCard(scene, render, 0, -24000, -24000);
+                                break;
+                                  case "15":
+
+
+                                  /* SECTION 3 */
+                                  
+          goToCard(scene, render, 3000, 0, -3000);
+                                break;
+                                case "16":
+                                  goToCard(scene, render, 6000, 0, -6000);
+                                  break;
+                                case "17":
+                                  goToCard(scene, render, 9000, 0, -9000);
+                                  break;
+                                case "18":
+                                  goToCard(scene, render, 12000, 0, -12000);
+                                  break;
+                                case "19":
+                                  goToCard(scene, render, 15000, 0, -15000);
+                                  break;
+                                case "20":
+                                  goToCard(scene, render, 18000, 0, -18000);
+                                  break;
+                                case "21":
+                                  goToCard(scene, render, 21000, 0, -21000);
+                                  break;
+                                case "22":
+                                  goToCard(scene, render, 24000, 0, -24000);
+                                  break;
+                                case "23":
+                                  goToCard(scene, render, 27000, 0, -27000);
+                                  break;
+                                case "24":
+                                  goToCard(scene, render, 30000, 0, -30000);
+                                  break;
+                                case "25":
+                                  goToCard(scene, render, 33000, 0, -33000);
+                                  break;
+                                case "26":
+                                  goToCard(scene, render, 36000, 0, -36000);
+                                  break;
+                                case "27":
+                                  goToCard(scene, render, 39000, 0, -39000);
+                                  break;
+                                case "28":
+                                  goToCard(scene, render, 42000, 0, -42000);
+                                  break;
+
+                                  /* SECTION  */
+                                  case "29":
+                                    goToCard(scene, render, 0, 3000, -3000);
+                                    break;
+                                    case "30":
+                                    goToCard(scene, render, 0, 6000, -6000);
+                                    break;
+                                    case "31":
+                                    goToCard(scene, render, 0, 9000, -9000);
+                                    break;
+                                    case "32":
+                                    goToCard(scene, render, 0, 12000, -12000);
+                                    break;
+                                    case "33":
+                                    goToCard(scene, render, 0, 15000, -15000);
+                                    break;
+                                    case "34":
+                                    goToCard(scene, render, 0, 18000, -18000);
+                                    break;
+                                    case "35":
+                                    goToCard(scene, render, 0, 21000, -21000);
+                                    break;
+                                    case "36":
+                                    goToCard(scene, render, 0, 24000, -24000);
+                                    break;
+                                    case "37":
+                                    goToCard(scene, render, 0, 27000, -27000);
+                                    break;
+                                    case "38":
+                                    goToCard(scene, render, 0, 30000, -30000);
+                                    break;
+                                    case "39":
+                                    goToCard(scene, render, 0, 33000, -33000);
+                                    break;
+                                    case "40":
+                                    goToCard(scene, render, 0, 36000, -36000);
+                                    break;
+                                    case "41":
+                                    goToCard(scene, render, 0, 39000, -39000);
+                                    break;
+                                    case "42":
+                                    goToCard(scene, render, 0, 42000, -42000);
+                                    break;
+                                    case "43":
+                                    goToCard(scene, render, 0, 45000, -45000);
+                                    break;
+                                    case "44":
+                                    goToCard(scene, render, 0, 48000, -48000);
+                                    break;
+                                    case "45":
+                                    goToCard(scene, render, 0, 51000, -51000);
+                                    break;
+
+
+
+
+                              
         default:
           alert("Hier zu gibt es noch keine Informationen :)");
-          goToCard(scene, render, -9000, -9000, -9000);
+          goToCard(scene, render, 0, 0, -3000);
           // Add code to handle unknown card click
           break;
       }
     });
   });
 }
+
+/* 
+case "16":
+  goToCard(scene, render, 0, 3000, -3000);
+                      // Add code to handle Card 2 click
+                      break; */
 
 function goToCard(scene, render, x, y, z,rotateObj7 ) {
   new TWEEN.Tween(scene.position)
@@ -728,7 +808,9 @@ function goToCard(scene, render, x, y, z,rotateObj7 ) {
 
 
 
-function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls) {
+function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls, direction) {
+
+
   const objectContent = document.createElement("button");
   if (prevOrNext == "Next") {
     objectContent.textContent = ">";
@@ -746,7 +828,7 @@ function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls) {
 
   object.element.addEventListener("click", () => {
     controls.enabled = false;
-    goPrevOrNext(render, scene, prevOrNext);
+    goPrevOrNext(render, scene, prevOrNext, direction);
   });
 
 
@@ -769,19 +851,78 @@ function goBackToMainMenu(render, scene) {
     .start();
 }
 
-function goPrevOrNext(render, scene, prevOrNext) {
-  const currentPosition = scene.position.x;
+function goPrevOrNext(render, scene, prevOrNext, direction) { //left, right, up, down 
+  const currentPositionX = scene.position.x;
+  const currentPositionY = scene.position.y; 
   let newPosition;
 
-  if (prevOrNext === "Prev") {
-    newPosition = currentPosition + 3000;
-  } else {
-    newPosition = currentPosition - 3000;
-  }
+  let newPositionZ;
 
-  new TWEEN.Tween(scene.position)
-    .to({ x: newPosition, y: newPosition, z: newPosition }, 1000)
+
+  if(direction == "right"){
+
+    if (prevOrNext === "Prev") {
+      newPosition = currentPositionX + 3000;
+    } else {
+      newPosition = currentPositionX - 3000;
+    }
+  
+    console.log("direction right")
+    new TWEEN.Tween(scene.position)
+    .to({ x: newPosition, y: 0, z: newPosition }, 1000)
     .easing(TWEEN.Easing.Quadratic.InOut)
     .onUpdate(render)
     .start();
+  }
+
+  if (direction === "left") {
+    if (prevOrNext === "Prev") {
+      newPosition = currentPositionX + 3000;
+    } else {
+      newPosition = currentPositionX - 3000;
+    }
+  
+    console.log("direction left");
+    new TWEEN.Tween(scene.position)
+      .to({ x: newPosition, y: 0, z: -newPosition }, 1000)
+      .easing(TWEEN.Easing.Quadratic.InOut)
+      .onUpdate(render)
+      .start();
+  }
+
+
+  if(direction == "top"){
+
+
+    if (prevOrNext === "Prev") {
+      newPosition = currentPositionY + 3000;
+    } else {
+      newPosition = currentPositionY - 3000;
+    }
+    
+
+    console.log("direction top")
+    new TWEEN.Tween(scene.position)
+    .to({ x: 0, y: newPosition, z: newPosition }, 1000)
+    .easing(TWEEN.Easing.Quadratic.InOut)
+    .onUpdate(render)
+    .start();
+  }
+
+
+  if (direction === "down") {
+    if (prevOrNext === "Prev") {
+      newPosition = currentPositionY + 3000;
+    } else {
+      newPosition = currentPositionY - 3000;
+    }
+  
+    console.log("direction down");
+    new TWEEN.Tween(scene.position)
+      .to({ x: 0, y: newPosition, z: -newPosition }, 1000)
+      .easing(TWEEN.Easing.Quadratic.InOut)
+      .onUpdate(render)
+      .start();
+  }
+
 }

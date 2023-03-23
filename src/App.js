@@ -4,7 +4,7 @@ import English from './languages/en-US.json';
 import Deutsch from './languages/de-DE.json';
 import Spanish from './languages/es-MX.json';
 import Russisch from './languages/ru-RU.json';
-
+import Chinesisch from './languages/zh-CN.json';
 
 
 
@@ -29,6 +29,9 @@ if (local === "ru-RU") {
     lang = Russisch;
 }
 
+if (local === "zh-CN") {
+    lang = Chinesisch;
+}
 
 export const Context = React.createContext();
 
@@ -54,6 +57,9 @@ function selectLang(e) {
     }
     if (newLocale === "ru-RU") {
       setMessages(Russisch)
+    }
+    if (newLocale === "zh-CN") {
+      setMessages(Chinesisch)
     }
   }
 }

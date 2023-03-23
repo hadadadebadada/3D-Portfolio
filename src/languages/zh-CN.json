@@ -1,0 +1,78 @@
+{
+    "app.toLeftArrow":"其他编程语言",
+    "app.toRightArrow":"Java",
+    "app.toTopArrow":"AJAX",
+    "app.toButtomArrow":"DevOps 等更多",
+    "app.welcome":"欢迎来到我的作品集，我是 Artur，28 岁，热爱编程。我目前最喜欢的技术有：React、Selenium、SpringBoot 和 Scrapy。我热衷于通过编写代码创造事物并照顾我的作品",
+    "app.contact":"如有需要，请随时给我发邮件。",
+    "app.card1":"Backend development with JavaEE or SpringBoot and frontend development with React and diffrent JS libraries like three.js are my best skills. Beside software development are testing software with Junit4/5 or testing frontend with Selenide/Selenium my strenghes.",
+    "app.card2":"My first android app, which I programmed for a salespartner of a big energy company to digitalize contracts is still in usage.",
+    "app.card3":"Futhermore is it a pleasure for me to analyse and visualize data, which I get through a webscraper like scrapy.",
+    "app.card4":"In advance to my data sciece skills with Python and R, do I have excellent skills with SQL and management tools for the latter.",
+    "app.card5":"Since last summer I am working in project management for a SaaS-Company where I am responsible for my own projects.",
+    "app.card6":"Solid skills in CI/ CD  with Jenkins, Version Controll with GitHub or GitLab no matter on what operating system.",
+    "app.card7":"Through internships and my studies I got first experiences with SAP and Salesforce.",
+    "app.card8":"Another hobby of mine is leveldesign with unity and the construction of servers for crypoto mining.",
+    "app.java": "作为一名经验丰富的 Java 开发者，我在使用 Java 平台编程方面拥有广泛的知识。通过多年的经验，我熟悉了 Java 开发的各个方面，可以创建高效、强大和可扩展的应用，满足市场的现代需求。",
+    "app.springboot": "在 Spring Boot 领域，我通过参与众多项目深化了我的知识和技能。使用 Spring Boot，我开发轻量级、灵活和模块化的后端系统和微服务，提高生产率并缩短上市时间。集成各种 Spring 模块使我能够覆盖广泛的用例，并为客户开发量身定制的解决方案。",
+    "app.android": "在 Android 开发方面，我也具有扎实的知识和经验。我创建原生 Android 应用，既具有吸引力又实用。通过与 UI/UX 设计师紧密合作，并实施 Android 开发的最佳实践，我确保我的应用用户友好、性能良好且安全。",
+    "app.selenium": "在使用 Selenium 时，我专注于测试前端应用。通过使用 Selenide 和 Selenium，我可以为 Web 应用创建高效可靠的自动化测试。这确保我开发的应用程序无误并满足客户的需求。",
+    "app.javaee": "我在 JavaEE 领域的知识使我能够基于经过验证的 Java 标准和技术开发复杂的企业应用。JavaEE 提供了各种 API 和服务，使我能够为各种用例开发可扩展且可靠的解决方案，始终考虑到当前的安全和性能要求。",
+    "app.quarkus": "最后，我在使用 Quarkus 方面也具有扎实的知识，Quarkus 是一种现代化和创新的 Java 框架，用于开发微服务和无服务器应用。Quarkus 使我能够创建高效且轻量级的解决方案，尤其适用于云原生应用。通过利用 Quarkus 的优势，我可以开发快速启动、低内存消耗且仍然充分利用 Java 平台功能的应用。",
+    "app.javascript": "作为一名熟练的 JavaScript 开发者，我拥有丰富的使用多功能且动态的脚本语言 JavaScript 的知识和经验。使用 JavaScript，我开发了许多性能良好且互动性强的 Web 应用。我在 JavaScript 开发方面的经验使我能够紧跟技术发展，开发满足用户高需求的解决方案。",
+    "app.react": "在 React 领域，我具有丰富的知识和实践经验，能够开发现代化和强大的用户界面。作为创建 UI 组件的领先 JavaScript 库之一，React 使我能够创建响应式和模块化的应用程序，提高用户体验并促进代码的可维护性。",
+    "app.threejs": "在使用 Three.js（一种流行的 Web 3D 库）时，我扩展了在 3D 图形开发和动画领域的技能。通过使用 Three.js，我能够创建视觉上吸引人且具有互动性的 3D 场景和模型，吸引用户并提供身临其境的体验。",
+    "app.materialui": "Material UI 是我用于创建响应式和引人入胜的 Web 应用程序的首选 UI 库之一。使用 Material UI，我可以开发遵循 Google 的 Material Design 指南的用户友好且美观的组件。通过使用这个库，我确保我的应用程序看起来现代且吸引人，并在各种设备和屏幕尺寸上功能优越。",
+    "app.tailwind": "我在 Tailwind CSS 方面的专长使我能够为 Web 应用程序创建高效且可维护的样式表。作为一种现代化的 CSS 框架，Tailwind CSS 提供了一种实用性优先的方法，简化了响应式和适应性设计的创建。使用 Tailwind CSS，我可以创建满足客户需求的自定义设计，而无需依赖繁琐的样式表。",
+    "app.d3": "在使用 D3.js（一种功能强大的 JavaScript 数据可视化库）时，我扩展了在数据可视化领域的技能。D3.js 使我能够创建复杂且交互式的图表、图形和地图，帮助用户以简单且易于理解的方式分析和解释复杂数据。",
+    "app.typescript": "最后，我在使用 TypeScript 方面也具有深入的知识，TypeScript 是 JavaScript 的严格类型超集，使开发可扩展和可维护的 Web 应用程序变得更容易。通过使用 TypeScript，我可以通过在编译时检测错误并确保更好的代码组织和结构来提高 JavaScript 应用程序的稳健性和安全性。将 TypeScript 与上述技术相结合",
+    "app.reactnative": "作为一名始终努力扩展专业知识的敬业开发者，我最近开始熟悉 React Native。",
+    "app.python": "作为一位多才多艺的开发者，我在使用 Python 编程方面也具有丰富的知识和经验，Python 是最受欢迎和最强大的编程语言之一。Python 以其简单的语法、可读性以及在诸如 Web 开发、数据分析、人工智能等多个领域的广泛适用性而闻名。通过参与众多 Python 项目，我能够进一步提高开发高效、健壮和可扩展解决方案的技能。",
+    "app.scrapy": "在网络抓取领域，我熟悉了 Scrapy 的使用，Scrapy 是一个用于从网站提取数据的强大 Python 框架。Scrapy 使我能够从互联网上获取结构化数据，并将其用于各种目的，如数据挖掘、信息收集或竞争分析。通过使用 Scrapy，我可以为每个项目创建定制的爬虫，以满足特定需求，并提供可靠且及时的数据。",
+    "app.django": "在 Web 开发方面，我深化了对 Django 的了解，Django 是用于快速高效开发 Web 应用程序的领先 Python Web 框架之一。Django 遵循 Model-View-Controller 原则，并提供了各种集成功能和工具，使我能够开发安全且可维护的应用程序。通过 Django，我可以创建满足客户需求的数据库支持的网站和 Web 应用程序，同时提高开发速度和效率。",
+    "app.pandas": "我在数据分析和处理领域的经验也扩展到了使用 Pandas，Pandas 是用于数据处理的最重要的 Python 库之一。Pandas 提供了强大而灵活的数据结构，如 DataFrames 和 Series，它们有助于处理大型和复杂的数据集。通过使用 Pandas，我可以有效地清洗、转换和分析数据，以获取有价值的洞察并做出数据驱动的决策。",
+    "app.R": "在数据分析方面，我还了解了专门为统计分析和数据可视化开发的编程语言 R。R 是一种功能强大且灵活的语言，以其广泛的软件包和函数为特点，可以执行复杂的分析和可视化。广泛的 R 社区为可用资源的不断扩展和改进做出了贡献。通过使用 R，我可以应用各种统计模型和算法来识别数据中的模式和关系，并为决策者提供有意义的洞察。此外，R 可以创建吸引人且互动的可视化效果",
+    "app.php": "作为一名经验丰富的开发者，我还使用过 PHP，这是最常用的服务器端脚本语言之一。自 PHP 推出以来，它已发展成为 Web 开发的热门选择，因为它可以创建动态网页和应用程序。通过使用 PHP，我得以扩展我的服务器端编程知识，并成功完成了许多 Web 项目。",
+    "app.symfony": "在 PHP 开发方面，我广泛接触了 Symfony 框架。Symfony 是一个知名的 PHP 框架，以其高度灵活性和模块化而著称。通过使用 Symfony，我得以进一步扩展我的 Web 应用开发技能，并使用经过验证的技术和最佳实践来实现高要求的项目。",
+    
+    "app.phpmyadmin": "在使用 PHP 的过程中，我还积累了使用 phpMyAdmin 的经验，这是一个用于管理 MySQL 和 MariaDB 数据库的热门 Web 管理工具。通过 phpMyAdmin，我能够在不使用命令行的情况下高效地管理和修改数据库。这个工具在开发 PHP Web 应用过程中被证明是一种有价值的资源。",
+    "app.apiplatform": "此外，我还熟悉了 API Platform，这是一种用于创建面向 API 的应用程序的现代 PHP 框架解决方案。API Platform 简化了 REST 和 GraphQL API 的开发以及数据持久性和验证层的集成。通过使用 API Platform，我能够开发高质量的 API 接口并优化复杂 Web 应用程序的开发过程。",
+    "app.solidity": "在区块链技术和智能合约开发领域，我接触了 Solidity，这是一种用于在以太坊平台上创建智能合约的面向对象编程语言。Solidity 允许实现去中心化应用程序（dApps）和运行在区块链上的自动化合约。通过使用 Solidity，我扩展了我的区块链开发技能，并为各种用例开发了创新解决方案。",
+    "app.remix": "在使用 Solidity 时，我使用了专为开发和测试智能合约设计的基于 Web 的集成开发环境（IDE）Remix。Remix 提供了一个用户友好的界面，可以编写、调试和部署 Solidity 代码。通过使用 Remix，我提高了生产力并加速了智能合约的开发过程",
+    
+    "app.truffle": "我还熟悉了另一个重要的工具：Truffle 框架，它专为以太坊平台上的智能合约开发、测试和部署而设计。Truffle 提供了一个全面的工具链，简化并优化了智能合约的开发。通过使用 Truffle，我得以改进我的工作流程，并为智能合约开发创建了一个高效、有序的环境。",
+    "app.ganache": "在处理智能合约和以太坊时，我还积累了使用 Ganache 的经验，这是一个用于以太坊开发的个人区块链。Ganache 可以在将它们部署到主网或测试网之前，在一个隔离且安全的环境中测试智能合约和 dApps。通过使用 Ganache，我得以有效地测试我的智能合约，并确保它们在真实的区块链环境中部署前能按预期运行。",
+    "app.metamask": "最后，我还使用过 MetaMask，这是一个流行的以太坊钱包和浏览器扩展，可以访问 dApps 和与智能合约进行交互。MetaMask 提供了一个用户友好的界面，用于管理以太坊地址和进行交易。通过使用 MetaMask，我对 dApps 和智能合约的用户体验和交互有了更深入的了解，使我能够开发满足最终用户需求的解决方案。",
+    "app.EPKBPMN": "作为一名软件开发者和分析师，我在业务流程建模和分析方面有经验，尤其是使用 EPK 和 BPMN 图。这些图可以有效地分析、优化和记录业务流程，以便在技术和非技术利益相关者之间更好地沟通。",
+    "app.git": "作为一名软件开发者，我熟练地使用 Git 对任何大小的项目进行高效的管理和跟踪代码更改。我的知识包括创建和管理代码仓库、处理分支、合并代码更改、解决合并冲突以及使用拉取请求进行质量保证和代码审查。",
+    "app.languages": "我在德语、俄语、英语和西班牙语方面拥有丰富的语言技能，以及初级的中文知识。这使我能够在不同的文化背景下成功地与国际团队和客户合作。",
+    "app.linux": "我的经验包括使用各种 Linux 发行版，包括 Bash 脚本编写和磁盘分区，这在系统管理和开源技术领域大大拓展了我的能力。",
+    "app.office": "我对 Microsoft Office 有全面的了解，特别是在 Excel 和使用 VBA 编程方面，这使得我能够执行数据分析，并在 Excel 中开发自定义函数、宏和自动化解决方案。",
+    "app.SAP": "我已经初步了解 SAP 系统，并已经掌握了使用 SAP 界面和各种模块的基本技能。",
+    "app.SQL": "凭借我对 SQL 的丰富知识，我可以高效、准确地查询、过滤和操作来自各种关系型数据库的数据。这些技能使得数据驱动的分析、有意义的报告和基于数据的决策成为可能。",
+    "app.unity": "我已经开始使用 Unity，并已经了解了该平台的基本知识、它的工作原理以及可用的各种工具。",
+    "app.aws": "通过我的 AWS 经验，我对各种 AWS 服务及其可能的用途有了深入了解，如 EC2、S3、RDS 和 Lambda。",
+    "app.Docker": "作为 Docker 的初学者，我已经掌握了关于容器化概念的基本知识，并且可以创建和管理简单的 Docker 镜像。",
+    "app.firebase": "我有使用 Firebase 的经验，这是来自 Google 的一个综合性平台，为移动和 Web 应用程序提供各种后端和基础设施服务。",
+    "app.hobbies": "爱好",
+    "app.nginx": "我在使用 Nginx 方面有一定了解，它是一个功能强大的 Web 服务器、反向代理和负载均衡器。Nginx 让我能够高效地交付 Web 应用程序，有效地分发流量，提高应用程序的性能和可靠性。通过我的 Nginx 经验，我可以确保应用程序被快速、安全地部署。",
+    "app.wildfly": "我熟悉 WildFly，这是一款轻量级、模块化且功能强大的 Java-EE 应用服务器。凭借我对 WildFly 的了解，我可以在稳定、可扩展的平台上开发和部署 Java-EE 应用程序。WildFly 支持最新的 Java-EE 标准并允许集成额外的服务和技术。",
+    "app.cleancode": "在我作为软件开发人员的工作中，我非常重视 Clean Code 原则。Clean Code 是指创建易于理解、可维护且高效的、结构良好和有注释的代码。遵循 Clean Code 实践，我确保我的代码易于阅读、理解和扩展，对我自己和其他开发人员都是如此。",
+    "app.jira": "我有使用 Jira 的经验，这是一款广泛使用的项目管理和问题跟踪工具。Jira 使我能够有效地管理项目进度、分配任务以及跟踪问题和需求。通过使用 Jira，我可以确保项目按时并成功完成。",
+
+    "app.confluence": "在我的工作中，我使用过 Confluence，这是一个协作式的 wiki 和文档工具。Confluence 可以让我在团队或组织中收集、整理和分享知识和信息。通过使用 Confluence，我可以有效地与同事合作，集中管理项目中的知识。",
+
+    "app.jenkins": "我有使用 Jenkins 的经验，它是一个开源的自动化服务器，帮助我在项目中实现持续集成和持续交付（CI/CD）。借助我的 Jenkins 知识，我可以设置自动化构建、测试和部署流水线，提高软件开发的质量和效率。",
+    
+    "app.googleanalytics": "我有使用 Google Analytics 的经验，这是一个帮助我了解网站用户行为的网络分析服务。通过 Google Analytics，我可以衡量和评估重要指标，如页面浏览量、访客数量和停留时间。通过分析这些数据，我可以不断改进我的网站，优化用户体验。",
+    
+    "app.matomo": "在我的项目中，我还使用过 Matomo，一款开源的网络分析服务。Matomo 提供了类似于 Google Analytics 的功能，但我对数据有更多的控制，可以确保数据安全和受保护。通过分析用户数据，我可以做出明智的决策，改进我的在线策略。",
+    
+    "app.paypalsdk": "我在项目中实现了 PayPal SDK，用于接受客户支付。PayPal SDK 集成简单，提供安全可靠的支付解决方案。通过使用 PayPal SDK，我能够提高网站的用户友好性，提高转化率。",
+    
+    "app.stripe": "我还有使用 Stripe 的经验，这是一家允许企业在线接受支付的支付服务提供商。Stripe 提供简单的集成和用户友好的仪表板，使我能够管理交易和解决支付问题。通过使用 Stripe，我已经能够自动化我的支付流程，提高网站的用户友好性。",
+    
+    
+    "app.law": "我了解根据一般数据保护条例（GDPR）的德国数据保护法，并在为企业创建通用条款和条件（GTC）方面有经验。此外，我还支持公共机构实施在线访问法（OZG），并熟悉在线平台的电信媒体法（TMG）要求。我还具备版权法（UrhG）方面的专业知识，可以帮助企业避免侵犯版权，保护知识产权。凭借我对这些法律领域的深入了解，我可以帮助企业降低法律风险，确保其业务活动符合适用法律。"
+    
+}
