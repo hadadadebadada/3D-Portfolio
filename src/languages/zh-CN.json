@@ -3,6 +3,8 @@
     "app.toRightArrow":"Java",
     "app.toTopArrow":"AJAX",
     "app.toButtomArrow":"DevOps 等更多",
+    "app.toBackToMain": "返回主页",
+
     "app.welcome":"欢迎来到我的作品集，我是 Artur，28 岁，热爱编程。我目前最喜欢的技术有：React、Selenium、SpringBoot 和 Scrapy。我热衷于通过编写代码创造事物并照顾我的作品",
     "app.contact":"如有需要，请随时给我发邮件。",
     "app.card1":"Backend development with JavaEE or SpringBoot and frontend development with React and diffrent JS libraries like three.js are my best skills. Beside software development are testing software with Junit4/5 or testing frontend with Selenide/Selenium my strenghes.",

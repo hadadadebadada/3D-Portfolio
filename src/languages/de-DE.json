@@ -4,6 +4,7 @@
 "app.toRightArrow": "Java",
 "app.toTopArrow": "AJAX",
 "app.toButtomArrow": "DevOps und mehr",
+"app.toBackToMain":"Zurück zum Anfang",
 
     "app.content":"Moin Moin",
     "app.channel.plug":" mit {channelName}",

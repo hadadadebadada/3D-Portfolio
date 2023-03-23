@@ -468,7 +468,13 @@ export default Table;
 
 function goBackToMain(intl, scene, x, y, z, render, controls) {
   const objectContent = document.createElement("button");
-  objectContent.textContent = "Zum Anfang";
+
+
+  /* INTL */
+
+  const newMessageText = intl.formatMessage({ id: "app.toBackToMain" });
+
+  objectContent.textContent = newMessageText;
   objectContent.id = "backToMainButton";
 
   const object = new CSS3DObject(objectContent);

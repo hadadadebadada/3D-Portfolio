@@ -4,6 +4,8 @@
     "app.toRightArrow": "Java",
     "app.toTopArrow": "AJAX",
     "app.toButtomArrow": "DevOps и многое другое",
+    "app.toBackToMain": "Вернуться на главную",
+
     "app.content":"Привет Привет",
     "app.channel.plug":"Привет Привет Привет {channelName}",
     "slider.title":"Мой стол твой стол",
