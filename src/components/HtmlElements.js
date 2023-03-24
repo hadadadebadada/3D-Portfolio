@@ -1,6 +1,7 @@
 
 import {  CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 import arturpfeifer from "./arturpfeifer.jpeg";
+import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 
 
 
@@ -46,29 +47,13 @@ export function createWelcomeText (intl, scene){
     document.head.appendChild(textboxElement);
   }
 
-  const jobPortalLink = `
-  <a href="https://bewerbung100.de/" target="_blank" rel="noopener noreferrer">
-    Job Portal with AI Integration and Email Service with over 1 Million Jobs and several thousand applications
-  </a>
-`;
 
-const web3PixelGridLink = `
-<a href="https://web3pixelgrid.web.app/" target="_blank" rel="noopener noreferrer">
-Direct on chain NFT drawing tool
-</a>
-`;
-
-
-const orozgLink = `<a href="https://orozg-6350b.web.app/" target="_blank" rel="noopener noreferrer">
-OZG - Platform
-</a>
-`;
 
 
 const textboxStyleProjects = `
 position: absolute;
 width: 400px;
-height: 400px;
+height: 500px;
 background-color: rgba(0, 127, 127, 0.5);
 color: white;
 font-size: 24px;
@@ -76,7 +61,7 @@ text-align: center;
 padding: 10px;
 border-radius: 10px;
 transform: translate(-50%, -50%);
-left: 50%;
+left: 75%;
 top: 50%;
 
 /* Add styles for a tags and bold text */
@@ -95,6 +80,51 @@ a:hover {
 `;
 
 export function createProjectsDiv(intl, scene) {
+
+
+  const header = intl.formatMessage({ id: 'app.projectsheader' }); 
+  const project1 = intl.formatMessage({ id: 'app.project1' });
+  const project2 = intl.formatMessage({ id: 'app.project2' });
+  const project3 = intl.formatMessage({ id: 'app.project3' });
+
+    let jobPortalLink = `
+  <a href="https://bewerbung100.de/" target="_blank" rel="noopener noreferrer">
+    ${project1}
+  </a>
+`;
+
+let web3PixelGridLink = `
+<a href="https://web3pixelgrid.web.app/" target="_blank" rel="noopener noreferrer">
+${project2}
+</a>
+`;
+
+
+let orozgLink = `<a href="https://orozg-6350b.web.app/" target="_blank" rel="noopener noreferrer">
+${project3}
+</a>
+`;
+
+
+/*   let jobPortalLink = `
+  <a href="https://bewerbung100.de/" target="_blank" rel="noopener noreferrer">
+    Job Portal with AI Integration and Email Service with over 1 Million Jobs and several thousand applications
+  </a>
+`;
+
+let web3PixelGridLink = `
+<a href="https://web3pixelgrid.web.app/" target="_blank" rel="noopener noreferrer">
+Direct on chain NFT drawing tool
+</a>
+`;
+
+
+let orozgLink = `<a href="https://orozg-6350b.web.app/" target="_blank" rel="noopener noreferrer">
+OZG - Platform - List of all onlineservices in Germany with integrated management of the digitalization stucture for a city ​​administration
+</a>
+`;
+ */
+
   const textElement = document.createElement("div");
   textElement.className = "textboxProjects";
 
@@ -143,53 +173,6 @@ export function createProjectsDiv(intl, scene) {
   height: 50px;
 `;
 
-
-export function createText(intl, scene, x, y, z, messageId, icon) {
-  const textElement = document.createElement('div');
-  textElement.className = 'textbox';
-  const wrapper = document.createElement('div');
-  wrapper.style.position = 'relative';
-  const newMessageText = intl.formatMessage({ id: messageId });
-  wrapper.innerHTML += newMessageText;
-
-  const iconElement = document.createElement('img');
-  iconElement.src = icon;
-  iconElement.className = 'iconcardimage';
-  wrapper.appendChild(iconElement);
-
-  textElement.appendChild(wrapper);
-  const textObject = new CSS3DObject(textElement);
-  textObject.position.set(x, y, z);
-  textObject.scale.set(2, 2, 2);
-  scene.add(textObject);
-
-  const textboxElement = document.createElement('style');
-  const iconCardImageStyle = `
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    top: 300px;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-  `;
-  textboxElement.innerHTML = `.textbox { ${textboxStyle} } .iconcardimage { ${iconCardImageStyle} }`;
-  document.head.appendChild(textboxElement);
-}
-
-/*     export function createIconOnCard(scene, icon, x,y,z) {
-    const imageElement = document.createElement("img");
-    imageElement.src = icon;
-    imageElement.className = 'iconcardimage';
-    const containerElement = document.createElement("div");
-    containerElement.style.position = "absolute";
-    containerElement.appendChild(imageElement);
-    const imageObject = new CSS3DObject(containerElement);
-    imageObject.position.set(x, y, z);;
-    imageObject.scale.set(2, 2, 2);
-    scene.add(imageObject);
-  }
- */
 
 
 
@@ -301,3 +284,208 @@ export function createArrow(scene, direction, x, y, intl, messageId, onClickCall
 
 
 }
+
+
+
+
+
+export function createText(intl, scene, x, y, z, messageId, icon, controls, onClickCallback,onClickCallbackPrev,onClickCallbackNext) {
+  
+
+  /* TEXT */
+  const textElement = document.createElement('div');
+  textElement.className = 'textbox';
+  const wrapper = document.createElement('div');
+  wrapper.style.position = 'relative';
+  const newMessageText = intl.formatMessage({ id: messageId });
+  wrapper.innerHTML += newMessageText;
+/* ---------------------- */
+
+
+  /* ICON */
+  const iconElement = document.createElement('img');
+  iconElement.src = icon;
+  iconElement.className = 'iconcardimage';
+  wrapper.appendChild(iconElement);
+/* ------------ */
+
+
+
+/*GO BACK TO MAIN  BUTTON */
+const buttonElement = document.createElement('button');
+buttonElement.className = "testDirectBackToMain";
+
+const goBackToMainText = intl.formatMessage({ id: "app.backToMain" });
+buttonElement.textContent = goBackToMainText;
+
+wrapper.appendChild(buttonElement);
+
+buttonElement.addEventListener("click", onClickCallback);
+
+buttonElement.addEventListener("mouseenter", () => {
+  controls.enabled = false;
+});
+
+buttonElement.addEventListener("mouseleave", () => {
+  controls.enabled = true;
+});
+
+const backToMainButton = `
+  position: absolute;
+  bottom: 0;
+  left: 200px;
+  top: 430px;
+  width: 400px;
+  height: 100px;
+`;
+
+buttonElement.style.cssText = backToMainButton;
+/* -------------------------- */
+
+
+
+/*GO PREV OF NEXT  BUTTON */
+const buttonElementPrev = document.createElement('button');
+buttonElementPrev.className = "prevButton";
+
+const prevText = intl.formatMessage({ id: "app.prev" });
+buttonElementPrev.textContent = prevText;
+
+
+wrapper.appendChild(buttonElementPrev);
+
+buttonElementPrev.addEventListener("click", onClickCallbackPrev);
+
+buttonElementPrev.addEventListener("mouseenter", () => {
+  controls.enabled = false;
+});
+
+buttonElementPrev.addEventListener("mouseleave", () => {
+  controls.enabled = true;
+});
+
+const prevButtonStyle = `
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  top: 430px;
+  width: 200px;
+  height: 100px;
+`;
+
+buttonElementPrev.style.cssText = prevButtonStyle;
+
+
+/* --------------- */
+
+
+/* GO NEXT Button */
+
+const buttonElementNext = document.createElement('button');
+
+
+
+
+buttonElementNext.className = "nextButton";
+
+
+const nextText = intl.formatMessage({ id: "app.next" });
+buttonElementNext.textContent = nextText;
+
+
+
+wrapper.appendChild(buttonElementNext);
+
+buttonElementNext.addEventListener("click", onClickCallbackNext);
+
+buttonElementNext.addEventListener("mouseenter", () => {
+  controls.enabled = false;
+});
+
+buttonElementNext.addEventListener("mouseleave", () => {
+  controls.enabled = true;
+});
+
+const nextButtonStyle = `
+  position: absolute;
+  bottom: 0;
+  left: 600px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  top: 430px;
+  width: 200px;
+  height: 100px;
+`;
+
+buttonElementNext.style.cssText = nextButtonStyle;
+
+/* --------------------------------------------- */
+
+
+  textElement.appendChild(wrapper);
+  const textObject = new CSS3DObject(textElement);
+  textObject.position.set(x, y, z);
+  textObject.scale.set(2, 2, 2);
+  scene.add(textObject);
+
+  const textboxElement = document.createElement('style');
+  const iconCardImageStyle = `
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 300px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  `;
+  textboxElement.innerHTML = `.textbox { ${textboxStyle} } .iconcardimage { ${iconCardImageStyle} }`;
+  document.head.appendChild(textboxElement);
+}
+
+
+
+/* 
+
+
+
+  const newMessageText = intl.formatMessage({ id: "app.toBackToMain" });
+
+  objectContent.textContent = newMessageText;
+  objectContent.id = "backToMainButton";
+
+  const object = new CSS3DObject(objectContent);
+
+  x = x + 950;
+  y = y + 200;
+
+  object.position.set(x, y, z);
+  object.scale.set(3, 3, 3);
+  scene.add(object);
+
+  object.element.addEventListener("click", () => {
+    setTimeout(() => {
+      controls.enabled = true;
+    }, 100);
+    goBackToMainMenu(render, scene);
+  });
+
+  object.element.addEventListener("mouseenter", () => {
+    controls.enabled = false;
+  });
+
+  object.element.addEventListener("mouseleave", () => {
+    controls.enabled = true;
+  });
+
+}
+
+function goBackToMainMenu(render, scene) {
+  new TWEEN.Tween(scene.position)
+    .to({ x: 0, y: -150, z: -500 }, 1000)
+    .easing(TWEEN.Easing.Quadratic.InOut)
+    .onUpdate(render)
+    .start();
+}
+ */

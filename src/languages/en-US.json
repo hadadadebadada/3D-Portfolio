@@ -1,6 +1,13 @@
 {
 
-    
+    "app.next":"Next",
+    "app.prev":"Previous",
+    "app.backToMain":"Back to Mainmenu",
+    "app.projectsheader":"Latest projects",
+
+    "app.project1":"Job Portal with AI Integration and Email Service with over 1 Million Jobs and several thousand applications.",
+    "app.project2":"Direct on chain NFT drawing tool",
+    "app.project3":"OZG - Platform - List of all onlineservices in Germany with integrated management of the digitalization stucture for a city ​​administration",
         "app.tableButton": "Table",
         "app.doubleHelixButton": "Double Helix",
         "app.sphereButton": "Sphere",

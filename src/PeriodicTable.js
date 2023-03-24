@@ -122,8 +122,6 @@ export const Table = ({ locale, selectLang }) => {
   const elementRef = useRef(null);
   const elementRefs = useRef([]);
 
-/*   const arrowRef = useRef();
- */
 
   const objects = [];
 
@@ -222,6 +220,8 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       rotateObj7State.current = rotateObj7;
 
       createWelcomeText(intl, scene);
+
+
       createProjectsDiv(intl, scene);
    
 
@@ -234,9 +234,6 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
 
 
       function handleArrowClick(direction) {
-
-
-
         let x = 0, y = 0, z = -3000;
       
         switch (direction) {
@@ -290,22 +287,117 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       const techToolsFrameworksOtherProgrammingTEST = [ { icon: python, label: "app.python", proficiency: "6/10" }, { icon: scrapy, label: "app.scrapy", proficiency: "8/10" }, { icon: django, label: "app.django", proficiency: "5/10" }, { icon: pandas, label: "app.pandas", proficiency: "5/10" }, { icon: R, label: "app.R", proficiency: "6/10" }, { icon: php, label: "app.php", proficiency: "6/10" }, { icon: symfony, label: "app.symfony", proficiency: "6/10" }, { icon: pm, label: "app.phpmyadmin", proficiency: "6/10" }, { icon: apiplatform, label: "app.apiplatform", proficiency: "6/10" }, { icon: remix, label: "app.remix", proficiency: "5/10" }, { icon: solidity, label: "app.solidity", proficiency: "6/10" }, { icon: truffle, label: "app.truffle", proficiency: "7/10" }, { icon: ganache, label: "app.ganache", proficiency: "8/10" }, { icon: metamask, label: "app.metamask", proficiency: "10/10" }, { icon: EPKBPMNIcon, label: "app.EPKBPMNIcon", proficiency: "3/10" }, ];
       const techToolsFrameworksDevOpsAndMoreTEST = [ { icon: EPKBPMNIcon, label: "app.EPKBPMN", proficiency: "9/10" }, { icon: git2, label: "app.git", proficiency: "8/10" }, { icon: language, label: "app.languages", proficiency: "10/10" }, { icon: linux, label: "app.linux", proficiency: "7/10" }, { icon: office2, label: "app.office", proficiency: "9/10" }, { icon: sap, label: "app.SAP", proficiency: "3/10" }, { icon: sql, label: "app.SQL", proficiency: "9/10" }, { icon: unity, label: "app.unity", proficiency: "3/10" }, { icon: aws, label: "app.aws", proficiency: "7/10" }, { icon: docker, label: "app.Docker", proficiency: "4/10" }, { icon: firebase, label: "app.firebase", proficiency: "7/10" }, { icon: hobbys, label: "app.hobbies", proficiency: "10/10" }, { icon: nginx, label: "app.nginx", proficiency: "7/10" }, { icon: wildfly, label: "app.wildfly", proficiency: "6/10" }, { icon: cleancode, label: "app.cleancode", proficiency: "9/10" }, { icon: jira, label: "app.jira", proficiency: "9/10" }, { icon: confluence, label: "app.confluence", proficiency: "9/10" }, { icon: jenkins, label: "app.jenkins", proficiency: "3/10" }, { icon: ga, label: "app.googleanalytics", proficiency: "5/10" }, { icon: matomo, label: "app.matomo", proficiency: "5/10" }, { icon: paypal, label: "app.paypalsdk", proficiency: "5/10" }, { icon: stripe, label: "app.stripe", proficiency: "5/10" }, { icon: law, label: "app.law", proficiency: "6/10" }, ];
 
+
+
+      function goBackToMainMenuCallBack(render, scene) {
+       
+        setTimeout(() => {
+          controls.enabled = true;
+        }, 100);
+        new TWEEN.Tween(scene.position)
+          .to({ x: 0, y: -150, z: -500 }, 1000)
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .onUpdate(render)
+          .start();
+      }
+      
+
+      function goPrevOrNextCallBack(render, scene, prevOrNext, direction) { //left, right, up, down 
+        const currentPositionX = scene.position.x;
+        const currentPositionY = scene.position.y; 
+        let newPosition;
+      
+        let newPositionZ;
+      
+      
+        if(direction == "right"){
+      
+          if (prevOrNext === "Prev") {
+            newPosition = currentPositionX + 3000;
+          } else {
+            newPosition = currentPositionX - 3000;
+          }
+        
+          console.log("direction right")
+          new TWEEN.Tween(scene.position)
+          .to({ x: newPosition, y: 0, z: newPosition }, 1000)
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .onUpdate(render)
+          .start();
+        }
+      
+        if (direction === "left") {
+          if (prevOrNext === "Prev") {
+            newPosition = currentPositionX + 3000;
+          } else {
+            newPosition = currentPositionX - 3000;
+          }
+        
+          console.log("direction left");
+          new TWEEN.Tween(scene.position)
+            .to({ x: newPosition, y: 0, z: -newPosition }, 1000)
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .onUpdate(render)
+            .start();
+        }
+      
+      
+        if(direction == "top"){
+      
+      
+          if (prevOrNext === "Prev") {
+            newPosition = currentPositionY + 3000;
+          } else {
+            newPosition = currentPositionY - 3000;
+          }
+          
+      
+          console.log("direction top")
+          new TWEEN.Tween(scene.position)
+          .to({ x: 0, y: newPosition, z: newPosition }, 1000)
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .onUpdate(render)
+          .start();
+        }
+      
+      
+        if (direction === "down") {
+          if (prevOrNext === "Prev") {
+            newPosition = currentPositionY + 3000;
+          } else {
+            newPosition = currentPositionY - 3000;
+          }
+        
+          console.log("direction down");
+          new TWEEN.Tween(scene.position)
+            .to({ x: 0, y: -newPosition, z: -newPosition }, 1000)
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .onUpdate(render)
+            .start();
+        }
+      
+      }
+      
+
+
       for (let i = 0; i < techToolsFrameworksJavaTEST.length; i++) {
         let x = (i + 1) * 3000; 
-        createText(intl, scene, x, 0, x, techToolsFrameworksJavaTEST[i].label,  techToolsFrameworksJavaTEST[i].icon);
-        goBackToMain(intl, scene, x, 0, x, render, controls);
+        createText(intl, scene, x, 0, x, techToolsFrameworksJavaTEST[i].label,  techToolsFrameworksJavaTEST[i].icon, controls, 
+          
+          ()=>goBackToMainMenuCallBack(render, scene), ()=>goPrevOrNextCallBack(render, scene, "Prev", "right"),()=>goPrevOrNextCallBack(render, scene, "Next", "right")); //      function goPrevOrNextCallBack(render, scene, prevOrNext, direction) { //left, right, up, down 
+
+ /*        goBackToMain(intl, scene, x, 0, x, render, controls, ()=>goBackToMainMenuCallBack(render, scene));
         prevOrNextButton(intl, scene, x, 0, x, render, "Prev", controls, "right");
         prevOrNextButton(intl, scene, x, 0, x, render, "Next", controls, "right");
-   
+    */
       }
 
       
       for (let i = 0; i < techToolsFrameworksAJAXTEST.length; i++) {
         let x = (i + 1) * 3000;
-        createText(intl, scene, 0, x, x, techToolsFrameworksAJAXTEST[i].label, techToolsFrameworksAJAXTEST[i].icon);
-        goBackToMain(intl, scene, 0, x, x, render, controls);
-        prevOrNextButton(intl, scene, 0, x, x, render, "Prev", controls, "top");
-        prevOrNextButton(intl, scene, 0, x, x, render, "Next", controls, "top");
+        createText(intl, scene, 0, x, x, techToolsFrameworksAJAXTEST[i].label, techToolsFrameworksAJAXTEST[i].icon, controls, 
+          ()=>goBackToMainMenuCallBack(render, scene), ()=>goPrevOrNextCallBack(render, scene, "Prev", "top"),()=>goPrevOrNextCallBack(render, scene, "Next", "top"), );
+ 
         
       }
             
@@ -314,10 +406,9 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
 
       for (let i = 0; i < techToolsFrameworksDevOpsAndMoreTEST.length; i++) {
         let x = (i + 1) * 3000;
-        createText(intl, scene, 0, -x, x, techToolsFrameworksDevOpsAndMoreTEST[i].label, techToolsFrameworksDevOpsAndMoreTEST[i].icon);
-        goBackToMain(intl, scene, 0, -x, x, render, controls);
-        prevOrNextButton(intl, scene, 0, -x, x, render, "Prev", controls, "down");
-        prevOrNextButton(intl, scene, 0, -x, x, render, "Next", controls, "down");
+        createText(intl, scene, 0, -x, x, techToolsFrameworksDevOpsAndMoreTEST[i].label, techToolsFrameworksDevOpsAndMoreTEST[i].icon,  
+          controls, ()=>goBackToMainMenuCallBack(render, scene),  ()=>goPrevOrNextCallBack(render, scene, "Prev", "down"), ()=>goPrevOrNextCallBack(render, scene, "Next", "down"));
+
   
       }
       
@@ -326,10 +417,9 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
 
       for (let i = 0; i < techToolsFrameworksOtherProgrammingTEST.length; i++) {
         let x = (i + 1) * 3000;
-        createText(intl, scene, -x, 0, x, techToolsFrameworksOtherProgrammingTEST[i].label,techToolsFrameworksOtherProgrammingTEST[i].icon);
-        goBackToMain(intl, scene, -x, 0, x, render, controls);
-        prevOrNextButton(intl, scene, -x, 0, x, render, "Prev", controls, "left");
-        prevOrNextButton(intl, scene, -x, 0, x, render, "Next", controls, "left");
+        createText(intl, scene, -x, 0, x, techToolsFrameworksOtherProgrammingTEST[i].label,techToolsFrameworksOtherProgrammingTEST[i].icon,  controls, 
+          ()=>goBackToMainMenuCallBack(render, scene),  ()=>goPrevOrNextCallBack(render, scene, "Next", "left"));
+
 
       }
 
