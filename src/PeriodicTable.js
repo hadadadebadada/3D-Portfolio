@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, createRef } from "react";
 import * as THREE from "three";
 import { initControls, initCSS3DRenderer, initWebGlRenderer, } from "./components/Initializer";
 import { createTable, createGrid, createSphere, createHelix, createDoubleHelix, createCircle, createTest, createFractalTree, } from "./components/FormCreator";
-import { createArrow, createWelcomeText, createText, createImage, } from "./components/HtmlElements";
+import {createIconOnCard, createProjectsDiv, createArrow, createWelcomeText, createText, createImage, } from "./components/HtmlElements";
 import { createPlanet } from "./components/LandingPageEarthAnimation";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
@@ -23,7 +23,7 @@ import sap from "./icons/sap.png";
 import scrapy from "./icons2/scrappy.png";
 import sql from "./icons/SQL.png";
 import unity from "./icons/unity.png";
-
+import { FormattedMessage } from 'react-intl';
 import php from "./icons2/php.png"
 import aws from "./icons2/aws.png";
 import d3 from "./icons2/d3.png";
@@ -85,7 +85,22 @@ import cloudMapTrans from './earth/earthcloudmaptrans.jpg'
 /* About me ? --> Cards */
 
 
-const table = [ { icon: JavaIcon }, "Java", "8/10", 1, 1, { icon: spring }, "Spring", "7/10", 2, 2, { icon: AndroidIcon }, "Android", "6/10", 1, 1, { icon: SeleniumIcon }, "Selenium", "8/10", 0, 1, { icon: javaee }, "Java EE", "6/10", 2, 2, { icon: quarkus }, "Quarkus", "3/10", 3, 3, { icon: js }, "JavaScript", "8/10", 5, 5, { icon: ReactIcon }, "React", "9/10", 1, 1, { icon: Three }, "Three.js", "7/10", 1, 1, { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, { icon: d3 }, "D3.js", "3/10", 1, 1, { icon: typescript }, "TypeScript", "4/10", 2, 2, { icon: reactnative }, "React Native", "3/10", 2, 2, { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, { icon: pandas }, "Pandas", "5/10", 1, 1, { icon: R }, "R", "6/10", 1, 1,  { icon: php }, "PHP", "6/10", 1, 1,{ icon: symfony }, "Symfony", "6/10", 1, 1, { icon: pm }, "PhpMyAdmin", "6/10", 1, 1, { icon: apiplatform }, "API Platform", "6/10", 2, 2, { icon: remix }, "Remix", "5/10", 1, 1, { icon: solidity }, "Solidity", "6/10", 1, 1,  { icon: truffle }, "Truffle", "7/10", 1, 1,  { icon: ganache }, "Ganache", "8/10", 1, 1, { icon: metamask }, "MetaMask", "10/10", 1, 1, { icon: EPKBPMNIcon }, "EPKBPMN", "9/10", 0, 1, { icon: git2 }, "Git", "8/10", 0, 1, { icon: language }, "Language", "10/10", 0, 0, { icon: linux }, "Linux", "7/10", 0, 1, { icon: office2 }, "Office", "9/10", 0, 0, { icon: sap }, "SAP", "3/10", 0, 0, { icon: sql }, "SQL/ PLSQL", "9/10", 1, 1, { icon: unity }, "Unity/ C#", "3/10", 1, 0,  { icon: aws }, "AWS", "7/10", 1, 1,  { icon: docker }, "Docker", "4/10", 1, 1, { icon: firebase }, "Firebase", "7/10", 1, 1,  { icon: hobbys }, "Hobbies", "10/10", 5, 5, { icon: nginx }, "NGINX", "7/10", 1, 1, { icon: wildfly }, "WildFly", "6/10", 1, 1,  { icon: cleancode }, "Clean Code", "9/10", 1, 1,
+const table = [ 
+  
+  { icon: JavaIcon }, "Java", "8/10", 1, 1, { icon: spring }, "Spring", "7/10", 2, 2, { icon: AndroidIcon }, "Android", "6/10", 1, 1, { icon: SeleniumIcon }, 
+  "Selenium", "8/10", 0, 1, { icon: javaee }, "Java EE", "6/10", 2, 2, { icon: quarkus }, "Quarkus", "3/10", 3, 3, 
+  { icon: js }, "JavaScript", "8/10", 5, 5, 
+  { icon: ReactIcon }, "React", "9/10", 1, 1, { icon: Three }, "Three.js", "7/10", 1, 1, 
+  { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, 
+  { icon: d3 }, "D3.js", "3/10", 1, 1, { icon: typescript }, "TypeScript", "4/10", 2, 2, { icon: reactnative }, "React Native", "3/10", 2, 2, 
+  
+  { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, 
+  { icon: pandas }, "Pandas", "5/10", 1, 1, { icon: R }, "R", "6/10", 1, 1,  { icon: php }, "PHP", "6/10", 1, 1,{ icon: symfony }, 
+  "Symfony", "6/10", 1, 1, { icon: pm }, "PhpMyAdmin", "6/10", 1, 1, { icon: apiplatform }, "API Platform", "6/10", 2, 2, { icon: remix }, 
+  "Remix", "5/10", 1, 1, { icon: solidity }, "Solidity", "6/10", 1, 1,  { icon: truffle }, "Truffle", "7/10", 1, 1,  { icon: ganache }, 
+  "Ganache", "8/10", 1, 1, { icon: metamask }, "MetaMask", "10/10", 1, 1, { icon: EPKBPMNIcon }, 
+  
+  "EPKBPMN", "9/10", 0, 1, { icon: git2 }, "Git", "8/10", 0, 1, { icon: language }, "Language", "10/10", 0, 0, { icon: linux }, "Linux", "7/10", 0, 1, { icon: office2 }, "Office", "9/10", 0, 0, { icon: sap }, "SAP", "3/10", 0, 0, { icon: sql }, "SQL/ PLSQL", "9/10", 1, 1, { icon: unity }, "Unity/ C#", "3/10", 1, 0,  { icon: aws }, "AWS", "7/10", 1, 1,  { icon: docker }, "Docker", "4/10", 1, 1, { icon: firebase }, "Firebase", "7/10", 1, 1,  { icon: hobbys }, "Hobbies", "10/10", 5, 5, { icon: nginx }, "NGINX", "7/10", 1, 1, { icon: wildfly }, "WildFly", "6/10", 1, 1,  { icon: cleancode }, "Clean Code", "9/10", 1, 1,
 { icon: jira }, "Jira", "9/10", 2, 2,
 { icon: confluence }, "Confluence", "9/10", 1, 1,
 { icon: jenkins }, "Jenkins", "3/10", 2, 2,
@@ -207,7 +222,7 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       rotateObj7State.current = rotateObj7;
 
       createWelcomeText(intl, scene);
-
+      createProjectsDiv(intl, scene);
    
 
       createArrow(scene, "up", -1000, 1000, intl, "app.toTopArrow", () => handleArrowClick("up"), controls);
@@ -257,61 +272,66 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
 
       
 
-/*       const techToolsFrameworks = [ "app.java", "app.springboot", "app.android", "app.javaee", "app.quarkus",
-        'app.javascript', 'app.react', 'app.threejs', 'app.materialui', 'app.tailwind', 'app.d3', 'app.typescript', 'app.reactnative',
-        'app.python', 'app.scrapy', 'app.django', 'app.pandas', 'app.R', 'app.php', 'app.symfony', 'app.phpmyadmin', 'app.apiplatform',
-        'app.solidy', 'app.remix', 'app.truffle', 'app.ganache', 'app.metamask', 'app.EPKBPMN', 'app.git', 'app.languages', 'app.linux',
-        'app.office', 'app.SAP', 'app.SQL', 'app.unity', 'app.aws', 'app.Docker', 'app.firebase', 'app.hobbies', 'app.nginx', 'app.wildfly',
-        'app.jenkins', 'app.cleancode', 'app.jira', 'app.confluence'
-      ];
- */
 
-      const techToolsFrameworksJava = ["app.java", "app.springboot", "app.android", "app.javaee", "app.quarkus"];
-      const techToolsFrameworksAJAX = [ 'app.javascript', 'app.react', 'app.threejs', 'app.materialui', 'app.tailwind', 'app.d3', 'app.typescript', 'app.reactnative'];
-      const techToolFrameworksOtherProgramming = [   'app.python', 'app.scrapy', 'app.django', 'app.pandas', 'app.R', 'app.php', 'app.symfony', 'app.phpmyadmin', 'app.apiplatform', 'app.solidity', 'app.remix', 'app.truffle', 'app.ganache', 'app.metamask'];
-      const techToolFrameworksDevOpsAndMore = ['app.EPKBPMN', 'app.git', 'app.languages', 'app.linux', 'app.office', 'app.SAP', 'app.SQL', 'app.unity','app.aws', 'app.Docker', 'app.firebase', 'app.hobbies', 'app.nginx', 'app.wildfly', 'app.cleancode', 'app.jira' ,  'app.confluence','app.jenkins', 'app.googleanalytics', 'app.matomo', "app.paypalsdk", "app.stripe", "app.law"];
-      
-      
       /* Projekts??? */
 /*       const aboutMeCards = ['app.cleancode', 'app.languages','app.hobbies', 'app.hobbies' ]; */
 
 
-      for (let i = 0; i < techToolsFrameworksJava.length; i++) {
-        const x = (i + 1) * 3000;
-        createText(intl, scene, x, 0, x, techToolsFrameworksJava[i]);
+
+
+
+
+
+      const techToolsFrameworksJavaTEST = [ { icon: JavaIcon, label: "app.java", proficiency: "8/10" }, { icon: spring, label: "app.springboot", proficiency: "7/10" }, { icon: AndroidIcon, label: "app.android", proficiency: "6/10" }, { icon: SeleniumIcon, label: "app.selenium", proficiency: "8/10" }, { icon: javaee, label: "app.javaee", proficiency: "6/10" }, { icon: quarkus, label: "app.quarkus", proficiency: "3/10" }, ];
+
+      const techToolsFrameworksAJAXTEST = [ { icon: js, label: "app.javascript", proficiency: "8/10" }, { icon: ReactIcon, label: "app.react", proficiency: "9/10" }, { icon: Three, label: "app.threejs", proficiency: "7/10" }, { icon: mui, label: "app.materialui", proficiency: "8/10" }, { icon: tailwind, label: "app.tailwind", proficiency: "7/10" }, { icon: d3, label: "app.d3", proficiency: "3/10" }, { icon: typescript, label: "app.typescript", proficiency: "4/10" }, { icon: reactnative, label: "app.reactnative", proficiency: "3/10" }, ];
+      
+
+      const techToolsFrameworksOtherProgrammingTEST = [ { icon: python, label: "app.python", proficiency: "6/10" }, { icon: scrapy, label: "app.scrapy", proficiency: "8/10" }, { icon: django, label: "app.django", proficiency: "5/10" }, { icon: pandas, label: "app.pandas", proficiency: "5/10" }, { icon: R, label: "app.R", proficiency: "6/10" }, { icon: php, label: "app.php", proficiency: "6/10" }, { icon: symfony, label: "app.symfony", proficiency: "6/10" }, { icon: pm, label: "app.phpmyadmin", proficiency: "6/10" }, { icon: apiplatform, label: "app.apiplatform", proficiency: "6/10" }, { icon: remix, label: "app.remix", proficiency: "5/10" }, { icon: solidity, label: "app.solidity", proficiency: "6/10" }, { icon: truffle, label: "app.truffle", proficiency: "7/10" }, { icon: ganache, label: "app.ganache", proficiency: "8/10" }, { icon: metamask, label: "app.metamask", proficiency: "10/10" }, { icon: EPKBPMNIcon, label: "app.EPKBPMNIcon", proficiency: "3/10" }, ];
+      const techToolsFrameworksDevOpsAndMoreTEST = [ { icon: EPKBPMNIcon, label: "app.EPKBPMN", proficiency: "9/10" }, { icon: git2, label: "app.git", proficiency: "8/10" }, { icon: language, label: "app.languages", proficiency: "10/10" }, { icon: linux, label: "app.linux", proficiency: "7/10" }, { icon: office2, label: "app.office", proficiency: "9/10" }, { icon: sap, label: "app.SAP", proficiency: "3/10" }, { icon: sql, label: "app.SQL", proficiency: "9/10" }, { icon: unity, label: "app.unity", proficiency: "3/10" }, { icon: aws, label: "app.aws", proficiency: "7/10" }, { icon: docker, label: "app.Docker", proficiency: "4/10" }, { icon: firebase, label: "app.firebase", proficiency: "7/10" }, { icon: hobbys, label: "app.hobbies", proficiency: "10/10" }, { icon: nginx, label: "app.nginx", proficiency: "7/10" }, { icon: wildfly, label: "app.wildfly", proficiency: "6/10" }, { icon: cleancode, label: "app.cleancode", proficiency: "9/10" }, { icon: jira, label: "app.jira", proficiency: "9/10" }, { icon: confluence, label: "app.confluence", proficiency: "9/10" }, { icon: jenkins, label: "app.jenkins", proficiency: "3/10" }, { icon: ga, label: "app.googleanalytics", proficiency: "5/10" }, { icon: matomo, label: "app.matomo", proficiency: "5/10" }, { icon: paypal, label: "app.paypalsdk", proficiency: "5/10" }, { icon: stripe, label: "app.stripe", proficiency: "5/10" }, { icon: law, label: "app.law", proficiency: "6/10" }, ];
+
+      for (let i = 0; i < techToolsFrameworksJavaTEST.length; i++) {
+        let x = (i + 1) * 3000; 
+        createText(intl, scene, x, 0, x, techToolsFrameworksJavaTEST[i].label,  techToolsFrameworksJavaTEST[i].icon);
         goBackToMain(intl, scene, x, 0, x, render, controls);
         prevOrNextButton(intl, scene, x, 0, x, render, "Prev", controls, "right");
         prevOrNextButton(intl, scene, x, 0, x, render, "Next", controls, "right");
+   
       }
 
       
-      for (let i = 0; i < techToolsFrameworksAJAX.length; i++) {
-        const x = (i + 1) * 3000;
-        createText(intl, scene, 0, x, x, techToolsFrameworksAJAX[i]);
+      for (let i = 0; i < techToolsFrameworksAJAXTEST.length; i++) {
+        let x = (i + 1) * 3000;
+        createText(intl, scene, 0, x, x, techToolsFrameworksAJAXTEST[i].label, techToolsFrameworksAJAXTEST[i].icon);
         goBackToMain(intl, scene, 0, x, x, render, controls);
         prevOrNextButton(intl, scene, 0, x, x, render, "Prev", controls, "top");
         prevOrNextButton(intl, scene, 0, x, x, render, "Next", controls, "top");
+        
       }
-
-
             
-      for (let i = 0; i < techToolFrameworksDevOpsAndMore.length; i++) {
-        const x = (i + 1) * 3000;
-        createText(intl, scene, 0, -x, x, techToolFrameworksDevOpsAndMore[i]);
+
+
+
+      for (let i = 0; i < techToolsFrameworksDevOpsAndMoreTEST.length; i++) {
+        let x = (i + 1) * 3000;
+        createText(intl, scene, 0, -x, x, techToolsFrameworksDevOpsAndMoreTEST[i].label, techToolsFrameworksDevOpsAndMoreTEST[i].icon);
         goBackToMain(intl, scene, 0, -x, x, render, controls);
         prevOrNextButton(intl, scene, 0, -x, x, render, "Prev", controls, "down");
         prevOrNextButton(intl, scene, 0, -x, x, render, "Next", controls, "down");
+  
       }
+      
 
 
-      for (let i = 0; i < techToolFrameworksOtherProgramming.length; i++) {
-        const x = (i + 1) * 3000;
-        createText(intl, scene, -x, 0, x, techToolFrameworksOtherProgramming[i]);
+
+      for (let i = 0; i < techToolsFrameworksOtherProgrammingTEST.length; i++) {
+        let x = (i + 1) * 3000;
+        createText(intl, scene, -x, 0, x, techToolsFrameworksOtherProgrammingTEST[i].label,techToolsFrameworksOtherProgrammingTEST[i].icon);
         goBackToMain(intl, scene, -x, 0, x, render, controls);
         prevOrNextButton(intl, scene, -x, 0, x, render, "Prev", controls, "left");
         prevOrNextButton(intl, scene, -x, 0, x, render, "Next", controls, "left");
-      }
 
+      }
 
 
       createImage(scene);
@@ -425,14 +445,31 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       <div style={{ display: "flex", justifyContent: "space-between", backgroundColor: "black", }} className="buttons" >
 
         <div style={{ display: "flex", justifyContent: "flex-start", zIndex: 1 }} >
-          <button id="table" onClick={() => transform(targets.pyramid, 2000)}> Table </button>
-          <button id="DoubleHelix" onClick={() => transform(targets.doubleHelix, 2000)} > DoubleHelix </button>
-          <button id="sphere" onClick={() => transform(targets.sphere, 2000)}> Sphere </button>
-          <button id="helix" onClick={() => transform(targets.helix, 2000)}> Helix </button>
-          <button id="grid" onClick={() => transform(targets.grid, 2000)}> Grid </button>
-          <button id="circle" onClick={() => transform(targets.circle, 2000)}> Circle </button>
-          <button id="tree" onClick={() => transform(targets.fractalTree, 2000)} > Tree </button>
-          <button id="test" onClick={() => transform(targets.test, 2000)}> FractalTree </button>
+        <button id="table" onClick={() => transform(targets.pyramid, 2000)}>
+  <FormattedMessage id="app.tableButton" defaultMessage="Table" />
+</button>
+<button id="DoubleHelix" onClick={() => transform(targets.doubleHelix, 2000)}>
+  <FormattedMessage id="app.doubleHelixButton" defaultMessage="DoubleHelix" />
+</button>
+<button id="sphere" onClick={() => transform(targets.sphere, 2000)}>
+  <FormattedMessage id="app.sphereButton" defaultMessage="Sphere" />
+</button>
+<button id="helix" onClick={() => transform(targets.helix, 2000)}>
+  <FormattedMessage id="app.helixButton" defaultMessage="Helix" />
+</button>
+<button id="grid" onClick={() => transform(targets.grid, 2000)}>
+  <FormattedMessage id="app.gridButton" defaultMessage="Grid" />
+</button>
+<button id="circle" onClick={() => transform(targets.circle, 2000)}>
+  <FormattedMessage id="app.circleButton" defaultMessage="Circle" />
+</button>
+<button id="tree" onClick={() => transform(targets.fractalTree, 2000)}>
+  <FormattedMessage id="app.treeButton" defaultMessage="Tree" />
+</button>
+<button id="test" onClick={() => transform(targets.test, 2000)}>
+  <FormattedMessage id="app.testButton" defaultMessage="FractalTree" />
+</button>
+
         </div>
         <div style={{ display: "flex", justifyContent: "flex-end", zIndex: 1 }}>
           <button value={(locale = "en-US")} onClick={selectLang}> 🇺🇸 </button>
@@ -586,7 +623,7 @@ function elementClickListener(elementRefs, scene, render, intl, controls) {
           goToCard(scene, render, -9000, 0, -9000, controls);
           break;
         case "4":
-          goToCard(scene, render, -12000, 0, 12000, controls);
+          goToCard(scene, render, -12000, 0, -12000, controls);
           break;
         case "5":
           goToCard(scene, render, -15000, 0, -15000, controls);
@@ -785,9 +822,9 @@ function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls, di
   const objectContent = document.createElement("button");
   if (prevOrNext == "Next") {
     objectContent.textContent = ">";
-    x = x + 1128;
+    x = x + 1228;
   } else {
-    x = x + 764;
+    x = x + 664;
     objectContent.textContent = "<";
   }
   const object = new CSS3DObject(objectContent);

@@ -1,4 +1,15 @@
 {
+    
+    "app.tableButton": "Таблица",
+"app.doubleHelixButton": "Двойная спираль",
+"app.sphereButton": "Сфера",
+"app.helixButton": "Спираль",
+"app.gridButton": "Сетка",
+"app.circleButton": "Круг",
+"app.treeButton": "Дерево",
+"app.testButton": "Фрактальное дерево",
+
+
     "app.header":"Привет <code>{fileName}<code> js and save to reload.",
     "app.toLeftArrow": "другие языки программирования",
     "app.toRightArrow": "Java",

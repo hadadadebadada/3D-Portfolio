@@ -1,4 +1,14 @@
 {
+    
+    "app.tableButton": "Tabla",
+    "app.doubleHelixButton": "Doble hélice",
+    "app.sphereButton": "Esfera",
+    "app.helixButton": "Hélice",
+    "app.gridButton": "Cuadrícula",
+    "app.circleButton": "Círculo",
+    "app.treeButton": "Árbol",
+    "app.testButton": "Árbol fractal",
+    
     "app.header":"Hola <code>{fileName}<code> js y la cucaracha.",
     "app.toLeftArrow": "otros lenguajes de programación",
     "app.toRightArrow": "Java",

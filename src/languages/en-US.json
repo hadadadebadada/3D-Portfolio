@@ -1,4 +1,14 @@
 {
+
+    
+        "app.tableButton": "Table",
+        "app.doubleHelixButton": "Double Helix",
+        "app.sphereButton": "Sphere",
+        "app.helixButton": "Helix",
+        "app.gridButton": "Grid",
+        "app.circleButton": "Circle",
+        "app.treeButton": "Tree",
+        "app.testButton": "FractalTree",
     "app.toLeftArrow":"other programming languages",
     "app.toRightArrow":"Java",
     "app.toTopArrow":"AJAX",

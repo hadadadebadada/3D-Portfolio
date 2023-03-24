@@ -48,51 +48,148 @@ export function createWelcomeText (intl, scene){
 
   const jobPortalLink = `
   <a href="https://bewerbung100.de/" target="_blank" rel="noopener noreferrer">
-    https://bewerbung100.de/
+    Job Portal with AI Integration and Email Service with over 1 Million Jobs and several thousand applications
   </a>
 `;
 
-export function createText(intl, scene, x, y, z, messageId) {
+const web3PixelGridLink = `
+<a href="https://web3pixelgrid.web.app/" target="_blank" rel="noopener noreferrer">
+Direct on chain NFT drawing tool
+</a>
+`;
+
+
+const orozgLink = `<a href="https://orozg-6350b.web.app/" target="_blank" rel="noopener noreferrer">
+OZG - Platform
+</a>
+`;
+
+
+const textboxStyleProjects = `
+position: absolute;
+width: 400px;
+height: 400px;
+background-color: rgba(0, 127, 127, 0.5);
+color: white;
+font-size: 24px;
+text-align: center;
+padding: 10px;
+border-radius: 10px;
+transform: translate(-50%, -50%);
+left: 50%;
+top: 50%;
+
+/* Add styles for a tags and bold text */
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+`;
+
+export function createProjectsDiv(intl, scene) {
+  const textElement = document.createElement("div");
+  textElement.className = "textboxProjects";
+
+  const wrapper = document.createElement("div");
+  wrapper.style.position = "relative";
+
+  wrapper.innerHTML += '<span class="bold-text">latest projects</span>';
+  wrapper.innerHTML += `<br/><br/>${jobPortalLink}<br/><br/>${web3PixelGridLink}<br/><br/>${orozgLink}`;
+
+  textElement.appendChild(wrapper);
+
+  const textObject = new CSS3DObject(textElement);
+  textObject.position.set(-3000, 500, -900);
+  textObject.scale.set(2, 2, 2);
+  scene.add(textObject);
+
+  const textboxElement = document.createElement("style");
+  textboxElement.innerHTML = `.textboxProjects { ${textboxStyleProjects} }`;
+  document.head.appendChild(textboxElement);
+}
+
+
+
+
+  export function createImage(scene) {
+    const imageElement = document.createElement("img");
+    imageElement.src = arturpfeifer;
+    const containerElement = document.createElement("div");
+    containerElement.style.position = "absolute";
+    containerElement.style.top = "50px"; 
+    containerElement.style.left = "50px"; 
+    imageElement.style.borderRadius = "50%";
+    containerElement.appendChild(imageElement);
+    const imageObject = new CSS3DObject(containerElement);
+    imageObject.position.set(-4500, 2500, -5000);
+    imageObject.scale.set(2, 2, 2);
+    scene.add(imageObject);
+  }
+
+  const iconCardImageStyle = `
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+`;
+
+
+export function createText(intl, scene, x, y, z, messageId, icon) {
   const textElement = document.createElement('div');
   textElement.className = 'textbox';
-
-  const wrapper = document.createElement('div'); 
-  wrapper.style.position = 'relative'; 
-
-
+  const wrapper = document.createElement('div');
+  wrapper.style.position = 'relative';
   const newMessageText = intl.formatMessage({ id: messageId });
   wrapper.innerHTML += newMessageText;
 
+  const iconElement = document.createElement('img');
+  iconElement.src = icon;
+  iconElement.className = 'iconcardimage';
+  wrapper.appendChild(iconElement);
 
-
-  textElement.appendChild(wrapper); 
-
+  textElement.appendChild(wrapper);
   const textObject = new CSS3DObject(textElement);
   textObject.position.set(x, y, z);
   textObject.scale.set(2, 2, 2);
   scene.add(textObject);
 
   const textboxElement = document.createElement('style');
-  textboxElement.innerHTML = `.textbox { ${textboxStyle} }`;
+  const iconCardImageStyle = `
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 300px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  `;
+  textboxElement.innerHTML = `.textbox { ${textboxStyle} } .iconcardimage { ${iconCardImageStyle} }`;
   document.head.appendChild(textboxElement);
 }
 
-  export function createImage(scene) {
+/*     export function createIconOnCard(scene, icon, x,y,z) {
     const imageElement = document.createElement("img");
-    imageElement.src = arturpfeifer;
- 
-      const containerElement = document.createElement("div");
+    imageElement.src = icon;
+    imageElement.className = 'iconcardimage';
+    const containerElement = document.createElement("div");
     containerElement.style.position = "absolute";
-    containerElement.style.top = "50px"; 
-    containerElement.style.left = "50px"; 
-    imageElement.style.borderRadius = "50%";
     containerElement.appendChild(imageElement);
-  
     const imageObject = new CSS3DObject(containerElement);
-    imageObject.position.set(-4500, 2500, -5000);
+    imageObject.position.set(x, y, z);;
     imageObject.scale.set(2, 2, 2);
     scene.add(imageObject);
   }
+ */
 
 
 

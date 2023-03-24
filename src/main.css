@@ -8,10 +8,47 @@
     line-height: normal;
     cursor: default;
   }
+
+  .textbox:hover {
+    box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+    border: 1px solid rgba(127,255,255,0.75);
+  }
   
+  .arrow.arrow-right:hover  {
+    box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+    border: 1px solid rgba(127,255,255,0.75);
+  }
+  .arrow.arrow-left:hover {
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
+    border: 1px solid rgba(127, 255, 255, 0.75);
+  }
+  .arrow.arrow-up:hover {
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
+    border: 1px solid rgba(127, 255, 255, 0.75);
+  }
+  
+
+  .iconcardimage{
+    width: 100px;
+    height: 100px;
+  }
+  .arrow.arrow-down:hover {
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
+    border: 1px solid rgba(127, 255, 255, 0.75);
+  }
+
   .element:hover {
     box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
     border: 1px solid rgba(127,255,255,0.75);
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
   }
   
   .element .number {

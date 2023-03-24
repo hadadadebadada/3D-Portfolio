@@ -1,4 +1,14 @@
 {
+    
+    "app.tableButton": "表格",
+"app.doubleHelixButton": "双螺旋",
+"app.sphereButton": "球体",
+"app.helixButton": "螺旋",
+"app.gridButton": "网格",
+"app.circleButton": "圆形",
+"app.treeButton": "树",
+"app.testButton": "分形树",
+
     "app.toLeftArrow":"其他编程语言",
     "app.toRightArrow":"Java",
     "app.toTopArrow":"AJAX",

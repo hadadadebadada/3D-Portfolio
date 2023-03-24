@@ -1,4 +1,16 @@
 {
+
+    "app.tableButton":"Tabelle",
+    
+    "app.doubleHelixButton": "Doppelhelix",
+    "app.sphereButton": "Kugel",
+    "app.helixButton": "Helix",
+    "app.gridButton": "Raster",
+    "app.circleButton": "Kreis",
+    "app.treeButton": "Baum",
+    "app.testButton": "Fraktaler Baum",
+    
+
     "app.header":"Editiere <code>{fileName}<code> js und speichern zum laden.",
     "app.toLeftArrow": "andere Programmiersprachen",
 "app.toRightArrow": "Java",
