@@ -61,7 +61,7 @@ text-align: center;
 padding: 10px;
 border-radius: 10px;
 transform: translate(-50%, -50%);
-left: 75%;
+left: 71%;
 top: 50%;
 
 /* Add styles for a tags and bold text */
@@ -131,7 +131,7 @@ OZG - Platform - List of all onlineservices in Germany with integrated managemen
   const wrapper = document.createElement("div");
   wrapper.style.position = "relative";
 
-  wrapper.innerHTML += '<span class="bold-text">latest projects</span>';
+  wrapper.innerHTML += `<span class="bold-text">${header}</span>`;
   wrapper.innerHTML += `<br/><br/>${jobPortalLink}<br/><br/>${web3PixelGridLink}<br/><br/>${orozgLink}`;
 
   textElement.appendChild(wrapper);
@@ -314,6 +314,8 @@ export function createText(intl, scene, x, y, z, messageId, icon, controls, onCl
 /*GO BACK TO MAIN  BUTTON */
 const buttonElement = document.createElement('button');
 buttonElement.className = "testDirectBackToMain";
+buttonElement.style.fontSize = "24px"; // Set font size to 24px
+buttonElement.style.fontWeight = "bold"; // Set fon
 
 const goBackToMainText = intl.formatMessage({ id: "app.backToMain" });
 buttonElement.textContent = goBackToMainText;
@@ -337,6 +339,8 @@ const backToMainButton = `
   top: 430px;
   width: 400px;
   height: 100px;
+  font-size: 24px;
+  font-weight: bold;
 `;
 
 buttonElement.style.cssText = backToMainButton;
@@ -371,6 +375,8 @@ const prevButtonStyle = `
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   top: 430px;
+  font-size: 24px;
+  font-weight: bold;
   width: 200px;
   height: 100px;
 `;
@@ -416,6 +422,8 @@ const nextButtonStyle = `
   border-bottom-right-radius: 25px;
   top: 430px;
   width: 200px;
+  font-size: 24px;
+  font-weight: bold;
   height: 100px;
 `;
 

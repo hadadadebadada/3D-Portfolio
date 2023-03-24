@@ -363,14 +363,14 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       
         if (direction === "down") {
           if (prevOrNext === "Prev") {
-            newPosition = currentPositionY + 3000;
-          } else {
             newPosition = currentPositionY - 3000;
+          } else {
+            newPosition = currentPositionY + 3000;
           }
         
           console.log("direction down");
           new TWEEN.Tween(scene.position)
-            .to({ x: 0, y: -newPosition, z: -newPosition }, 1000)
+            .to({ x: 0, y: newPosition, z: -newPosition }, 1000)
             .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(render)
             .start();
