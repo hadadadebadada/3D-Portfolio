@@ -63,6 +63,14 @@ import stripe from "./icons2/stripe-icon.svg"
 import law from "./icons2/law.png"
 
 
+
+import seo from "./icons2/seo.png"
+import oidc from "./icons2/oidc.png"
+import vue from "./icons2/vue.png"
+import blockchain from "./icons2/blockchain.png"
+import kali from "./icons2/kali.png"
+import langchain from './icons2/langchain.png'
+
 import androidObj from './landingpage/android.glb' 
 import pythonObj from './landingpage/python.glb' 
 import react from './landingpage/react.glb'
@@ -108,7 +116,17 @@ const table = [
 { icon: matomo }, "Matomo", "5/10", 2, 2,
 { icon: paypal }, "PayPal", "5/10", 1, 1,
 { icon: stripe }, "Stripe", "5/10", 2, 2,
-{ icon: law }, "Law", "6/10", 1, 1
+{ icon: law }, "Law", "6/10", 1, 1,
+// {icon:langchain}, "LangChain", "3/10", 1,1
+// {icon: seo}, "SEO", "4/10", 1,1
+// {icon: oidc}, "OIDC", "3/10", 1,1
+// {icon: vue}, "Vue", "3/10", 1,1
+// {icon: blockchain}, "CryptoMining", "5/10"
+// {icon: kali}, "CyberSecurity", "4/10"
+
+
+
+
 
 ];
 
@@ -188,8 +206,8 @@ export const Table = ({ locale, selectLang }) => {
         1,
         10000
       );
-
-      camera.position.z = 4000;
+      camera.position.y = -300;
+      camera.position.z = 2800;
       scene = new THREE.Scene();
 
       cssRenderer = initCSS3DRenderer(cssRenderer);
