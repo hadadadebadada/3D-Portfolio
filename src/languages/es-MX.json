@@ -94,6 +94,18 @@
 "app.matomo": "He usado Matomo, servicio de análisis web de código abierto que ofrece control sobre mis datos y garantiza su seguridad y protección.",
 "app.paypalsdk": "He implementado el SDK de PayPal en proyectos para aceptar pagos de clientes, proporcionando una solución de pago segura y confiable.",
 "app.stripe": "Tengo experiencia con Stripe, proveedor de servicios de pago que permite aceptar pagos en línea y gestionar transacciones fácilmente.",
-"app.law": "Conozco la ley de protección de datos alemana (GDPR) y he creado Términos y Condiciones Generales (GTC) para negocios, ayudando a minimizar riesgos legales."
+"app.law": "Conozco la ley de protección de datos alemana (GDPR) y he creado Términos y Condiciones Generales (GTC) para negocios, ayudando a minimizar riesgos legales.",
+
+"app.langchain": "Al utilizar LangChain, he desarrollado eficientemente mis propios chatbots con funcionalidad GPT. Esta innovadora plataforma permite la integración fluida de modelos de lenguaje de gran tamaño y una amplia gama de fuentes de datos, lo que me permite proporcionar soluciones personalizadas para requisitos complejos.",
+
+"app.vue": "He comenzado a trabajar con Vue.js, un marco de JavaScript utilizado para crear interfaces de usuario. A pesar de mis experiencias iniciales, ya he logrado crear y mantener algunas interfaces de usuario, mejorando mi flexibilidad y eficiencia en el desarrollo de aplicaciones web.",
+
+"app.seo": "Con mi experiencia en optimización de motores de búsqueda, he logrado aumentar exitosamente la visibilidad y el alcance de varios sitios web, lo que ha llevado a un aumento en la tasa de conversión.",
+
+"app.oidc": "Al utilizar OpenID Connect en mis proyectos, he podido proporcionar soluciones de autenticación seguras y eficientes para aplicaciones web al verificar de manera confiable la identidad de los usuarios finales.",
+
+"app.cryptomining": "A través de mi trabajo en el campo de la minería de criptomonedas, he podido validar transacciones de criptomonedas como Bitcoin y Ethereum y generar nuevas unidades de moneda, lo cual requiere un profundo entendimiento de la criptografía y la seguridad de la red.",
+
+"app.cybersecurity": "Con mi conocimiento y experiencia en ciberseguridad, he podido garantizar la seguridad de las infraestructuras de TI, prevenir violaciones de protección de datos y asegurar el cumplimiento de las normas y leyes de seguridad."
     
 }

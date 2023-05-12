@@ -2,9 +2,61 @@
 import {  CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 import arturpfeifer from "./arturpfeifer.jpeg";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
+import linkedin from '../icons2/icons8-linkedin-96.png'
+import github from '../icons2/icons8-github-96.png'
+import whatsapp from '../icons2/icons8-whatsapp-96.png'
 
 
 
+
+
+const iconCardImageStyle = `
+position: absolute;
+bottom: 0;
+left: 0;
+border-radius: 50%;
+width: 50px;
+height: 50px;
+`;
+
+
+
+
+const arrowStyles = {
+up: `
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 60px solid rgba(0, 127, 127, 0.5);
+`,
+down: `
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 60px solid rgba(0, 127, 127, 0.5);
+`,
+left: `
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  border-right: 60px solid rgba(0, 127, 127, 0.5);
+`,
+right: `
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  border-left: 60px solid rgba(0, 127, 127, 0.5);
+`,
+};
+
+const arrowStyle = `
+position: absolute;
+width: 0;
+height: 0;
+color: white;
+font-size: 24px;
+text-align: center;
+transform: translate(-50%, -50%);
+left: 50%;
+top: 50%;
+cursor: pointer;
+`;
 
 
 const textboxStyle = `
@@ -24,29 +76,14 @@ top: 50%;
 
 
 
-export function createWelcomeText (intl, scene){
-    const textElement = document.createElement("div");
-    textElement.className = "textbox";
-  
-    const wrapper = document.createElement("div"); 
-    wrapper.style.position = "relative"; 
-  
-  
-    const newMessageText = intl.formatMessage({ id: "app.welcome" });
-    wrapper.innerHTML += newMessageText; 
-  
-    textElement.appendChild(wrapper); 
-  
-    const textObject = new CSS3DObject(textElement);
-    textObject.position.set(-1000, 500, -900);
-    textObject.scale.set(2, 2, 2);
-    scene.add(textObject);
-  
-    const textboxElement = document.createElement("style");
-    textboxElement.innerHTML = `.textbox { ${textboxStyle} }`;
-    document.head.appendChild(textboxElement);
-  }
+const textWrapperStyle = `
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 
+ 
 
 
 
@@ -79,7 +116,175 @@ a:hover {
 }
 `;
 
-export function createProjectsDiv(intl, scene) {
+
+
+export function createWelcomeText (intl, scene, controls){
+  const textElement = document.createElement("div");
+  textElement.className = "textbox";
+
+  const wrapper = document.createElement("div"); 
+  wrapper.style.position = "relative"; 
+
+  const newMessageText = intl.formatMessage({ id: "app.welcome" });
+  wrapper.innerHTML += newMessageText; 
+
+  // Create LinkedIn social icon
+  const socialIconElementLinkedin = document.createElement('img');
+  socialIconElementLinkedin.src = linkedin;
+  socialIconElementLinkedin.className = 'socialIconElementLinkedin';
+
+  const linkElementLinkedin = document.createElement("a");
+  linkElementLinkedin.href = "https://www.linkedin.com/in/artur-pfeifer/";
+  linkElementLinkedin.target = "_blank";
+  linkElementLinkedin.rel = "noopener noreferrer";
+
+  socialIconElementLinkedin.addEventListener("mouseenter", () => {
+    controls.enabled = false;
+  });
+
+  socialIconElementLinkedin.addEventListener("mouseleave", () => {
+    controls.enabled = true;
+  });
+
+  linkElementLinkedin.appendChild(socialIconElementLinkedin);
+  wrapper.appendChild(linkElementLinkedin);
+
+  // Create GitHub social icon
+  const socialIconElementGithub = document.createElement('img');
+  socialIconElementGithub.src = github;
+  socialIconElementGithub.className = 'socialIconElementGithub';
+
+  const linkElementGithub = document.createElement("a");
+  linkElementGithub.href = "https://github.com/hadadadebadada";
+  linkElementGithub.target = "_blank";
+  linkElementGithub.rel = "noopener noreferrer";
+
+  socialIconElementGithub.addEventListener("mouseenter", () => {
+    controls.enabled = false;
+  });
+
+  socialIconElementGithub.addEventListener("mouseleave", () => {
+    controls.enabled = true;
+  });
+
+  linkElementGithub.appendChild(socialIconElementGithub);
+  wrapper.appendChild(linkElementGithub);
+
+  // Create WhatsApp social icon
+  const socialIconElementWhatsapp = document.createElement('img');
+  socialIconElementWhatsapp.src = whatsapp;
+  socialIconElementWhatsapp.className = 'socialIconElementWhatsapp';
+
+  const linkElementWhatsapp = document.createElement("a");
+  linkElementWhatsapp.href = "https://api.whatsapp.com/send?phone=491772266449"; // replace with your actual WhatsApp link
+  linkElementWhatsapp.target = "_blank";
+  linkElementWhatsapp.rel = "noopener noreferrer";
+
+  socialIconElementWhatsapp.addEventListener("mouseenter", () => {
+    controls.enabled = false;
+  });
+
+  socialIconElementWhatsapp.addEventListener("mouseleave", () => {
+    controls.enabled = true;
+  });
+
+  linkElementWhatsapp.appendChild(socialIconElementWhatsapp);
+  wrapper.appendChild(linkElementWhatsapp);
+
+  textElement.appendChild(wrapper); 
+
+  const textObject = new CSS3DObject(textElement);
+  textObject.position.set(-1000, 500, -900);
+  textObject.scale.set(2, 2, 2);
+  scene.add(textObject);
+
+  
+
+  const iconCardImageStyle1 = `
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 300px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+`;
+
+  const iconCardImageStyle2 = `
+    position: absolute;
+    bottom: 0;
+    left: 350px;
+    top: 300px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  `;
+
+  const iconCardImageStyle3 = `
+  position: absolute;
+  bottom: 0;
+  left: 700px;
+  top: 300px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+`;
+
+  const textboxElement = document.createElement("style");
+  textboxElement.innerHTML = `.textbox { ${textboxStyle} } 
+                              .socialIconElementLinkedin { ${iconCardImageStyle1} }
+                              .socialIconElementGithub { ${iconCardImageStyle2} }
+                              .socialIconElementWhatsapp { ${iconCardImageStyle3} }`;
+  document.head.appendChild(textboxElement);
+}
+
+
+
+
+
+/* export function createSocialIcon(scene, controls, xPosition, image, href) {
+  const imageElement = document.createElement("img");
+  imageElement.src = image;
+  const containerElement = document.createElement("div");
+  containerElement.style.position = "absolute";
+  containerElement.style.top = "50px"; 
+  containerElement.style.left = "50px"; 
+  imageElement.style.borderRadius = "50%";
+
+  const linkedinLink = "https://bewerbung100.de/"
+  // assuming you have this id in your internationalization file
+
+
+
+
+  const linkElement = document.createElement("a");
+  linkElement.innerHTML = `
+    <a href="${href}" target="_blank" rel="noopener noreferrer">
+      <img src="${imageElement.src}" style="border-radius: 50%;" />
+    </a>
+  `;
+  
+  linkElement.addEventListener("mouseenter", () => {
+    controls.enabled = false;
+  });
+  
+  linkElement.addEventListener("mouseleave", () => {
+    controls.enabled = true;
+  });
+  
+
+
+
+  containerElement.appendChild(linkElement);
+  
+  const imageObject = new CSS3DObject(containerElement);
+  imageObject.position.set(xPosition, 550, -900);
+  imageObject.scale.set(2, 2, 2);
+  scene.add(imageObject);
+} */
+
+
+export function createProjectsDiv(intl, scene, controls) {
 
 
   const header = intl.formatMessage({ id: 'app.projectsheader' }); 
@@ -106,24 +311,7 @@ ${project3}
 `;
 
 
-/*   let jobPortalLink = `
-  <a href="https://bewerbung100.de/" target="_blank" rel="noopener noreferrer">
-    Job Portal with AI Integration and Email Service with over 1 Million Jobs and several thousand applications
-  </a>
-`;
 
-let web3PixelGridLink = `
-<a href="https://web3pixelgrid.web.app/" target="_blank" rel="noopener noreferrer">
-Direct on chain NFT drawing tool
-</a>
-`;
-
-
-let orozgLink = `<a href="https://orozg-6350b.web.app/" target="_blank" rel="noopener noreferrer">
-OZG - Platform - List of all onlineservices in Germany with integrated management of the digitalization stucture for a city ​​administration
-</a>
-`;
- */
 
   const textElement = document.createElement("div");
   textElement.className = "textboxProjects";
@@ -133,6 +321,15 @@ OZG - Platform - List of all onlineservices in Germany with integrated managemen
 
   wrapper.innerHTML += `<span class="bold-text">${header}</span>`;
   wrapper.innerHTML += `<br/><br/>${jobPortalLink}<br/><br/>${web3PixelGridLink}<br/><br/>${orozgLink}`;
+
+
+  wrapper.addEventListener("mouseenter", () => {
+    controls.enabled = false;
+  });
+  
+  wrapper.addEventListener("mouseleave", () => {
+    controls.enabled = true;
+  });
 
   textElement.appendChild(wrapper);
 
@@ -154,8 +351,8 @@ OZG - Platform - List of all onlineservices in Germany with integrated managemen
     imageElement.src = arturpfeifer;
     const containerElement = document.createElement("div");
     containerElement.style.position = "absolute";
-    containerElement.style.top = "50px"; 
-    containerElement.style.left = "50px"; 
+    containerElement.style.top = "100px"; 
+    containerElement.style.left = "25px"; 
     imageElement.style.borderRadius = "50%";
     containerElement.appendChild(imageElement);
     const imageObject = new CSS3DObject(containerElement);
@@ -164,83 +361,14 @@ OZG - Platform - List of all onlineservices in Germany with integrated managemen
     scene.add(imageObject);
   }
 
-  const iconCardImageStyle = `
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-`;
 
 
 
 
-const arrowStyles = {
-  up: `
-    border-left: 40px solid transparent;
-    border-right: 40px solid transparent;
-    border-bottom: 60px solid rgba(0, 127, 127, 0.5);
-  `,
-  down: `
-    border-left: 40px solid transparent;
-    border-right: 40px solid transparent;
-    border-top: 60px solid rgba(0, 127, 127, 0.5);
-  `,
-  left: `
-    border-top: 40px solid transparent;
-    border-bottom: 40px solid transparent;
-    border-right: 60px solid rgba(0, 127, 127, 0.5);
-  `,
-  right: `
-    border-top: 40px solid transparent;
-    border-bottom: 40px solid transparent;
-    border-left: 60px solid rgba(0, 127, 127, 0.5);
-  `,
-};
+  
 
-const arrowStyle = `
-  position: absolute;
-  width: 0;
-  height: 0;
-  color: white;
-  font-size: 24px;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  cursor: pointer;
-`;
 
-/* const arrowHoverStyles = {
-  up: `
-    .arrow-up:hover {
-      border-bottom-color: rgba(0, 191, 191, 0.7);
-    }
-  `,
-  down: `
-    .arrow-down:hover {
-      border-top-color: rgba(0, 191, 191, 0.7);
-    }
-  `,
-  left: `
-    .arrow-left:hover {
-      border-right-color: rgba(0, 191, 191, 0.7);
-    }
-  `,
-  right: `
-    .arrow-right:hover {
-      border-left-color: rgba(0, 191, 191, 0.7);
-    }
-  `,
-}; */
 
-const textWrapperStyle = `
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
 
 export function createArrow(scene, direction, x, y, intl, messageId, onClickCallback, controls) {
   const textElement = document.createElement("div");
@@ -454,46 +582,3 @@ buttonElementNext.style.cssText = nextButtonStyle;
 
 
 
-/* 
-
-
-
-  const newMessageText = intl.formatMessage({ id: "app.toBackToMain" });
-
-  objectContent.textContent = newMessageText;
-  objectContent.id = "backToMainButton";
-
-  const object = new CSS3DObject(objectContent);
-
-  x = x + 950;
-  y = y + 200;
-
-  object.position.set(x, y, z);
-  object.scale.set(3, 3, 3);
-  scene.add(object);
-
-  object.element.addEventListener("click", () => {
-    setTimeout(() => {
-      controls.enabled = true;
-    }, 100);
-    goBackToMainMenu(render, scene);
-  });
-
-  object.element.addEventListener("mouseenter", () => {
-    controls.enabled = false;
-  });
-
-  object.element.addEventListener("mouseleave", () => {
-    controls.enabled = true;
-  });
-
-}
-
-function goBackToMainMenu(render, scene) {
-  new TWEEN.Tween(scene.position)
-    .to({ x: 0, y: -150, z: -500 }, 1000)
-    .easing(TWEEN.Easing.Quadratic.InOut)
-    .onUpdate(render)
-    .start();
-}
- */

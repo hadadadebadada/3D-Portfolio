@@ -13,7 +13,7 @@ export const initControls = (camera, cssRenderer) => {
     controls.maxDistance = 20000;
     
     controls.enableDamping = false;
-    controls.enableRotate = true;
+    controls.enableRotate = false;
     controls.enableZoom = true;
   
 

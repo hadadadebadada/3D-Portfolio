@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, createRef } from "react";
 import * as THREE from "three";
 import { initControls, initCSS3DRenderer, initWebGlRenderer, } from "./components/Initializer";
 import { createTable, createGrid, createSphere, createHelix, createDoubleHelix, createCircle, createTest, createFractalTree, } from "./components/FormCreator";
-import {createIconOnCard, createProjectsDiv, createArrow, createWelcomeText, createText, createImage, } from "./components/HtmlElements";
+import {createIconOnCard, createProjectsDiv, createArrow, createWelcomeText, createText, createImage, createSocialIcon } from "./components/HtmlElements";
 import { createPlanet } from "./components/LandingPageEarthAnimation";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
@@ -71,6 +71,12 @@ import blockchain from "./icons2/blockchain.png"
 import kali from "./icons2/kali.png"
 import langchain from './icons2/langchain.png'
 
+
+import linkedin from './icons2/icons8-linkedin-96.png'
+import github from './icons2/icons8-github-96.png'
+import whatsapp from './icons2/icons8-whatsapp-96.png'
+
+
 import androidObj from './landingpage/android.glb' 
 import pythonObj from './landingpage/python.glb' 
 import react from './landingpage/react.glb'
@@ -97,17 +103,23 @@ const table = [
   
   { icon: JavaIcon }, "Java", "8/10", 1, 1, { icon: spring }, "Spring", "7/10", 2, 2, { icon: AndroidIcon }, "Android", "6/10", 1, 1, { icon: SeleniumIcon }, 
   "Selenium", "8/10", 0, 1, { icon: javaee }, "Java EE", "6/10", 2, 2, { icon: quarkus }, "Quarkus", "3/10", 3, 3, 
+
+
   { icon: js }, "JavaScript", "8/10", 5, 5, 
   { icon: ReactIcon }, "React", "9/10", 1, 1, { icon: Three }, "Three.js", "7/10", 1, 1, 
-  { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, 
+  { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, {icon: vue}, "Vue", "3/10", 1,1,
   { icon: d3 }, "D3.js", "3/10", 1, 1, { icon: typescript }, "TypeScript", "4/10", 2, 2, { icon: reactnative }, "React Native", "3/10", 2, 2, 
   
-  { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, 
-  { icon: pandas }, "Pandas", "5/10", 1, 1, { icon: R }, "R", "6/10", 1, 1,  { icon: php }, "PHP", "6/10", 1, 1,{ icon: symfony }, 
+
+
+  { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, {icon:langchain}, "LangChain", "3/10", 1,1,
+  { icon: pandas }, "Pandas", "4/10", 1, 1, { icon: R }, "R", "6/10", 1, 1,  { icon: php }, "PHP", "6/10", 1, 1,{ icon: symfony }, 
   "Symfony", "6/10", 1, 1, { icon: pm }, "PhpMyAdmin", "6/10", 1, 1, { icon: apiplatform }, "API Platform", "6/10", 2, 2, { icon: remix }, 
   "Remix", "5/10", 1, 1, { icon: solidity }, "Solidity", "6/10", 1, 1,  { icon: truffle }, "Truffle", "7/10", 1, 1,  { icon: ganache }, 
   "Ganache", "8/10", 1, 1, { icon: metamask }, "MetaMask", "10/10", 1, 1, { icon: EPKBPMNIcon }, 
   
+
+
   "EPKBPMN", "9/10", 0, 1, { icon: git2 }, "Git", "8/10", 0, 1, { icon: language }, "Language", "10/10", 0, 0, { icon: linux }, "Linux", "7/10", 0, 1, { icon: office2 }, "Office", "9/10", 0, 0, { icon: sap }, "SAP", "3/10", 0, 0, { icon: sql }, "SQL/ PLSQL", "9/10", 1, 1, { icon: unity }, "Unity/ C#", "3/10", 1, 0,  { icon: aws }, "AWS", "7/10", 1, 1,  { icon: docker }, "Docker", "4/10", 1, 1, { icon: firebase }, "Firebase", "7/10", 1, 1,  { icon: hobbys }, "Hobbies", "10/10", 5, 5, { icon: nginx }, "NGINX", "7/10", 1, 1, { icon: wildfly }, "WildFly", "6/10", 1, 1,  { icon: cleancode }, "Clean Code", "9/10", 1, 1,
 { icon: jira }, "Jira", "9/10", 2, 2,
 { icon: confluence }, "Confluence", "9/10", 1, 1,
@@ -117,12 +129,12 @@ const table = [
 { icon: paypal }, "PayPal", "5/10", 1, 1,
 { icon: stripe }, "Stripe", "5/10", 2, 2,
 { icon: law }, "Law", "6/10", 1, 1,
-// {icon:langchain}, "LangChain", "3/10", 1,1
-// {icon: seo}, "SEO", "4/10", 1,1
-// {icon: oidc}, "OIDC", "3/10", 1,1
-// {icon: vue}, "Vue", "3/10", 1,1
-// {icon: blockchain}, "CryptoMining", "5/10"
-// {icon: kali}, "CyberSecurity", "4/10"
+
+
+ {icon: seo}, "SEO", "4/10", 1,1,
+ {icon: oidc}, "OIDC", "3/10", 1,1,
+ {icon: blockchain}, "CryptoMining", "5/10",1,1,
+ {icon: kali}, "CyberSecurity", "4/10",1,1
 
 
 
@@ -206,8 +218,8 @@ export const Table = ({ locale, selectLang }) => {
         1,
         10000
       );
-      camera.position.y = -300;
-      camera.position.z = 2800;
+      camera.position.y = 50;
+      camera.position.z = 3000;
       scene = new THREE.Scene();
 
       cssRenderer = initCSS3DRenderer(cssRenderer);
@@ -237,10 +249,14 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       rotateObj4State.current = rotateObj4;
       rotateObj7State.current = rotateObj7;
 
-      createWelcomeText(intl, scene);
+      createWelcomeText(intl, scene, controls);
 
 
-      createProjectsDiv(intl, scene);
+      createProjectsDiv(intl, scene, controls);
+
+      
+      createImage(scene);
+     // createSocialIcon(scene, controls, -800, linkedin, "https://linkedin.com");
    
 
       createArrow(scene, "up", -1000, 1000, intl, "app.toTopArrow", () => handleArrowClick("up"), controls);
@@ -298,13 +314,39 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
 
 
       const techToolsFrameworksJavaTEST = [ { icon: JavaIcon, label: "app.java", proficiency: "8/10" }, { icon: spring, label: "app.springboot", proficiency: "7/10" }, { icon: AndroidIcon, label: "app.android", proficiency: "6/10" }, { icon: SeleniumIcon, label: "app.selenium", proficiency: "8/10" }, { icon: javaee, label: "app.javaee", proficiency: "6/10" }, { icon: quarkus, label: "app.quarkus", proficiency: "3/10" }, ];
-
-      const techToolsFrameworksAJAXTEST = [ { icon: js, label: "app.javascript", proficiency: "8/10" }, { icon: ReactIcon, label: "app.react", proficiency: "9/10" }, { icon: Three, label: "app.threejs", proficiency: "7/10" }, { icon: mui, label: "app.materialui", proficiency: "8/10" }, { icon: tailwind, label: "app.tailwind", proficiency: "7/10" }, { icon: d3, label: "app.d3", proficiency: "3/10" }, { icon: typescript, label: "app.typescript", proficiency: "4/10" }, { icon: reactnative, label: "app.reactnative", proficiency: "3/10" }, ];
+      const techToolsFrameworksAJAXTEST = [ { icon: js, label: "app.javascript", proficiency: "8/10" }, { icon: ReactIcon, label: "app.react", proficiency: "9/10" }, { icon: Three, label: "app.threejs", proficiency: "7/10" }, { icon: mui, label: "app.materialui", proficiency: "8/10" }, { icon: tailwind, label: "app.tailwind", proficiency: "7/10" }, { icon: vue, label: "app.vue", proficiency: "3/10" }, { icon: d3, label: "app.d3", proficiency: "3/10" }, { icon: typescript, label: "app.typescript", proficiency: "4/10" }, { icon: reactnative, label: "app.reactnative", proficiency: "3/10" }, ];
+  
+      const techToolsFrameworksOtherProgrammingTEST = [ { icon: python, label: "app.python", proficiency: "6/10" }, { icon: scrapy, label: "app.scrapy", proficiency: "8/10" }, { icon: django, label: "app.django", proficiency: "5/10" }, {icon:langchain, label:"app.langchain", proficiency:"3/4"},{ icon: pandas, label: "app.pandas", proficiency: "5/10" }, { icon: R, label: "app.R", proficiency: "6/10" }, { icon: php, label: "app.php", proficiency: "6/10" }, { icon: symfony, label: "app.symfony", proficiency: "6/10" }, { icon: pm, label: "app.phpmyadmin", proficiency: "6/10" }, { icon: apiplatform, label: "app.apiplatform", proficiency: "6/10" }, { icon: remix, label: "app.remix", proficiency: "5/10" }, { icon: solidity, label: "app.solidity", proficiency: "6/10" }, { icon: truffle, label: "app.truffle", proficiency: "7/10" }, { icon: ganache, label: "app.ganache", proficiency: "8/10" }, { icon: metamask, label: "app.metamask", proficiency: "10/10" }, { icon: EPKBPMNIcon, label: "app.EPKBPMNIcon", proficiency: "3/10" }, ];
+      const techToolsFrameworksDevOpsAndMoreTEST = [
+        { icon: EPKBPMNIcon, label: "app.EPKBPMN", proficiency: "9/10" },
+        { icon: git2, label: "app.git", proficiency: "8/10" },
+        { icon: language, label: "app.languages", proficiency: "10/10" },
+        { icon: linux, label: "app.linux", proficiency: "7/10" },
+        { icon: office2, label: "app.office", proficiency: "9/10" },
+        { icon: sap, label: "app.SAP", proficiency: "3/10" },
+        { icon: sql, label: "app.SQL", proficiency: "9/10" },
+        { icon: unity, label: "app.unity", proficiency: "3/10" },
+        { icon: aws, label: "app.aws", proficiency: "7/10" },
+        { icon: docker, label: "app.Docker", proficiency: "4/10" },
+        { icon: firebase, label: "app.firebase", proficiency: "7/10" },
+        { icon: hobbys, label: "app.hobbies", proficiency: "10/10" },
+        { icon: nginx, label: "app.nginx", proficiency: "7/10" },
+        { icon: wildfly, label: "app.wildfly", proficiency: "6/10" },
+        { icon: cleancode, label: "app.cleancode", proficiency: "9/10" },
+        { icon: jira, label: "app.jira", proficiency: "9/10" },
+        { icon: confluence, label: "app.confluence", proficiency: "9/10" },
+        { icon: jenkins, label: "app.jenkins", proficiency: "3/10" },
+        { icon: ga, label: "app.googleanalytics", proficiency: "5/10" },
+        { icon: matomo, label: "app.matomo", proficiency: "5/10" },
+        { icon: paypal, label: "app.paypalsdk", proficiency: "5/10" },
+        { icon: stripe, label: "app.stripe", proficiency: "5/10" },
+        { icon: law, label: "app.law", proficiency: "6/10" },
+        { icon: seo, label: "app.seo", proficiency: "4/10" },
+        { icon: oidc, label: "app.oidc", proficiency: "3/10" },
+        { icon: blockchain, label: "app.cryptomining", proficiency: "5/10" },
+        { icon: kali, label: "app.cybersecurity", proficiency: "4/10" },
+      ];
       
-
-      const techToolsFrameworksOtherProgrammingTEST = [ { icon: python, label: "app.python", proficiency: "6/10" }, { icon: scrapy, label: "app.scrapy", proficiency: "8/10" }, { icon: django, label: "app.django", proficiency: "5/10" }, { icon: pandas, label: "app.pandas", proficiency: "5/10" }, { icon: R, label: "app.R", proficiency: "6/10" }, { icon: php, label: "app.php", proficiency: "6/10" }, { icon: symfony, label: "app.symfony", proficiency: "6/10" }, { icon: pm, label: "app.phpmyadmin", proficiency: "6/10" }, { icon: apiplatform, label: "app.apiplatform", proficiency: "6/10" }, { icon: remix, label: "app.remix", proficiency: "5/10" }, { icon: solidity, label: "app.solidity", proficiency: "6/10" }, { icon: truffle, label: "app.truffle", proficiency: "7/10" }, { icon: ganache, label: "app.ganache", proficiency: "8/10" }, { icon: metamask, label: "app.metamask", proficiency: "10/10" }, { icon: EPKBPMNIcon, label: "app.EPKBPMNIcon", proficiency: "3/10" }, ];
-      const techToolsFrameworksDevOpsAndMoreTEST = [ { icon: EPKBPMNIcon, label: "app.EPKBPMN", proficiency: "9/10" }, { icon: git2, label: "app.git", proficiency: "8/10" }, { icon: language, label: "app.languages", proficiency: "10/10" }, { icon: linux, label: "app.linux", proficiency: "7/10" }, { icon: office2, label: "app.office", proficiency: "9/10" }, { icon: sap, label: "app.SAP", proficiency: "3/10" }, { icon: sql, label: "app.SQL", proficiency: "9/10" }, { icon: unity, label: "app.unity", proficiency: "3/10" }, { icon: aws, label: "app.aws", proficiency: "7/10" }, { icon: docker, label: "app.Docker", proficiency: "4/10" }, { icon: firebase, label: "app.firebase", proficiency: "7/10" }, { icon: hobbys, label: "app.hobbies", proficiency: "10/10" }, { icon: nginx, label: "app.nginx", proficiency: "7/10" }, { icon: wildfly, label: "app.wildfly", proficiency: "6/10" }, { icon: cleancode, label: "app.cleancode", proficiency: "9/10" }, { icon: jira, label: "app.jira", proficiency: "9/10" }, { icon: confluence, label: "app.confluence", proficiency: "9/10" }, { icon: jenkins, label: "app.jenkins", proficiency: "3/10" }, { icon: ga, label: "app.googleanalytics", proficiency: "5/10" }, { icon: matomo, label: "app.matomo", proficiency: "5/10" }, { icon: paypal, label: "app.paypalsdk", proficiency: "5/10" }, { icon: stripe, label: "app.stripe", proficiency: "5/10" }, { icon: law, label: "app.law", proficiency: "6/10" }, ];
-
 
 
       function goBackToMainMenuCallBack(render, scene) {
@@ -442,7 +484,6 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       }
 
 
-      createImage(scene);
       initTable(elementRef, scene, objects, targets, elementRefs);
       elementClickListener(elementRefs, scene, render, intl, controls);
 
@@ -494,23 +535,23 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
         rotateObj4State.current &&
         rotateObj7State.current
       ) {
-        testState.current.rotation.y += 0.01;
-        testState.current.rotation.x += 0.01;
+        testState.current.rotation.y += 0.001;
+        testState.current.rotation.x += 0.001;
     
-        rotateObj2State.current.rotation.y += 0.01;
-        rotateObj2State.current.rotation.x += 0.01;
+        rotateObj2State.current.rotation.y += 0.001;
+        rotateObj2State.current.rotation.x += 0.001;
     
-        rotateObj3State.current.rotation.y += 0.01;
-        rotateObj3State.current.rotation.x += 0.01;
+        rotateObj3State.current.rotation.y += 0.001;
+        rotateObj3State.current.rotation.x += 0.001;
     
-        rotateObj4State.current.rotation.y += 0.01;
-        rotateObj4State.current.rotation.x += 0.01;
+        rotateObj4State.current.rotation.y += 0.001;
+        rotateObj4State.current.rotation.x += 0.001;
     
-        rotateObj7State.current.rotation.y += 0.01;
-        rotateObj7State.current.rotation.x += 0.01;
+        rotateObj7State.current.rotation.y += 0.001;
+        rotateObj7State.current.rotation.x += 0.001;
     
-        meshState.current.rotation.y += 0.005;
-        cloudyState.current.rotation.y -= 0.003;
+        meshState.current.rotation.y += 0.0005;
+        cloudyState.current.rotation.y -= 0.0003;
     
         renderer.render(scene, camera);
         renderer.clearDepth();
@@ -740,7 +781,7 @@ function elementClickListener(elementRefs, scene, render, intl, controls) {
           goToCard(scene, render, -18000, 0, -18000, controls);
           break;
 
-        /* SECTION 2 */
+        /* SECTION 2 --> Java?*/
         case "7":
           goToCard(scene, render, 0, -3000, -3000, controls);
           break;
@@ -766,121 +807,142 @@ function elementClickListener(elementRefs, scene, render, intl, controls) {
           goToCard(scene, render, 0, -24000, -24000, controls);
           break;
         case "15":
-
+        goToCard(scene, render, 0, -27000, -27000, controls);
+        break;
         /* SECTION 3 */
 
+      //  goToCard(scene, render, 3000, 0, -3000, controls);
+      case "16":
         goToCard(scene, render, 3000, 0, -3000, controls);
-        break;
-        case "16":
-          goToCard(scene, render, 6000, 0, -6000, controls);
-          break;
-        case "17":
-          goToCard(scene, render, 9000, 0, -9000, controls);
-          break;
-        case "18":
-          goToCard(scene, render, 12000, 0, -12000, controls);
-          break;
-        case "19":
-          goToCard(scene, render, 15000, 0, -15000, controls);
-          break;
-        case "20":
-          goToCard(scene, render, 18000, 0, -18000, controls);
-          break;
-        case "21":
-          goToCard(scene, render, 21000, 0, -21000, controls);
-          break;
-        case "22":
-          goToCard(scene, render, 24000, 0, -24000, controls);
-          break;
-          case "23":
-            goToCard(scene, render, 27000, 0, -27000, controls);
-            break;
-          case "24":
-            goToCard(scene, render, 30000, 0, -30000, controls);
-            break;
-          case "25":
-            goToCard(scene, render, 33000, 0, -33000, controls);
-            break;
-          case "26":
-            goToCard(scene, render, 36000, 0, -36000, controls);
-            break;
-          case "27":
-            goToCard(scene, render, 39000, 0, -39000, controls);
-            break;
-          case "28":
-            goToCard(scene, render, 42000, 0, -42000, controls);
-            break;
+      break;
+      case "17":
+    goToCard(scene, render, 6000, 0, -6000, controls);
+    break;
+case "18":
+    goToCard(scene, render, 9000, 0, -9000, controls);
+    break;
+case "19":
+    goToCard(scene, render, 12000, 0, -12000, controls);
+    break;
+case "20":
+    goToCard(scene, render, 15000, 0, -15000, controls);
+    break;
+case "21":
+    goToCard(scene, render, 18000, 0, -18000, controls);
+    break;
+case "22":
+    goToCard(scene, render, 21000, 0, -21000, controls);
+    break;
+case "23":
+    goToCard(scene, render, 24000, 0, -24000, controls);
+    break;
+case "24":
+    goToCard(scene, render, 27000, 0, -27000, controls);
+    break;
+case "25":
+    goToCard(scene, render, 30000, 0, -30000, controls);
+    break;
+case "26":
+    goToCard(scene, render, 33000, 0, -33000, controls);
+    break;
+case "27":
+    goToCard(scene, render, 36000, 0, -36000, controls);
+    break;
+case "28":
+    goToCard(scene, render, 39000, 0, -39000, controls);
+    break;
+case "29":
+    goToCard(scene, render, 42000, 0, -42000, controls);
+    break;
+case "30":
+    goToCard(scene, render, 45000, 0, -45000, controls);
+    break;
+
           
           /* SECTION 4 */
           
-          case "29":
+          case "31":
             goToCard(scene, render, 0, 3000, -3000, controls);
             break;
-          case "30":
+        case "32":
             goToCard(scene, render, 0, 6000, -6000, controls);
             break;
-          case "31":
+        case "33":
             goToCard(scene, render, 0, 9000, -9000, controls);
             break;
-          case "32":
+        case "34":
             goToCard(scene, render, 0, 12000, -12000, controls);
             break;
-          case "33":
+        case "35":
             goToCard(scene, render, 0, 15000, -15000, controls);
             break;
-          case "34":
+        case "36":
             goToCard(scene, render, 0, 18000, -18000, controls);
             break;
-          case "35":
+        case "37":
             goToCard(scene, render, 0, 21000, -21000, controls);
             break;
-          case "36":
+        case "38":
             goToCard(scene, render, 0, 24000, -24000, controls);
             break;
-          case "37":
+        case "39":
             goToCard(scene, render, 0, 27000, -27000, controls);
             break;
-          case "38":
+        case "40":
             goToCard(scene, render, 0, 30000, -30000, controls);
             break;
-          case "39":
+        case "41":
             goToCard(scene, render, 0, 33000, -33000, controls);
             break;
-          case "40":
+        case "42":
             goToCard(scene, render, 0, 36000, -36000, controls);
             break;
-          case "41":
+        case "43":
             goToCard(scene, render, 0, 39000, -39000, controls);
             break;
-          case "42":
+        case "44":
             goToCard(scene, render, 0, 42000, -42000, controls);
             break;
-          case "43":
+        case "45":
             goToCard(scene, render, 0, 45000, -45000, controls);
             break;
-          case "44":
+        case "46":
             goToCard(scene, render, 0, 48000, -48000, controls);
             break;
-          case "45":
+        case "47":
             goToCard(scene, render, 0, 51000, -51000, controls);
             break;
-          case "46":
+        case "48":
             goToCard(scene, render, 0, 54000, -54000, controls);
             break;
-          case "47":
+        case "49":
             goToCard(scene, render, 0, 57000, -57000, controls);
             break;
-          case "48":
+        case "50":
             goToCard(scene, render, 0, 60000, -60000, controls);
             break;
-          case "49":
+        case "51":
             goToCard(scene, render, 0, 63000, -63000, controls);
-            break;                                case "50":
-          goToCard(scene, render, 0, 66000, -66000,controls);
-          break;
-          case "51":
-          goToCard(scene, render, 0, 69000, -69000,controls);
-          break;
+            break;
+        case "52":
+            goToCard(scene, render, 0, 66000, -66000, controls);
+            break;
+        case "53":
+            goToCard(scene, render, 0, 69000, -69000, controls);
+            break;
+            case "54":
+              goToCard(scene, render, 0, 72000, -72000, controls);
+              break;
+            case "55":
+              goToCard(scene, render, 0, 75000, -75000, controls);
+              break;
+            case "56":
+              goToCard(scene, render, 0, 78000, -78000, controls);
+              break;
+            case "57":
+              goToCard(scene, render, 0, 81000, -81000, controls);
+              break;
+        
          
         default:
           alert("Hier zu gibt es noch keine Informationen :)");
