@@ -305,7 +305,7 @@ ${project2}
 `;
 
 
-let orozgLink = `<a href="https://orozg-6350b.web.app/" target="_blank" rel="noopener noreferrer">
+let orozgLink = `<a href="https://github.com/hadadadebadada/3D-Portfolio/tree/master target="_blank" rel="noopener noreferrer">
 ${project3}
 </a>
 `;
