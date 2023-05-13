@@ -7,7 +7,7 @@ import Russisch from './languages/ru-RU.json';
 import Chinesisch from './languages/zh-CN.json';
 
 
-
+import OrientationChange from './OrientationChange';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Table from './PeriodicTable';
 /* import YoutubeCube from './components/YoutubeCube'; */
@@ -65,11 +65,14 @@ function selectLang(e) {
 }
 
   return (
+    <OrientationChange>
     <Context.Provider value={{ locale, selectLang }}>
               <IntlProvider messages={messages} locale={locale}>
         <Table style={{maxWidth:"100vw", maxHeight:"100vh", overflow:"hidden"}} locale={locale} selectLang={selectLang}></Table>
       </IntlProvider>
     </Context.Provider>
+    </OrientationChange>
+
   );
 }
 

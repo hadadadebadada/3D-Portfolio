@@ -89,7 +89,7 @@ import earthBump from './earth/earthbump1k.jpg'
 import earthSpec from './earth/earthspec1k.jpg'
 import cloudMapTrans from './earth/earthcloudmaptrans.jpg'
 
-
+import useWindowDimensions from './useWindowDimensions'
 
 /* CrytoMinig, MuayThai, Zocken, Yoga, Fußball */
 
@@ -152,6 +152,7 @@ export const Table = ({ locale, selectLang }) => {
   const elementRef = useRef(null);
   const elementRefs = useRef([]);
 
+  const { width, height, isPortrait } = useWindowDimensions();
 
   const objects = [];
 
@@ -210,6 +211,8 @@ export const Table = ({ locale, selectLang }) => {
   useEffect(() => {
     const init = () => {
 
+      console.log(width, height, isPortrait )
+
 
 
       camera = new THREE.PerspectiveCamera(
@@ -222,8 +225,8 @@ export const Table = ({ locale, selectLang }) => {
       camera.position.z = 3000;
       scene = new THREE.Scene();
 
-      cssRenderer = initCSS3DRenderer(cssRenderer);
-      renderer = initWebGlRenderer(renderer);
+      cssRenderer = initCSS3DRenderer(cssRenderer, isPortrait );
+      renderer = initWebGlRenderer(renderer,isPortrait );
 
       const controls = initControls(camera, cssRenderer);
 
@@ -587,7 +590,7 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       }
 
     };
-  }, [locale]);
+  }, [locale, isPortrait ]);
 
   return (
     <div>
