@@ -9,15 +9,21 @@ import * as THREE from "three";
 
 export const initControls = (camera, cssRenderer) => {
     const controls = new OrbitControls(camera, cssRenderer.domElement);
-    controls.minDistance = 0;
-    controls.maxDistance = 20000;
-    
+    controls.minDistance = -2000;
+    controls.maxDistance = 5000;   
     controls.enableDamping = false;
-    controls.enableRotate = false;
-    controls.enableZoom = true;
-  
+    controls.enableRotate = true; // 
 
+    controls.minPolarAngle = Math.PI / 4; // radians
+    controls.maxPolarAngle = Math.PI / 2; // radians
+
+    controls.minAzimuthAngle = -Math.PI / 4; // radians
+    controls.maxAzimuthAngle = Math.PI / 4; // radians
+
+
+    controls.enableZoom = true;
     controls.mouseButtons.RIGHT = null;
+    controls.touches.TWO = THREE.TOUCH.NONE;
 
     return controls;
   }
@@ -34,7 +40,7 @@ export const initControls = (camera, cssRenderer) => {
   };
   
   export const initWebGlRenderer = (renderer, isPortrait) => {
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true }); 
+    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" }); 
     renderer.setClearColor(0x000000, 0); 
     renderer.setPixelRatio(window.devicePixelRatio);
     const width = isPortrait ? window.innerHeight : window.innerWidth;

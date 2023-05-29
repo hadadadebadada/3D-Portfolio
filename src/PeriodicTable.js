@@ -4,7 +4,7 @@ import { initControls, initCSS3DRenderer, initWebGlRenderer, } from "./component
 import { createTable, createGrid, createSphere, createHelix, createDoubleHelix, createCircle, createTest, createFractalTree, } from "./components/FormCreator";
 import {createIconOnCard, createProjectsDiv, createArrow, createWelcomeText, createText, createImage, createSocialIcon } from "./components/HtmlElements";
 import { createPlanet } from "./components/LandingPageEarthAnimation";
-import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
+import * as TWEEN from '@tweenjs/tween.js'
 import { CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 import { useIntl } from "react-intl";
 import "./main.css";
@@ -72,9 +72,6 @@ import kali from "./icons2/kali.png"
 import langchain from './icons2/langchain.png'
 
 
-import linkedin from './icons2/icons8-linkedin-96.png'
-import github from './icons2/icons8-github-96.png'
-import whatsapp from './icons2/icons8-whatsapp-96.png'
 
 
 import androidObj from './landingpage/android.glb' 
@@ -91,12 +88,6 @@ import cloudMapTrans from './earth/earthcloudmaptrans.jpg'
 
 import useWindowDimensions from './useWindowDimensions'
 
-/* CrytoMinig, MuayThai, Zocken, Yoga, Fußball */
-
-/* Projects!!!! */
-/* Social Media!! */
-
-/* About me ? --> Cards */
 
 
 const table = [ 
@@ -211,7 +202,7 @@ export const Table = ({ locale, selectLang }) => {
   useEffect(() => {
     const init = () => {
 
-      console.log(width, height, isPortrait )
+     /*  console.log(width, height, isPortrait ) */
 
 
 
@@ -225,8 +216,9 @@ export const Table = ({ locale, selectLang }) => {
       camera.position.z = 3000;
       scene = new THREE.Scene();
 
-      cssRenderer = initCSS3DRenderer(cssRenderer, isPortrait );
       renderer = initWebGlRenderer(renderer,isPortrait );
+      cssRenderer = initCSS3DRenderer(cssRenderer, isPortrait );
+
 
       const controls = initControls(camera, cssRenderer);
 
@@ -259,7 +251,6 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
 
       
       createImage(scene);
-     // createSocialIcon(scene, controls, -800, linkedin, "https://linkedin.com");
    
 
       createArrow(scene, "up", -1000, 1000, intl, "app.toTopArrow", () => handleArrowClick("up"), controls);
@@ -307,8 +298,7 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       
 
 
-      /* Projekts??? */
-/*       const aboutMeCards = ['app.cleancode', 'app.languages','app.hobbies', 'app.hobbies' ]; */
+
 
 
 
@@ -449,10 +439,7 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
           
           ()=>goBackToMainMenuCallBack(render, scene), ()=>goPrevOrNextCallBack(render, scene, "Prev", "right"),()=>goPrevOrNextCallBack(render, scene, "Next", "right")); //      function goPrevOrNextCallBack(render, scene, prevOrNext, direction) { //left, right, up, down 
 
- /*        goBackToMain(intl, scene, x, 0, x, render, controls, ()=>goBackToMainMenuCallBack(render, scene));
-        prevOrNextButton(intl, scene, x, 0, x, render, "Prev", controls, "right");
-        prevOrNextButton(intl, scene, x, 0, x, render, "Next", controls, "right");
-    */
+
       }
 
       
@@ -481,7 +468,7 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       for (let i = 0; i < techToolsFrameworksOtherProgrammingTEST.length; i++) {
         let x = (i + 1) * 3000;
         createText(intl, scene, -x, 0, x, techToolsFrameworksOtherProgrammingTEST[i].label,techToolsFrameworksOtherProgrammingTEST[i].icon,  controls, 
-          ()=>goBackToMainMenuCallBack(render, scene),  ()=>goPrevOrNextCallBack(render, scene, "Next", "left"));
+          ()=>goBackToMainMenuCallBack(render, scene),  ()=>goPrevOrNextCallBack(render, scene, "Next", "left"), ()=>goPrevOrNextCallBack(render, scene, "Prev", "left"));
 
 
       }
@@ -527,7 +514,6 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
 
 
 
-  
     const animate = () => {
       if (
         meshState.current &&
@@ -556,8 +542,35 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
         meshState.current.rotation.y += 0.0005;
         cloudyState.current.rotation.y -= 0.0003;
     
+        rotateObj7State.current.position.x += 100;
+        rotateObj7State.current.position.y += 100;
+
+        rotateObj4State.current.position.set(9999,9999,9999);
+
+
+
+        console.log('rotateObj7State current position before', rotateObj7State.current.position);
+rotateObj7State.current.position.x += 9999999;
+rotateObj7State.current.position.y += 9999999;
+console.log('rotateObj7State current position after', rotateObj7State.current.position);
+
+
+/*         rotateObj4State.current.position.x += 0.001;
+     */
+
+ /*        setTimeout(() => {
+          new TWEEN.Tween(rotateObj7State.current.position)
+            .to({ x: 10, y: 20, z: 30 }, 1000) // replace 10, 20, and 30 with your desired values
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .onUpdate(render)
+            .start();
+        }, 5000); */
+
+
+    
         renderer.render(scene, camera);
         renderer.clearDepth();
+    
         camera.layers.set(0);
     
         requestAnimationFrame(animate);
@@ -567,6 +580,7 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
         requestAnimationFrame(animate);
       }
     };
+    
 
     const render = () => {
       renderer.render(scene, camera);
@@ -655,11 +669,8 @@ export default Table;
 
 
 
-function goBackToMain(intl, scene, x, y, z, render, controls) {
+/* function goBackToMain(intl, scene, x, y, z, render, controls) {
   const objectContent = document.createElement("button");
-
-
-  /* INTL */
 
   const newMessageText = intl.formatMessage({ id: "app.toBackToMain" });
 
@@ -690,7 +701,7 @@ function goBackToMain(intl, scene, x, y, z, render, controls) {
     controls.enabled = true;
   });
 
-}
+} */
 
 function diableControllsOnElementHover(elementRefs, controls) {
   elementRefs.current.forEach(({ symbol, object }) => {
@@ -985,11 +996,12 @@ function goToCard(scene, render, x, y, z, controls ) {
     rotateObj7.position.y(x)
     rotateObj7.position.z(z)
  */
+
 }
 
 
 
-function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls, direction) {
+/* function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls, direction) {
 
 
   const objectContent = document.createElement("button");
@@ -1025,7 +1037,7 @@ function prevOrNextButton(intl, scene, x, y, z, render, prevOrNext, controls, di
   object.element.addEventListener("mouseleave", () => {
     controls.enabled = true;
   });
-}
+} */
 
 function goBackToMainMenu(render, scene) {
   new TWEEN.Tween(scene.position)

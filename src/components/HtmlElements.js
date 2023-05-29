@@ -1,7 +1,7 @@
 
 import {  CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 import arturpfeifer from "./arturpfeifer.jpeg";
-import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
+
 import linkedin from '../icons2/icons8-linkedin-96.png'
 import github from '../icons2/icons8-github-96.png'
 import whatsapp from '../icons2/icons8-whatsapp-96.png'
@@ -305,7 +305,7 @@ ${project2}
 `;
 
 
-let orozgLink = `<a href="https://github.com/hadadadebadada/3D-Portfolio/tree/master target="_blank" rel="noopener noreferrer">
+let orozgLink = `<a href="https://github.com/hadadadebadada/3D-Portfolio/" target="_blank" rel="noopener noreferrer">
 ${project3}
 </a>
 `;
@@ -572,7 +572,7 @@ buttonElementNext.style.cssText = nextButtonStyle;
     bottom: 0;
     left: 0;
     top: 300px;
-    border-radius: 50%;
+    border-radius: 5%;
     width: 100px;
     height: 100px;
   `;

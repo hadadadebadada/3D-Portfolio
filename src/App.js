@@ -67,7 +67,7 @@ function selectLang(e) {
   return (
     <OrientationChange>
     <Context.Provider value={{ locale, selectLang }}>
-              <IntlProvider messages={messages} locale={locale}>
+        <IntlProvider messages={messages} locale={locale}>
         <Table style={{maxWidth:"100vw", maxHeight:"100vh", overflow:"hidden"}} locale={locale} selectLang={selectLang}></Table>
       </IntlProvider>
     </Context.Provider>
