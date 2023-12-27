@@ -98,12 +98,12 @@ const table = [
 
   { icon: js }, "JavaScript", "8/10", 5, 5, 
   { icon: ReactIcon }, "React", "9/10", 1, 1, { icon: Three }, "Three.js", "7/10", 1, 1, 
-  { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, {icon: vue}, "Vue", "3/10", 1,1,
+  { icon: mui }, "Material UI", "8/10", 2, 2, { icon: tailwind }, "Tailwind CSS", "7/10", 1, 1, {icon: vue}, "Vue", "8/10", 1,1,
   { icon: d3 }, "D3.js", "3/10", 1, 1, { icon: typescript }, "TypeScript", "4/10", 2, 2, { icon: reactnative }, "React Native", "3/10", 2, 2, 
   
 
 
-  { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, {icon:langchain}, "LangChain", "3/10", 1,1,
+  { icon: python }, "Python", "6/10", 1, 1,  { icon: scrapy }, "Scrapy", "8/10", 1, 1, {icon:django}, "Django", "5/10", 1,1, {icon:langchain}, "LangChain", "6/10", 1,1,
   { icon: pandas }, "Pandas", "4/10", 1, 1, { icon: R }, "R", "6/10", 1, 1,  { icon: php }, "PHP", "6/10", 1, 1,{ icon: symfony }, 
   "Symfony", "6/10", 1, 1, { icon: pm }, "PhpMyAdmin", "6/10", 1, 1, { icon: apiplatform }, "API Platform", "6/10", 2, 2, { icon: remix }, 
   "Remix", "5/10", 1, 1, { icon: solidity }, "Solidity", "6/10", 1, 1,  { icon: truffle }, "Truffle", "7/10", 1, 1,  { icon: ganache }, 
@@ -309,7 +309,7 @@ let { mesh, cloudy, test, rotateObj2, rotateObj3, rotateObj4, rotateObj7 } = pla
       const techToolsFrameworksJavaTEST = [ { icon: JavaIcon, label: "app.java", proficiency: "8/10" }, { icon: spring, label: "app.springboot", proficiency: "7/10" }, { icon: AndroidIcon, label: "app.android", proficiency: "6/10" }, { icon: SeleniumIcon, label: "app.selenium", proficiency: "8/10" }, { icon: javaee, label: "app.javaee", proficiency: "6/10" }, { icon: quarkus, label: "app.quarkus", proficiency: "3/10" }, ];
       const techToolsFrameworksAJAXTEST = [ { icon: js, label: "app.javascript", proficiency: "8/10" }, { icon: ReactIcon, label: "app.react", proficiency: "9/10" }, { icon: Three, label: "app.threejs", proficiency: "7/10" }, { icon: mui, label: "app.materialui", proficiency: "8/10" }, { icon: tailwind, label: "app.tailwind", proficiency: "7/10" }, { icon: vue, label: "app.vue", proficiency: "3/10" }, { icon: d3, label: "app.d3", proficiency: "3/10" }, { icon: typescript, label: "app.typescript", proficiency: "4/10" }, { icon: reactnative, label: "app.reactnative", proficiency: "3/10" }, ];
   
-      const techToolsFrameworksOtherProgrammingTEST = [ { icon: python, label: "app.python", proficiency: "6/10" }, { icon: scrapy, label: "app.scrapy", proficiency: "8/10" }, { icon: django, label: "app.django", proficiency: "5/10" }, {icon:langchain, label:"app.langchain", proficiency:"3/4"},{ icon: pandas, label: "app.pandas", proficiency: "5/10" }, { icon: R, label: "app.R", proficiency: "6/10" }, { icon: php, label: "app.php", proficiency: "6/10" }, { icon: symfony, label: "app.symfony", proficiency: "6/10" }, { icon: pm, label: "app.phpmyadmin", proficiency: "6/10" }, { icon: apiplatform, label: "app.apiplatform", proficiency: "6/10" }, { icon: remix, label: "app.remix", proficiency: "5/10" }, { icon: solidity, label: "app.solidity", proficiency: "6/10" }, { icon: truffle, label: "app.truffle", proficiency: "7/10" }, { icon: ganache, label: "app.ganache", proficiency: "8/10" }, { icon: metamask, label: "app.metamask", proficiency: "10/10" }, { icon: EPKBPMNIcon, label: "app.EPKBPMNIcon", proficiency: "3/10" }, ];
+      const techToolsFrameworksOtherProgrammingTEST = [ { icon: python, label: "app.python", proficiency: "6/10" }, { icon: scrapy, label: "app.scrapy", proficiency: "8/10" }, { icon: django, label: "app.django", proficiency: "5/10" }, {icon:langchain, label:"app.langchain", proficiency:"6/10"},{ icon: pandas, label: "app.pandas", proficiency: "5/10" }, { icon: R, label: "app.R", proficiency: "6/10" }, { icon: php, label: "app.php", proficiency: "6/10" }, { icon: symfony, label: "app.symfony", proficiency: "6/10" }, { icon: pm, label: "app.phpmyadmin", proficiency: "6/10" }, { icon: apiplatform, label: "app.apiplatform", proficiency: "6/10" }, { icon: remix, label: "app.remix", proficiency: "5/10" }, { icon: solidity, label: "app.solidity", proficiency: "6/10" }, { icon: truffle, label: "app.truffle", proficiency: "7/10" }, { icon: ganache, label: "app.ganache", proficiency: "8/10" }, { icon: metamask, label: "app.metamask", proficiency: "10/10" }, { icon: EPKBPMNIcon, label: "app.EPKBPMNIcon", proficiency: "3/10" }, ];
       const techToolsFrameworksDevOpsAndMoreTEST = [
         { icon: EPKBPMNIcon, label: "app.EPKBPMN", proficiency: "9/10" },
         { icon: git2, label: "app.git", proficiency: "8/10" },

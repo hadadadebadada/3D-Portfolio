@@ -6,6 +6,8 @@
     "app.projectsheader":"Latest projects",
 
     "app.project1":"Job Portal with AI Integration and Email Service with over 1 Million Jobs and several thousand applications.",
+    "app.project11": "Platform to create fullstack chatbots per click",
+
     "app.project2":"Direct on chain NFT drawing tool",
     "app.project3": "You can find the code for this website here.",
         "app.tableButton": "Table",
@@ -21,7 +23,7 @@
     "app.toTopArrow":"AJAX",
     "app.toButtomArrow":"DevOps and more",
     "app.toBackToMain":"Back to Main",
-    "app.welcome":"Welcome to my Portfolio, I am Artur, 28 and my passion is programming. My favorite technologies at the moment are: React, Selenium, SpringBoot and Scrapy. I love to create things through code and to take care of my creations",
+    "app.welcome":"Welcome to my Portfolio, I am Artur, 30 and my passion is programming. My favorite technologies at the moment are: React, Selenium, SpringBoot and Scrapy. I love to create things through code and to take care of my creations",
     "app.contact":"Feel free to send me a mail.",
     "app.card1":"Backend development with JavaEE or SpringBoot and frontend development with React and diffrent JS libraries like three.js are my best skills. Beside software development are testing software with Junit4/5 or testing frontend with Selenide/Selenium my strenghes.",
     "app.card2":"My first android app, which I programmed for a salespartner of a big energy company to digitalize contracts is still in usage.",

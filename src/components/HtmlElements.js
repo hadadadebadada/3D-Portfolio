@@ -289,13 +289,20 @@ export function createProjectsDiv(intl, scene, controls) {
 
   const header = intl.formatMessage({ id: 'app.projectsheader' }); 
   const project1 = intl.formatMessage({ id: 'app.project1' });
+  const project11 = intl.formatMessage({ id: 'app.project11' });
   const project2 = intl.formatMessage({ id: 'app.project2' });
   const project3 = intl.formatMessage({ id: 'app.project3' });
 
     let jobPortalLink = `
-  <a href="https://bewerbung100.de/" target="_blank" rel="noopener noreferrer">
+  <a href="https://bewerbr.de/" target="_blank" rel="noopener noreferrer">
     ${project1}
   </a>
+`;
+
+let botschmiedeLink = `
+<a href="https://botschmiede.de/" target="_blank" rel="noopener noreferrer">
+  ${project11}
+</a>
 `;
 
 let web3PixelGridLink = `
@@ -305,7 +312,7 @@ ${project2}
 `;
 
 
-let orozgLink = `<a href="https://github.com/hadadadebadada/3D-Portfolio/" target="_blank" rel="noopener noreferrer">
+let orozgLink = `<a href="https://github.com/hadadadebadada/3D-Portfolio/tree/master" target="_blank" rel="noopener noreferrer">
 ${project3}
 </a>
 `;
@@ -320,7 +327,7 @@ ${project3}
   wrapper.style.position = "relative";
 
   wrapper.innerHTML += `<span class="bold-text">${header}</span>`;
-  wrapper.innerHTML += `<br/><br/>${jobPortalLink}<br/><br/>${web3PixelGridLink}<br/><br/>${orozgLink}`;
+  wrapper.innerHTML += `<br/><br/>${jobPortalLink}<br/><br/>${botschmiedeLink}<br/><br/>${web3PixelGridLink}<br/><br/>${orozgLink}`;
 
 
   wrapper.addEventListener("mouseenter", () => {
