@@ -27,3 +27,11 @@ To explore the codebase or set up a local version of the portfolio, follow these
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourgithubusername/3d-portfolio.git
+
+2. Install node packages:
+   ```bash
+   npm i 
+   
+3. Run the project:
+   ```bash
+   npm run dev
