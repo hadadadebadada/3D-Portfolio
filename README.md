@@ -56,9 +56,9 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-Artur Pfeifer - [@yourTwitter](https://twitter.com/yourTwitter) - email@example.com
+Artur Pfeifer - [@LinkedIn](https://www.linkedin.com/in/artur-pfeifer/) 
 
-Project Link: [https://github.com/yourgithubusername/3d-portfolio](https://github.com/yourgithubusername/3d-portfolio)
+Project Link: [https://github.com/yourgithubusername/3d-portfolio](https://github.com/hadadadebadada/3D-Portfolio/)
 
 Live Site: [arturpfeifer.com](https://arturpfeifer.com)
 
