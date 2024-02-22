@@ -35,3 +35,30 @@ To explore the codebase or set up a local version of the portfolio, follow these
 3. Run the project:
    ```bash
    npm run dev
+
+
+
+Visit `localhost` in your browser to view the portfolio.
+
+## Contributing
+
+Your contributions are welcome! If you have suggestions to improve this portfolio or want to contribute to its development, please follow the standard GitHub fork-and-pull request workflow.
+
+- Fork the repository
+- Create your feature branch (`git checkout -b feature/AmazingFeature`)
+- Commit your changes (`git commit -am 'Add some AmazingFeature'`)
+- Push to the branch (`git push origin feature/AmazingFeature`)
+- Open a pull request
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Contact
+
+Artur Pfeifer - [@yourTwitter](https://twitter.com/yourTwitter) - email@example.com
+
+Project Link: [https://github.com/yourgithubusername/3d-portfolio](https://github.com/yourgithubusername/3d-portfolio)
+
+Live Site: [arturpfeifer.com](https://arturpfeifer.com)
+
