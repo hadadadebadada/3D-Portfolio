@@ -5,7 +5,7 @@
     "app.backToMain":"Zurück zum Anfang",
     "app.projectsheader":"Letzte Projekte",
     "app.project1": "Jobportal mit AI-Integration und E-Mail-Service mit über 1 Million Stellenangeboten und mehreren tausend versendeten Bewerbungen.",
-    "app.project11": "Platform um Fullstack Chatbots per Klick zu erstellen",
+    "app.project11": "On Premise LLMs als RAG-System und weitere KI-Services",
 
     "app.project2": "Direktes On-Chain-NFT-Zeichenwerkzeug",
     "app.project3": "Den Code zu dieser Website finden Sie hier",    
@@ -26,17 +26,8 @@
 "app.toButtomArrow": "DevOps und mehr",
 "app.toBackToMain":"Zurück zum Anfang",
 
-    "app.content":"Moin Moin",
-    "app.channel.plug":" mit {channelName}",
-    "slider.title":"MEIN TISCH IST DEIN TISCH",
-    "navbar.home":"Start",
-    "navbar.services":"Buchungsanfrage",
-    "navbar.products":"Meine Buchungen",
-    "narvar.login":"Einloggen",
-    "navbar.employeefinder":"Mitarbeiter Suchen",
-    "navbar.adminbooking":"Admin Buchungen",
-    "app.welcome":"Willkommen zu meinem Portfolio. Ich bin Artur, 30 und meine Leidenschaft ist das Programmieren. Meine favorisierten Technologien zur Zeit sind: React, Selenium, SpringBoot und Scrapy. Ich liebe es mit Code neue Dinge zu schaffen und die Entwicklung meiner Kreationen voran zutreiben.",
-    "app.me":"Ich bin Artur, 30 und meine Leidenschaft ist das Programmieren. Ich liebe es mit Code neue Dinge zu schaffen und die Entwicklung meiner Kreationen voran zutreiben. ",
+"app.welcome": "Willkommen in meinem Portfolio, ich bin Artur, 30, und meine Leidenschaft ist es, die Welt mit den neuesten Technologien voranzubringen. Meine derzeitigen Lieblingstechnologien sind LLMs, KI-Webagenten, RAG-Systeme und Scrapy. Ich liebe es, Dinge durch Code zu erschaffen und mich um meine Kreationen zu kümmern."
+,    "app.me":"Ich bin Artur, 30 und meine Leidenschaft ist das Programmieren. Ich liebe es mit Code neue Dinge zu schaffen und die Entwicklung meiner Kreationen voran zutreiben. ",
     "app.contact":"Hinterlassen Sie mir gerne eine Nachricht",
     "app.card1":"Die Entwicklung von Backend oder Microservices mit JavaEE oder SpringBoot/ Quarkus  Neben der Realisierung von Software gehört das Testen des Backends mit JUnit4/5 oder des Frontends mit Selenide/ Selenium ebenfalls zu meinen Stärken.",
     "app.card2":"Meine erste Android App, welche ich für einen Vertriebspartner der EWE erstellt habe, findet dort bereits ein einigen Jahren Ihren Einsatz.",

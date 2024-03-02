@@ -5,7 +5,7 @@
     "app.projectsheader": "最新项目",
 
     "app.project1": "集成人工智能和电子邮件服务的就业门户网站，拥有超过1百万个职位和数千份申请。",
-    "app.project11": "一键创建全栈聊天机器人的平台",
+    "app.project11": "作为RAG系统和其他AI服务的本地部署LLM",
     "app.project2": "直接在区块链上绘制NFT的工具",
     "app.project3": "您可以在这里找到此网站的代码。",  
     "app.tableButton": "表格",
@@ -23,8 +23,8 @@
     "app.toButtomArrow":"DevOps 等更多",
     "app.toBackToMain": "返回主页",
 
-    "app.welcome":"欢迎来到我的作品集，我是 Artur，30 岁，热爱编程。我目前最喜欢的技术有：React、Selenium、SpringBoot 和 Scrapy。我热衷于通过编写代码创造事物并照顾我的作品",
-    "app.contact":"如有需要，请随时给我发邮件。",
+    "app.welcome": "欢迎来到我的作品集，我是Artur，30岁，我的激情是用最新技术推动世界前进。我目前最喜爱的技术有LLMs、AI Web Agents、RAG系统和Scrapy。我喜欢通过编码创造东西并照顾我的创作。"
+,    "app.contact":"如有需要，请随时给我发邮件。",
     "app.card1":"Backend development with JavaEE or SpringBoot and frontend development with React and diffrent JS libraries like three.js are my best skills. Beside software development are testing software with Junit4/5 or testing frontend with Selenide/Selenium my strenghes.",
     "app.card2":"My first android app, which I programmed for a salespartner of a big energy company to digitalize contracts is still in usage.",
     "app.card3":"Futhermore is it a pleasure for me to analyse and visualize data, which I get through a webscraper like scrapy.",
